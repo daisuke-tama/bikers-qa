@@ -1,0 +1,23 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+    # Do not use block commentsを回避するため
+    - 'spec/spec_helper.rb'
+
+# コメントに日本語許可
+Style/AsciiComments:
+  Enabled: false
+# 一行の文字数の上限を８０文字から200文字へ変更
+LineLength:
+  Max: 200
