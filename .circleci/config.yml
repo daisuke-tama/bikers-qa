@@ -13,7 +13,7 @@ jobs:
           path: ~/bikers-qa
       - ruby/install-deps
 
-  test:
+  rspec:
     docker:
       - image: circleci/ruby:2.7
       - image: circleci/mysql:5.5
@@ -35,10 +35,32 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
       - run:
-          name: test
-          command: bundle exec rake test
+          name: Rspec
+          command: bundle exec rspec
 
-  deploy:
+  rubocop:
+    docker:
+      - image: circleci/ruby:2.7
+      - image: circleci/mysql:5.5
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: app_test
+          MYSQL_USER: root
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      APP_DATABASE_HOST: "127.0.0.1"
+      RAILS_ENV: test
+    working_directory: ~/bikers-qa/src
+    steps:
+      - checkout:
+          path: ~/bikers-qa
+      - ruby/install-deps
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+  heroku_deploy:
     docker:
       - image: circleci/ruby:2.7
     steps:
@@ -64,12 +86,13 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build
-      - test:
+      - rubocop:
           requires:
             - build
-      - deploy:
+      - rspec:
           requires:
-            - test
-          filters:
-            branches:
-              only: main
+            - rubocop
+      - heroku_deploy:
+          requires:
+            - rspec
+            - rubocop
