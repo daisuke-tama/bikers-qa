@@ -1,1 +1,63 @@
 @import '~bootstrap/scss/bootstrap';
+
+/* BASE STYLE */
+html {
+  font-size: 14px;
+  font-family: 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', sans-serif;
+  color: #222222;
+}
+@media screen and (max-width: 767px) {
+  html {
+    font-size : 15px;
+  }
+}
+
+input, select, textarea {
+  color: #222222;
+}
+
+a {
+  color: #222222;
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  background-color : white;
+}
+
+img {
+  vertical-align : middle;
+}
+
+.content-width {
+  max-width : 1140px;
+  padding-left : 50px;
+  padding-right : 50px;
+  margin-left : auto;
+  margin-right : auto;
+  position : relative;
+}
+
+.contents-tidy {
+  display : flex;
+  justify-content : space-between;
+}
+
+.under-line {
+  border-bottom: 2px solid beige;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.text-center {
+  text-align: center;
+}

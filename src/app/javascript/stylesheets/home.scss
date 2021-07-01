@@ -1,0 +1,33 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// -----carousel------
+// carouselの画像を暗くする
+.filter {
+  background: #000;
+}
+.filter-img {
+  display: block;
+  opacity: .2;
+}
+
+.ps-relative {
+  position: relative;
+}
+.ps-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.subtitle-font {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+.mail-entry-btn {
+
+}
+.sns-entry-btn {
+
+}
