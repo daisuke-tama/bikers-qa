@@ -65,3 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 以下、手動で追加分
 gem 'devise'
+gem 'rails-i18n'
+gem 'devise-i18n'
