@@ -47,18 +47,16 @@
 
   <% if user_signed_in? %>
   <% else %>
-    <div class="ps-absolute" style="top: 30%; left: 60%;">
-      <div class="content-width">
+    <div class="ps-absolute" style="top: 35%; left: 60%;">
+      <div class="content-width" >
         <%= link_to new_user_registration_path do %> 
           <button type="button" class="btn btn-outline-primary mb-20" style="width: -webkit-fill-available;">メールアドレスで登録</button>
         <% end %>
         <p class="subtitle-font under-line mb-30">SNSと連携して新規登録する</p>
-        <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary sns-entry-btn", method: :post %>
-        <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary sns-entry-btn", method: :post %>
-        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success sns-entry-btn", method: :post %>
+        <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
+        <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
+        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
       </div>
     </div>
   <% end %>
 </div>
-
-

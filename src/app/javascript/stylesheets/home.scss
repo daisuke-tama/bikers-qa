@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// -----header-------
+.navbar-custom {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  justify-content: space-between;
+}
+
 // -----carousel------
 // carouselの画像を暗くする
 .filter {
@@ -11,7 +19,7 @@
   display: block;
   opacity: .2;
 }
-
+// carouselに新規登録欄を載せる
 .ps-relative {
   position: relative;
 }
@@ -24,10 +32,4 @@
   color: white;
   font-weight: bold;
   text-align: center;
-}
-.mail-entry-btn {
-
-}
-.sns-entry-btn {
-
 }
