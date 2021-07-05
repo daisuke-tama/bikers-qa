@@ -1,26 +1,35 @@
-<h2>Log in</h2>
+<div class="card col-sm-6 mx-auto mt-5">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3 text-center">ログイン</h3>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions mb-30">
+        <%= f.submit "Log in", class: "btn btn-outline-success btn-block" %>
+      </div>
+    <% end %>
+
+    <div class="content-width">
+      <p class="subtitle-font under-line mb-30" style="color: black;">SNSと連携してログインする</p>
+      <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary sns-entry-btn", method: :post %>
+      <%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary sns-entry-btn", method: :post %>
+      <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success sns-entry-btn", method: :post %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

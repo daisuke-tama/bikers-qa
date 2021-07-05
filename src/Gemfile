@@ -39,6 +39,8 @@ group :development, :test do
   gem 'rails-erd'
   gem 'rspec-rails'
   gem 'rubocop-airbnb'
+  # 環境変数設定用
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -65,5 +67,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 以下、手動で追加分
 gem 'devise'
+# deviseの日本語化
 gem 'rails-i18n'
 gem 'devise-i18n'
+# deviseのSNS認証
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+# CSRF脆弱性対策
+gem 'omniauth-rails_csrf_protection'
