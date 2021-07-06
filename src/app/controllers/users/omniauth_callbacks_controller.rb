@@ -1,5 +1,4 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   # callback for facebook
   def facebook
     callback_for(:facebook)
@@ -20,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env["omniauth.auth"])
     duplicate_confirmation = User.find_by(email: "#{@user.email}")
     if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+      sign_in_and_redirect @user, event: :authentication # this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     elsif @user.email == duplicate_confirmation.email
       redirect_to root_path
@@ -34,5 +33,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to root_path
   end
-
 end

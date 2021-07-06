@@ -23,8 +23,11 @@
 
       <div class="navber-right">
         <% if user_signed_in? %>
+          <%= link_to new_article_path do %> 
+            <button type="button" class="btn btn-outline-success">記事作成</button>
+          <% end %>
           <%= link_to edit_user_registration_path do %> 
-            <button type="button" class="btn btn-outline-success">会員情報</button>
+            <button type="button" class="btn btn-outline-primary">会員情報</button>
           <% end %>
           <%= link_to destroy_user_session_path, method: :delete do %> 
             <button type="button" class="btn btn-outline-secondary">ログアウト</button>
