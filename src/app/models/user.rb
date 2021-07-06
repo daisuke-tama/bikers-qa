@@ -18,4 +18,11 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+
+  # テストログイン用
+  def self.guest
+    find_or_create_by(email: "test@com") do |user|
+      user.password = ENV["TEST_LOGIN_PASSWORD"]
+    end
+  end
 end
