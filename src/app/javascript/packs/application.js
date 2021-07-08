@@ -13,6 +13,7 @@ import "../stylesheets/application.scss"
 import "../stylesheets/home.scss"
 import "../stylesheets/reset.scss"
 import "../stylesheets/users.scss"
+import "../stylesheets/articles.scss"
 
 Rails.start()
 Turbolinks.start()

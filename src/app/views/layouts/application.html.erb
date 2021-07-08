@@ -23,6 +23,9 @@
 
       <div class="navber-right">
         <% if user_signed_in? %>
+          <%= link_to articles_path do %> 
+            <button type="button" class="btn btn-outline-success">記事一覧</button>
+          <% end %>
           <%= link_to new_article_path do %> 
             <button type="button" class="btn btn-outline-success">記事作成</button>
           <% end %>

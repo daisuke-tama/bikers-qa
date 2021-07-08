@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.all.order(id: :desc)
   end
 
   def show
@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(:params[:id])
+    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to @article
     else
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to root_path
+    redirect_to @article
   end
 
   private
