@@ -18,3 +18,8 @@ import "../stylesheets/articles.scss"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// flashメッセージを秒数指定で消す
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+});

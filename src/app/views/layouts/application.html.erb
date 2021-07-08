@@ -16,10 +16,11 @@
       <a class="navbar-brand" href="/">
         <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Bikers-qa
-        </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      </a>
+
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "flash flash-#{key}") %>
+      <% end %>
 
       <div class="navber-right">
         <% if user_signed_in? %>
@@ -29,8 +30,10 @@
           <%= link_to new_article_path do %> 
             <button type="button" class="btn btn-outline-success">記事作成</button>
           <% end %>
-          <%= link_to edit_user_registration_path do %> 
-            <button type="button" class="btn btn-outline-primary">会員情報</button>
+          <% unless current_user.name == "test" %>
+            <%= link_to edit_user_registration_path do %> 
+              <button type="button" class="btn btn-outline-primary">会員情報</button>
+            <% end %>
           <% end %>
           <%= link_to destroy_user_session_path, method: :delete do %> 
             <button type="button" class="btn btn-outline-secondary">ログアウト</button>
@@ -50,7 +53,5 @@
     </nav>
   </header>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </body>
 </html>
