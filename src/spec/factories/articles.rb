@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :article do
-    title { "MyString" }
-    body { "MyText" }
+    association :user
+    trait :skip_validate do
+      to_create { |instance| instance.save(validate: false) }
+    end
   end
 end

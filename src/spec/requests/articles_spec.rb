@@ -1,31 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe "Articles", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/articles/index"
-      expect(response).to have_http_status(:success)
-    end
-  end
+  describe "ArticlesTest" do
+    let(:article) { create(:article, :skip_validate, title: "test", body: "test") }
 
-  describe "GET /show" do
-    it "returns http success" do
-      get "/articles/show"
-      expect(response).to have_http_status(:success)
+    describe "#index" do
+      it "HTTPレスポンスステータス200番台を返すこと" do
+        get articles_path
+        expect(response).to have_http_status(:success)
+      end
     end
-  end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/articles/new"
-      expect(response).to have_http_status(:success)
+    describe "#show" do
+      it "HTTPレスポンスステータス200番台を返すこと" do
+        get article_path(article.id)
+        expect(response).to have_http_status(:success)
+      end
     end
-  end
 
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/articles/edit"
-      expect(response).to have_http_status(:success)
+    describe "#new" do
+      it "HTTPレスポンスステータス200番台を返すこと" do
+        get new_article_path
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    describe "#edit" do
+      it "HTTPレスポンスステータス200番台を返すこと" do
+        get edit_article_path(article.id)
+        expect(response).to have_http_status(:success)
+      end
     end
   end
 end

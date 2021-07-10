@@ -23,5 +23,16 @@ module App
     config.i18n.default_locale = :ja
     # タイムゾーンの変更
     config.time_zone = 'Asia/Tokyo'
+    # RSpecテスト時に下記ドメインを許可
+    config.hosts << '.example.com'
+
+    config.generators do |g|
+      g.stylesheets false
+      g.helper false
+      g.test_framework :rspec,
+        fixture: true,
+        view_specs: false,
+        helper_specs: false
+    end
   end
 end

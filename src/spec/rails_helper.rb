@@ -68,7 +68,8 @@ RSpec.configure do |config|
       driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
     end
   end
-
-  # FactoryBotの省略化
+  # FactoryBotの利用
   config.include FactoryBot::Syntax::Methods
+  # sign_inヘルパーの導入
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end
