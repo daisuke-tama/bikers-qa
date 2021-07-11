@@ -6,7 +6,9 @@ class User < ApplicationRecord
          :lockable, :trackable, :timeoutable,
          :omniauthable, omniauth_providers: %i(facebook twitter google_oauth2)
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_articles, through: :favorites, source: :article
 
   validates :email, uniqueness: true
 

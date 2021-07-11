@@ -9,11 +9,14 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
 import "bootstrap"
+import "@fortawesome/fontawesome-free/js/all"
 import "../stylesheets/application.scss"
 import "../stylesheets/home.scss"
 import "../stylesheets/reset.scss"
 import "../stylesheets/users.scss"
 import "../stylesheets/articles.scss"
+import "../stylesheets/favorites.scss"
+
 
 Rails.start()
 Turbolinks.start()

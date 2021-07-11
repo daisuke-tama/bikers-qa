@@ -8,6 +8,7 @@
           <p class="card-text mb-20"><%= truncate(article.body, length:15) %></p>
           <%= link_to "記事を読む", article, class: "btn btn-primary" %>
         </div>
+        <p><span>お気に入り数: </span><%= article.favorites.count %></p>
         <div class="card-footer text-muted">
           <%= time_ago_in_words(article.created_at) %>前に作成
         </div>
