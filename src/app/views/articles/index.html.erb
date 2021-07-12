@@ -3,12 +3,26 @@
   <div class="contents-tidy" style="flex-wrap: wrap;">
     <% @articles.each do |article| %>
       <div class="card text-center card-article mb-20">
-        <div class="card-body">
+        <div style="display: flex; margin: auto;">
+          <p>記事の作成者:<%= article.user.name %></p>
+          <% if current_user != article.user %>
+            <% if article.user.followed_by?(current_user) %>
+              <%=link_to user_relationships_path(article.user.id), method: :delete do %>
+                <i class="fas fa-address-book fa-3x" style="color: blue;"></i>
+              <% end %>
+            <% else %>
+              <%=link_to user_relationships_path(article.user.id), method: :post do %>
+                <i class="far fa-address-book fa-3x" style="color: blue;"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-body" style="border-top: 1px solid black;">
           <h5 class="card-title"><%= article.title %></h5>
           <p class="card-text mb-20 article-font"><%= truncate(article.body, length:15) %></p>
           <%= link_to "記事を読む", article, class: "btn btn-primary" %>
         </div>
-        <p><span>お気に入り数: </span><%= article.favorites.count %></p>
+        <p><span>お気に入りされた数: </span><%= article.favorites.count %></p>
         <div class="card-footer text-muted">
           <%= time_ago_in_words(article.created_at) %>前に作成
         </div>

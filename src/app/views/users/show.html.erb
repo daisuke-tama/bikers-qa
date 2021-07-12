@@ -2,27 +2,43 @@
   <div class="contents-tidy">
     <div class="card-body">
       <h5 class="card-title"><%= @user.name %></h5>
-      <p class="card-text"><%= @user.email %></p>
+      <% if current_user == @user %>
+        <p class="card-text"><%= @user.email %></p>
+      <% end %>
     </div>
-    <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+    <div>
+      <p><%=link_to "フォロー一覧を確認する", follows_user_path(@user.id), class: "btn btn-primary" %></p><br>
+      <p><%=link_to "フォロワー一覧を確認する", followers_user_path(@user.id), class: "btn btn-primary" %></p>
+    </div>
+    <% unless current_user.email == "test@com" %>
+      <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+    <% end %>
   </div>
 </div>
 
 <div class="content-width mb-50">
-  <h2>自分の記事</h2>
+  <% if current_user == @user %>
+    <h2>自分の記事</h2>
+  <% else %>
+    <h2><%= @user.name %>さんの記事</h2>
+  <% end %>
   <% @articles.each do |article| %>
     <div class="card mb-20">
       <div class="card-body">
         <h5 class="card-title"><%= article.title %></h5>
         <pre><p class="card-text article-font"><%= truncate(article.body, length: 100) %></p></pre>
-        <%= link_to "詳細を確認する", article, class: "btn btn-primary"%>
+        <%= link_to "詳細を確認する", article, class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
 </div>
 
 <div class="content-width">
-  <h2>お気に入りした記事</h2>
+  <% if current_user == @user %>
+    <h2>お気に入りした記事</h2>
+  <% else %>
+    <h2><%= @user.name %>さんがお気に入りした記事</h2>
+  <% end %>
   <% if @favorite_articles.blank? %>
     <h1>現在、お気に入り登録はありません</h1>
   <% else %>
