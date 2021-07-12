@@ -4,17 +4,8 @@
     <% @articles.each do |article| %>
       <div class="card text-center card-article mb-20">
         <div style="display: flex; margin: auto;">
-          <p>記事の作成者:<%= article.user.name %></p>
-          <% if current_user != article.user %>
-            <% if article.user.followed_by?(current_user) %>
-              <%=link_to user_relationships_path(article.user.id), method: :delete do %>
-                <i class="fas fa-address-book fa-3x" style="color: blue;"></i>
-              <% end %>
-            <% else %>
-              <%=link_to user_relationships_path(article.user.id), method: :post do %>
-                <i class="far fa-address-book fa-3x" style="color: blue;"></i>
-              <% end %>
-            <% end %>
+          <%= link_to user_path(article.user_id) do %>
+            <p>記事の作成者:<%= article.user.name %></p>
           <% end %>
         </div>
         <div class="card-body" style="border-top: 1px solid black;">

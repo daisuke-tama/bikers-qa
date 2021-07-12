@@ -6,6 +6,9 @@
         <p class="card-text"><%= @user.email %></p>
       <% end %>
     </div>
+    <div id="relation_buttons_<%= @user.id %>">
+      <%= render 'relationships/relationship', user: @user %>
+    </div>
     <div>
       <p><%=link_to "フォロー一覧を確認する", follows_user_path(@user.id), class: "btn btn-primary" %></p><br>
       <p><%=link_to "フォロワー一覧を確認する", followers_user_path(@user.id), class: "btn btn-primary" %></p>

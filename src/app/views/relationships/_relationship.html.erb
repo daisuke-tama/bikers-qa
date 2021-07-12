@@ -1,0 +1,11 @@
+<% if current_user != user %>
+  <% if user.followed_by?(current_user) %>
+    <%= link_to user_relationships_path(user.id), method: :delete, remote: true do %>
+      <i class="fas fa-address-book fa-3x follow-btn"></i>
+    <% end %>
+  <% else %>
+    <%= link_to user_relationships_path(user.id), method: :post, remote: true do %>
+      <i class="far fa-address-book fa-3x follow-btn"></i>
+    <% end %>
+  <% end %>
+<% end %>
