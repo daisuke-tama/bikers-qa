@@ -5,7 +5,7 @@
       <div class="card text-center card-article mb-20">
         <div class="card-body">
           <h5 class="card-title"><%= article.title %></h5>
-          <p class="card-text mb-20"><%= truncate(article.body, length:15) %></p>
+          <p class="card-text mb-20 article-font"><%= truncate(article.body, length:15) %></p>
           <%= link_to "記事を読む", article, class: "btn btn-primary" %>
         </div>
         <p><span>お気に入り数: </span><%= article.favorites.count %></p>

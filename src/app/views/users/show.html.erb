@@ -1,2 +1,35 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="card mb-50">
+  <div class="contents-tidy">
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.name %></h5>
+      <p class="card-text"><%= @user.email %></p>
+    </div>
+    <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+  </div>
+</div>
+
+<div class="content-width mb-50">
+  <h2>自分の記事</h2>
+  <% @articles.each do |article| %>
+    <div class="card mb-20">
+      <div class="card-body">
+        <h5 class="card-title"><%= article.title %></h5>
+        <pre><p class="card-text article-font"><%= truncate(article.body, length: 100) %></p></pre>
+        <%= link_to "詳細を確認する", article, class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="content-width">
+  <h2>お気に入りした記事</h2>
+  <% if @favorite_articles.blank? %>
+    <h1>現在、お気に入り登録はありません</h1>
+  <% else %>
+    <% @favorite_articles.each do |article| %>
+      <div id="user_favorite_buttons_<%= article.id %>">
+        <%= render 'users/favorite', article: article %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

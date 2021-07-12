@@ -9,7 +9,7 @@
   <div class="card" style="margin: 0 auto;">
     <div class="card-body">
       <h5 class="card-title text-center"><%= @article.title %></h5>
-      <pre><p class="card-text mb-20", style="font-family: initial;"><%= @article.body %></pre>
+      <pre><p class="card-text mb-20 article-font"><%= @article.body %></pre>
     </div>
     <div class="card-footer text-muted">
       <%= time_ago_in_words(@article.created_at) %>前に作成

@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <% if article.favorited_by?(current_user) %>
+    <div class="card mb-20">
+      <div class="card-body">
+        <h5 class="card-title"><%= article.title %></h5>
+        <pre><p class="card-text article-font"><%= truncate(article.body, length: 100) %></p></pre>
+        <%= link_to "記事を読む", article, class: "btn btn-primary"%>
+        <p><span>お気に入り解除: </span><%= link_to article_favorites_path(article.id), method: :delete, remote: true do %>
+          <i class="fas fa-heart red"></i>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

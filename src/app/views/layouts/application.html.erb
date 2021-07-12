@@ -31,7 +31,7 @@
             <button type="button" class="btn btn-outline-success">記事作成</button>
           <% end %>
           <% unless current_user.name == "test" %>
-            <%= link_to edit_user_registration_path do %> 
+            <%= link_to user_path(current_user.id) do %> 
               <button type="button" class="btn btn-outline-primary">会員情報</button>
             <% end %>
           <% end %>
