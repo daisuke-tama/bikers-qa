@@ -33,3 +33,34 @@
   font-weight: bold;
   text-align: center;
 }
+.carousel-on-text {
+  color: white;
+  font-weight: bold;
+}
+
+//======= main-contents ===========
+.main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+  background-image: url('/assets/carbon.jpg')
+}
+.main-contents .article-title-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.card-custom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+}
+.new-article-icon {
+  color: yellow;
+  font-size: 30px;
+  margin-right: 10px;
+}

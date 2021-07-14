@@ -1,10 +1,12 @@
 <h1 style="text-align: center; margin-bottom:80px;">記事詳細</h1>
 
 <section class="content-width">
-  <% unless @article.user_id == current_user.id %>
-    <div id="favorite_buttons_<%= @article.id %>">
-      <%= render 'favorites/favorite', article: @article %>
-    </div>
+  <% if user_signed_in? %>
+    <% unless @article.user_id == current_user.id %>
+      <div id="favorite_buttons_<%= @article.id %>">
+        <%= render 'favorites/favorite', article: @article %>
+      </div>
+    <% end %>
   <% end %>
   <div class="card" style="margin: 0 auto;">
     <div class="card-body">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>BIKERS_QA</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,45 +11,66 @@
   </head>
 
   <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
-      <a class="navbar-brand" href="/">
-        <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bikers-qa
-      </a>
-
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "flash flash-#{key}") %>
-      <% end %>
-
-      <div class="navber-right">
-        <% if user_signed_in? %>
-          <%= link_to articles_path do %> 
-            <button type="button" class="btn btn-outline-success">記事一覧</button>
-          <% end %>
-          <%= link_to new_article_path do %> 
-            <button type="button" class="btn btn-outline-success">記事作成</button>
-          <% end %>
-          <%= link_to user_path(current_user.id) do %> 
-            <button type="button" class="btn btn-outline-primary">会員情報</button>
-          <% end %>
-          <%= link_to destroy_user_session_path, method: :delete do %> 
-            <button type="button" class="btn btn-outline-secondary">ログアウト</button>
-          <% end %>
-        <% else %>
-          <%= link_to users_guest_sign_in_path, method: :post do %> 
-            <button type="button" class="btn btn-outline-danger">テストログイン</button>
-          <% end %>
-          <%= link_to new_user_registration_path do %> 
-            <button type="button" class="btn btn-outline-primary">会員登録</button>
-          <% end %>
-          <%= link_to new_user_session_path do %> 
-            <button type="button" class="btn btn-outline-success">ログイン</button>
-          <% end %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+        <a class="navbar-brand" href="/">
+          <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          Bikers-QA
+        </a>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "flash flash-#{key}") %>
         <% end %>
+        <div class="navber-right">
+          <% if user_signed_in? %>
+            <%= link_to articles_path do %> 
+              <button type="button" class="btn btn-outline-success">記事一覧</button>
+            <% end %>
+            <%= link_to new_article_path do %> 
+              <button type="button" class="btn btn-outline-success">記事作成</button>
+            <% end %>
+            <%= link_to user_path(current_user.id) do %> 
+              <button type="button" class="btn btn-outline-primary">会員情報</button>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %> 
+              <button type="button" class="btn btn-outline-secondary">ログアウト</button>
+            <% end %>
+          <% else %>
+            <%= link_to users_guest_sign_in_path, method: :post do %> 
+              <button type="button" class="btn btn-outline-danger">テストログイン</button>
+            <% end %>
+            <%= link_to new_user_registration_path do %> 
+              <button type="button" class="btn btn-outline-primary">会員登録</button>
+            <% end %>
+            <%= link_to new_user_session_path do %> 
+              <button type="button" class="btn btn-outline-success">ログイン</button>
+            <% end %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div class="footer-style contents-tidy">
+        <div class="footer-left">
+          <%= image_tag '/assets/carousel-on-logo.png', style: "height: 80px;" %>
+          <h6 style="text-align: center;">BIKERS_QA</h6>
+          <P style="text-align: center;">バイク整備専門サイト</P>
+          <i class="fab fa-twitter ml-20"></i>
+          <i class="fab fa-facebook ml-10"></i>
+          <p>© 2021 BIKERS_QA inc.</p>
+        </div>
+        <div class="footer-right">
+          <a href="#">about</a>
+          <a href="#">利用規約</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">お問い合わせ</a>
+          <a href="#">ヘルプ</a>
+        </div>
       </div>
-    </nav>
-  </header>
-    <%= yield %>
+    </footer>
   </body>
 </html>

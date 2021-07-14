@@ -1,62 +1,80 @@
 <!-- carousel -->
 <div class="ps-relative">
-  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" style="z-index: 0;" data-ride="carousel" data-interval="2000">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" style="z-index: 0;" data-ride="carousel" data-interval="2000" data-pause="false">
     <div class="carousel-inner" style="height: 600px;">
       <div class="carousel-item active">
         <div class="filter">
           <img src="/assets/bike1.jpg" class="d-block w-100 filter-img" alt="...">
-        </div>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>...</h5>
-          <p>...</p>
         </div>
       </div>
       <div class="carousel-item">
         <div class="filter">
           <img src="/assets/bike2.jpg" class="d-block w-100 filter-img" alt="...">
         </div>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>...</h5>
-          <p>...</p>
-        </div>
       </div>
       <div class="carousel-item">
         <div class="filter">
           <img src="/assets/bike3.jpg" class="d-block w-100 filter-img" alt="...">
         </div>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>...</h5>
-          <p>...</p>
+      </div>
+    </div>
+  </div>
+  <!-- carousel上のコンテンツ -->
+  <% unless user_signed_in? %>
+    <div class="ps-absolute w-100" style="top: 30%;">
+      <div class="content-width" >
+        <div class="contents-tidy">
+          <!-- サイト説明欄 -->
+          <div class="carousel-on-text">
+            <%= image_tag '/assets/carousel-on-logo.png', style: "height: 200px;" %>
+            <h2 style="text-align: center;">バイク専門の整備情報サイト</h2>
+            <p>Bikers-QAはバイク整備に関する知識を記録・共有するサービスです</p>
+            <p>整備をしていて気がついた事や、大変だった事など</p>
+            <p>他の方と共有しましょう!!!</p>
+          </div>
+          <!-- 新規登録関連 -->
+          <div class="mt-80">
+            <%= link_to new_user_registration_path do %> 
+              <button type="button" class="btn btn-outline-primary mb-20" style="width: -webkit-fill-available;">メールアドレスで登録</button>
+            <% end %>
+            <p class="subtitle-font under-line mb-30">
+            <span><i class="far fa-arrow-alt-circle-down"></i></span>
+            SNSと連携して新規登録する
+            <span><i class="far fa-arrow-alt-circle-down"></i></span>
+            </p>
+            <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
+            <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
+            <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+          </div>
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+  <% end %>
+</div>
 
-  <% if user_signed_in? %>
-  <% else %>
-    <div class="ps-absolute" style="top: 35%; left: 60%;">
-      <div class="content-width" >
-        <%= link_to new_user_registration_path do %> 
-          <button type="button" class="btn btn-outline-primary mb-20" style="width: -webkit-fill-available;">メールアドレスで登録</button>
-        <% end %>
-        <p class="subtitle-font under-line mb-30">SNSと連携して新規登録する</p>
-        <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
-        <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
-        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+<!-- top-page main-contents -->
+<div class="main-contents">
+  <div class="content-width" style="width: 60%;">
+    <div class="card">
+      <div style="padding: 5px 10px;">
+        <P style="font-size: 20px; font-weight: bold; font-family: cursive,sans-serif;"><i class="far fa-lightbulb new-article-icon"></i>NEW ARTICLES</p>
       </div>
     </div>
-  <% end %>
+    <% @articles.each do |article| %>
+      <div class="card-custom">
+        <div class="card-body">
+          <%= link_to article do %>
+            <h5 class="card-title article-title-text"><%= article.title %></h5>
+          <% end %>
+          <%= link_to user_path(article.user_id) do %>
+            <%= article.user.name %>
+          <% end %>
+          さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+          <div style="float: right;">
+            <i class="fas fa-heart red"></i>✖<%= article.favorites.count %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
