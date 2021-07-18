@@ -10,6 +10,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :introduce, "自己紹介内容を入力してください" %><br />
+        <%= f.text_area :introduce, class: "form-control", placeholder: "例） どうもはじめまして！よろしくおねがいします！", autocomplete: "introduce", rows: "10"%>
+      </div>
+
+      <div class="form-group">
         <%= f.label :email %><br />
         <%= f.email_field :email, class: "form-control", placeholder: "例） bikers-qa@gmail.com", autocomplete: "email" %>
       </div>

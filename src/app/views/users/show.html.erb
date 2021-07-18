@@ -12,8 +12,9 @@
         <p>フォロワー</p>
       <% end %>
     </div>
+    <h5 style="font-size: 15px;"><%= @user.introduce %></h5>
     <% if @user == current_user %>
-      <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+      <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
     <% end %>
     <div id="relation_buttons_<%= @user.id %>">
       <%= render 'relationships/relationship', user: @user %>
