@@ -1,23 +1,23 @@
-<h1 style="text-align: center; margin-bottom:80px;">記事一覧</h1>
-<section class="content-width">
-  <div class="contents-tidy" style="flex-wrap: wrap;">
+<div class="article-index-main-contents">
+  <div class="content-width" style="width: 60%;">
     <% @articles.each do |article| %>
-      <div class="card text-center card-article mb-20">
-        <div style="display: flex; margin: auto;">
-          <%= link_to user_path(article.user_id) do %>
-            <p>記事の作成者:<%= article.user.name %></p>
+      <div class="card-custom">
+        <div class="card-body">
+          <div class="author-header">
+            <%= link_to user_path(article.user_id) do %>
+              <%= article.user.name %>
+            <% end %>
+            さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成          
+          </div>
+          <div style="float: right;">
+            <i class="fas fa-heart favorite-icon"></i>✖<%= article.favorites.count %>
+          </div>
+          <%= link_to article do %>
+            <h5 class="card-title article-title-text"><%= article.title %></h5>
           <% end %>
-        </div>
-        <div class="card-body" style="border-top: 1px solid black;">
-          <h5 class="card-title"><%= article.title %></h5>
-          <p class="card-text mb-20 article-font"><%= truncate(article.body, length:15) %></p>
-          <%= link_to "記事を読む", article, class: "btn btn-primary" %>
-        </div>
-        <p><span>お気に入りされた数: </span><%= article.favorites.count %></p>
-        <div class="card-footer text-muted">
-          <%= time_ago_in_words(article.created_at) %>前に作成
+          <%= truncate(article.body, length: 100) %>
         </div>
       </div>
     <% end %>
   </div>
-</section>
+</div>

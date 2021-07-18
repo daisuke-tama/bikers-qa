@@ -1,24 +1,56 @@
-<h1 style="text-align: center; margin-bottom:80px;">記事詳細</h1>
-
-<section class="content-width">
-  <% if user_signed_in? %>
-    <% unless @article.user_id == current_user.id %>
-      <div id="favorite_buttons_<%= @article.id %>">
-        <%= render 'favorites/favorite', article: @article %>
+<div class="navber-editer" style="background-color: initial;">
+  <ul style="text-align: center;">
+    <% if @article.user == current_user %>
+      <li style="padding-left: 6px;"><%= link_to edit_article_path do %>
+        <div class="tooltip2">
+          <i class="far fa-edit navber-editer-icon tooltip2"></i>
+          <div class="description2">編集する</div>
+        </div>
+      <% end %>
+      </li>
+      <li>
+        </i><%= link_to @article, data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete do %>
+          <div class="tooltip2">
+            <i class="far fa-trash-alt navber-editer-icon tooltip2"></i>
+            <div class="description2">記事を削除</div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+    <li><%= link_to articles_path do %>
+      <div class="tooltip2">
+        <i class="far fa-list-alt navber-editer-icon"></i>
+        <div class="description2">記事一覧へ</div>
       </div>
     <% end %>
-  <% end %>
-  <div class="card" style="margin: 0 auto;">
-    <div class="card-body">
-      <h5 class="card-title text-center"><%= @article.title %></h5>
-      <pre><p class="card-text mb-20 article-font"><%= @article.body %></pre>
-    </div>
-    <div class="card-footer text-muted">
-      <%= time_ago_in_words(@article.created_at) %>前に作成
+    </li>
+    <li>
+      <% if user_signed_in? %>
+        <% unless @article.user_id == current_user.id %>
+          <div id="favorite_buttons_<%= @article.id %>" class="tooltip2 navber-editer-icon">
+            <%= render 'favorites/favorite', article: @article %>
+            <div class="description2">お気に入り</div>
+          </div>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="article-show-main-contents article-show-bgc">
+  <div class="content-width" style="width: 75%;">
+    <div class="card-custom">
+      <div class="card-body">
+        <div class="author-header-show">
+          <%= link_to user_path(@article.user_id) do %>
+            <%= @article.user.name %>
+          <% end %>
+          さんが<%= @article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+          <i class="fas fa-heart favorite-icon-show"></i>✖<%= @article.favorites.count %>        
+        </div>
+        <h5 class="card-title article-title-text" style="font-size: 28px;"><%= @article.title %></h5>
+        <div style="font-size: 15px;"><%= safe_join(@article.body.split("\n"),tag(:br)) %></div>
+      </div>
     </div>
   </div>
-  <%= link_to "戻る", :back, class: "btn btn-outline-primary" %>
-  <%= link_to "編集する", edit_article_path, class: "btn btn-outline-success" %>
-  <%= link_to "記事を削除する", @article, data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, class: "btn btn-outline-danger", method: :delete %>
-</section>
-
+</div>

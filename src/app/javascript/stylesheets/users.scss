@@ -7,13 +7,51 @@
 }
 
 .edit-user-btn {
-  margin-right: 20px;
-  margin-top: auto;
-  margin-bottom: 25px;
+  width: 100%;
+  margin-top: 20px;
+}
+.follow-btn {
+  font-weight: bold;
+  margin-top: 20px;
+}
+//========= users/show ============
+.username-font {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #dcdcdc;
+}
+.relationship-link-text {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
 }
 
-.follow-btn {
-  color: blue;
-  margin-right: 100px;
-  margin-top: 25px;
+//========= users/follows followers ==========
+.follow-contents-index-style {
+  background-color: white;
+  width: 60%;
+}
+.follow-contents-header {
+  padding-top: 20px;
+  padding-left: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.follow-contents-header-icon{
+  color: #6283ff;
+}
+.follow-contents-index-wrapper .follow-contents-index:last-child {
+  border-bottom: initial;
+}
+.follow-contents-index {
+  border-bottom: 1px solid #dcdcdc;
+  margin: 24px 20px;
+  padding-bottom: 30px;
+}
+.follow-contents-username {
+  font-size: 17px;
+  font-weight: bold;
 }

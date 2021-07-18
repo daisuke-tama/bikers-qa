@@ -1,20 +1,46 @@
-<h2>フォローしたユーザー一覧</h2>
-<div class="content-width mb-50">
-  <% @users.each do |user| %>
-    <div class="card mb-20">
+<div class="content-width" style="margin-top: 50px;">
+  <div class="contents-tidy">
+    <!-- 画面左側のメニュー欄 -->
+    <div style="width: 35%; background-color: white;">
       <div class="card-body">
-        <h5 class="card-title"><%= link_to user.name, user_path(user.id) %></h5>
-        <p class="card-text article-font">
-        <% if current_user != user %>
-          <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォローを解除", user_relationships_path(user.id), method: :delete %></p>
-          <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
+        <h5 class="card-title username-font"><%= current_user.name %></h5>
+        <div class="relationship-link-text">
+          <%= link_to follows_user_path(current_user.id) do %>
+            <p><%= current_user.followings.count %></p>
+            <p>フォロー</p>
           <% end %>
+          <%= link_to followers_user_path(current_user.id) do %>
+            <p><%= current_user.followers.count %></p>
+            <p>フォロワー</p>
+          <% end %>
+        </div>
+          <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+        <div id="relation_buttons_<%= current_user.id %>">
+          <%= render 'relationships/relationship', user: current_user %>
+        </div>
+      </div>
+      <p>コンテンツが定まっていないためheight未設定</p>
+    </div>
+    <!-- フォロー一覧 -->
+    <div class="follow-contents-index-style">
+      <div>
+        <h3 class="follow-contents-header">
+        <span class="follow-contents-header-icon"><i class="fas fa-biking"></i></span>
+        フォローしているユーザー
+        </h3>
+      </div>
+      <div class="follow-contents-index-wrapper">
+        <% @users.each do |user| %>
+          <div id="relation_buttons_<%= user.id %>" class="follow-contents-index">
+            <div class="follow-contents-username">
+              <%= link_to user.name, user_path(user.id) %>
+            </div>
+            <p class="card-text article-font">
+              <%= render 'relationships/relationships', user: user %>
+            </p>
+          </div>
         <% end %>
-        </p>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
-

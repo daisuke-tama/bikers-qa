@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// -----header-------
+//========== header =============
 .navbar-custom {
   position: fixed;
   z-index: 1;
@@ -10,7 +10,7 @@
   justify-content: space-between;
 }
 
-// -----carousel------
+//========= carousel ============
 // carouselの画像を暗くする
 .filter {
   background: #000;
@@ -37,8 +37,7 @@
   color: white;
   font-weight: bold;
 }
-
-//======= main-contents ===========
+//========= main-contents ===========
 .main-contents {
   padding-top: 30px;
   padding-bottom: 80px;
@@ -47,17 +46,6 @@
 .main-contents .article-title-text {
   font-size: 20px;
   font-weight: bold;
-}
-.card-custom {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 5px;
 }
 .new-article-icon {
   color: yellow;

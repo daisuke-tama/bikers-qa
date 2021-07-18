@@ -1,13 +1,16 @@
+<!-- articles/show内のお気に入り ON OFF機能(Ajax) -->
 <% if user_signed_in? %>
   <% if article.favorited_by?(current_user) %>
-    <p><span>お気に入り解除: </span><%=link_to article_favorites_path(article.id), method: :delete, remote: true do %>
-    <i class="fas fa-heart red"></i>
-    <% end %>
+    <p>
+      <%= link_to article_favorites_path(article.id), method: :delete, remote: true do %>
+        <i class="fas fa-heart red"></i>
+      <% end %>
     </p>
   <% else %>
-    <p><span>お気に入り登録: </span><%=link_to article_favorites_path(article.id), method: :post, remote: true do %>
-      <i class="far fa-heart red"></i>
-    <% end %>
+    <p>
+      <%= link_to article_favorites_path(article.id), method: :post, remote: true do %>
+        <i class="far fa-heart red"></i>
+      <% end %>
     </p>
   <% end %>
 <% end %>

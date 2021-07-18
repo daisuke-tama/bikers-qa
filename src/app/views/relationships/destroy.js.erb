@@ -1,1 +1,3 @@
 $('#relation_buttons_<%= @user.id %>').html("<%= j(render 'relationships/relationship', user: @user) %>");
+
+$('#relation_buttons_<%= @user.id %>').html("<%= j(render 'relationships/relationships', user: @user) %>");

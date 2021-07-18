@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def followed_by?(user)
-    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    # userが既に相手をフォローしているかどうか
     passive_relationships.find_by(following_id: user.id).present?
   end
 end

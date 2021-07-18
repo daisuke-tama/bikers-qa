@@ -1,54 +1,92 @@
-<div class="card mb-50">
-  <div class="contents-tidy">
-    <div class="card-body">
-      <h5 class="card-title"><%= @user.name %></h5>
-      <% if current_user == @user %>
-        <p class="card-text"><%= @user.email %></p>
+<!-- 画面左側のメニュー欄 -->
+<div class="navber-editer" style="width: 20%;">
+  <div class="card-body">
+    <h5 class="card-title username-font"><%= @user.name %></h5>
+    <div class="relationship-link-text">
+      <%= link_to follows_user_path(@user.id) do %>
+        <p><%= @user.followings.count %></p>
+        <p>フォロー</p>
+      <% end %>
+      <%= link_to followers_user_path(@user.id) do %>
+        <p><%= @user.followers.count %></p>
+        <p>フォロワー</p>
       <% end %>
     </div>
+    <% if @user == current_user %>
+      <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+    <% end %>
     <div id="relation_buttons_<%= @user.id %>">
       <%= render 'relationships/relationship', user: @user %>
     </div>
-    <div>
-      <p><%=link_to "フォロー一覧を確認する", follows_user_path(@user.id), class: "btn btn-primary" %></p><br>
-      <p><%=link_to "フォロワー一覧を確認する", followers_user_path(@user.id), class: "btn btn-primary" %></p>
-    </div>
-    <% unless current_user.email == "test@com" %>
-      <%= link_to '会員情報編集', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
-    <% end %>
   </div>
 </div>
 
-<div class="content-width mb-50">
-  <% if current_user == @user %>
-    <h2>自分の記事</h2>
-  <% else %>
-    <h2><%= @user.name %>さんの記事</h2>
-  <% end %>
-  <% @articles.each do |article| %>
-    <div class="card mb-20">
-      <div class="card-body">
-        <h5 class="card-title"><%= article.title %></h5>
-        <pre><p class="card-text article-font"><%= truncate(article.body, length: 100) %></p></pre>
-        <%= link_to "詳細を確認する", article, class: "btn btn-primary" %>
+<!-- main-contents -->
+<div class="article-index-main-contents mb-50">
+  <div class="content-width" style="width: 60%;">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">作成した記事</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">お気に入り</a>
+      </li>
+      <!--タグ追加場所<li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+      </li>-->
+    </ul>
+    <!-- @userが作成した記事一覧 -->
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <% @articles.each do |article| %>
+          <div class="card-custom">
+            <div class="card-body">
+              <div class="author-header contents-tidy">
+                <div>
+                  <%= link_to user_path(article.user_id) do %>
+                    <%= article.user.name %>
+                  <% end %>
+                  さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+                </div>         
+                <div>
+                  <i class="fas fa-heart favorite-icon"></i>✖<%= article.favorites.count %>
+                </div>
+              </div>
+              <%= link_to article do %>
+                <h5 class="card-title article-title-text"><%= article.title %></h5>
+              <% end %>
+              <%= truncate(article.body, length: 100) %>
+            </div>
+          </div>
+        <% end %>
       </div>
+      <!-- お気に入りした記事一覧 -->
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <% @favorite_articles.each do |article| %>
+          <div id="user_favorite_buttons_<%= article.id %>">
+            <div class="card-custom">
+              <div class="card-body">
+                <div class="author-header contents-tidy">
+                  <div>
+                    <%= link_to user_path(article.user_id) do %>
+                      <%= article.user.name %>
+                    <% end %>
+                    さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+                  </div>
+                  <div>
+                    <%= render 'users/favorite', article: article %>
+                  </div>
+                </div>
+                <%= link_to article do %>
+                  <h5 class="card-title article-title-text"><%= article.title %></h5>
+                <% end %>
+                <%= truncate(article.body, length: 100) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">タグを追加場所</div>-->
     </div>
-  <% end %>
-</div>
-
-<div class="content-width">
-  <% if current_user == @user %>
-    <h2>お気に入りした記事</h2>
-  <% else %>
-    <h2><%= @user.name %>さんがお気に入りした記事</h2>
-  <% end %>
-  <% if @favorite_articles.blank? %>
-    <h1>現在、お気に入り登録はありません</h1>
-  <% else %>
-    <% @favorite_articles.each do |article| %>
-      <div id="user_favorite_buttons_<%= article.id %>">
-        <%= render 'users/favorite', article: article %>
-      </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>

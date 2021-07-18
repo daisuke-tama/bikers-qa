@@ -2,7 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// 記事一覧ページの記事枠のサイズ
-.card-article {
-  width: 40%;
+//=========== article/index ==============
+.article-index-main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.article-index-main-contents .article-title-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.author-header {
+  color: #696468;
+  font-size: 12px;
+}
+//========== article/show ================
+.article-show-bgc {
+  height: auto;
+  min-height: 600px;// 記事が短い時にfooterまでの隙間をなくす
+}
+.article-show-main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.article-show-main-contents .article-title-text {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 50px;
+  padding-top: 10px;
+}
+.author-header-show {
+  display: flex;
+  color: #696468;
+  font-size: 12px;
+}
+.favorite-icon-show {
+  font-size: 15px;
+  color: #ef60ff;
+  margin-left: auto;
+}
+.article-body-show {
+  font-size: 15px;
+  white-space: pre-wrap;
 }
