@@ -84,6 +84,9 @@ header {
 .mb-50 {
   margin-bottom: 50px;
 }
+.mb-80 {
+  margin-bottom: 80px;
+}
 .ml-10 {
   margin-left: 10px;
 }
@@ -97,6 +100,10 @@ header {
 
 .text-center {
   text-align: center;
+}
+.a-hover-cancel {
+  color: inherit;
+  text-decoration: none;
 }
 //============ falsh ===============
 .flash {
@@ -128,7 +135,24 @@ header {
 .navber-editer-icon {
   font-size: 30px;
 }
+.navber-profile-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.navber-username {
+  font-size: 13px;
+  font-weight: bold;
+}
 //============ icon ================
+.profile-image {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
 .favorite-icon {
   color: #ef60ff;
 }

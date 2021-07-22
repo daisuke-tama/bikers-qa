@@ -38,3 +38,5 @@ src/.yarn-integrity
 src/db/mysql_data
 # 環境変数設定ファイル
 src/.env
+# carrierwave導入による画像保管ディレクトリ
+src/public/uploads

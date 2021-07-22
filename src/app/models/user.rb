@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
 
+  # プロフィール画像アップロード
+  mount_uploader :profile, ProfileUploader
+
   validates :email, uniqueness: true
 
   # omniauthのコールバック時に呼ばれるメソッド
@@ -32,8 +35,8 @@ class User < ApplicationRecord
     end
   end
 
+  # userが既に相手をフォローしているかどうか
   def followed_by?(user)
-    # userが既に相手をフォローしているかどうか
     passive_relationships.find_by(following_id: user.id).present?
   end
 end

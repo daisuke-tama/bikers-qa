@@ -1,31 +1,46 @@
-<div class="card col-sm-6 mx-auto mt-5">
+<div class="card col-sm-6 mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">新規会員登録</h3>
-
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+      <!-- 画像アップロード -->
+      <%= f.label :profile, class: "image_label", style: "width: 100%; margin: 20px 0;" do %>
+        <div class="prev-contents">
+          <div class="prev-content">
+            <%= image_tag '/assets/profile_defalt.png', class: "prev-image profile-image", alt: "preview" %>
+            <p style="text-align: center;">プロフィール画像を変更したい場合は画像をクリックしてください</p>
+          </div>
+        </div>
+      <% end %>
+      <%= f.file_field :profile, class: 'image_form__contents__field hidden_file', style: "display: none;" %>
+
       <div class="form-group">
         <%= f.label :name, "名前を入力してください" %><br />
         <%= f.text_field :name, class: "form-control", placeholder: "例） 二輪 太郎", autofocus: true, autocomplete: "name" %>
       </div>
+
       <div class="form-group">
         <%= f.label :introduce, "自己紹介内容を入力してください" %><br />
         <%= f.text_area :introduce, class: "form-control", placeholder: "例） どうもはじめまして！よろしくおねがいします！", autocomplete: "introduce", rows: "10"%>
       </div>
+
       <div class="form-group">
         <%= f.label :email, "メールアドレスを入力してください" %><br />
         <%= f.email_field :email, class: "form-control", placeholder: "例） bikers-qa@gmail.com", autofocus: true, autocomplete: "email" %>
       </div>
+
       <div class="field mb-10">
         <%= f.label :password, "パスワードを入力してください" %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
         <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください", autocomplete: "new-password" %>
       </div>
+
       <div class="field mb-20">
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認のためもう一度パスワードを入力してください", autocomplete: "new-password" %>
       </div>
+
       <div class="actions">
         <%= f.submit "Sign up", class: "btn btn-outline-success btn-block" %>
       </div>

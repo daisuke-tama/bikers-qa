@@ -52,7 +52,7 @@
   <% end %>
 </div>
 
-<!-- top-page main-contents -->
+<!-- 新着１０記事を表示 -->
 <div class="main-contents">
   <div class="content-width" style="width: 60%;">
     <div class="card">
@@ -63,16 +63,21 @@
     <% @articles.each do |article| %>
       <div class="card-custom">
         <div class="card-body">
-          <%= link_to article do %>
-            <h5 class="card-title article-title-text"><%= article.title %></h5>
-          <% end %>
           <%= link_to user_path(article.user_id) do %>
+            <% if article.user.profile? %>
+              <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+            <% else %>
+              <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+            <% end %>
             <%= article.user.name %>
           <% end %>
           さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
           <div style="float: right;">
-            <i class="fas fa-heart red"></i>✖<%= article.favorites.count %>
+            <i class="fas fa-heart favorites-icon"></i>✖<%= article.favorites.count %>
           </div>
+          <%= link_to article do %>
+            <h5 class="card-title article-title-text"><%= article.title %></h5>
+          <% end %>
         </div>
       </div>
     <% end %>

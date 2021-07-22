@@ -1,8 +1,28 @@
-<div class="card col-sm-6 mx-auto mt-5">
+<div class="card col-sm-6 mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">会員情報の編集</h3>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+      <!-- 画像アップロード -->
+      <%= f.label :profile, class: "image_label edit-profile" do %>
+        <div class="prev-contents">
+          <% if current_user.profile.blank? %>
+            <%= image_tag '/assets/profile_defalt.png', class: "photo-icon profile-image" %>
+          <% else %>
+            <div class="prev-content">
+              <%= image_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
+            </div>
+          <% end %>
+          <p style="text-align: center;">プロフィール画像を変更したい場合は画像をクリックしてください</p>
+        </div>
+      <% end %>
+      <p class="mb-20">
+        <label>
+          <%= f.check_box :remove_profile %>
+          デフォルト画像に戻したい時はチェックを入れてください
+        </label>
+      </p>
+      <%= f.file_field :profile, class: 'image_form__contents__field hidden_file', style: "display: none;"%>
 
       <div class="form-group">
         <%= f.label :name, "名前を入力してください" %><br />

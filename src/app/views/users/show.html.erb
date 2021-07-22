@@ -1,6 +1,11 @@
 <!-- 画面左側のメニュー欄 -->
 <div class="navber-editer" style="width: 20%;">
   <div class="card-body">
+    <% if @user.profile.blank? %>
+      <%= image_tag '/assets/profile_defalt.png', class: "profile-image" %>
+    <% else %>
+      <%= image_tag @user.profile.url, class: "profile-image"%>
+    <% end %>
     <h5 class="card-title username-font"><%= @user.name %></h5>
     <div class="relationship-link-text">
       <%= link_to follows_user_path(@user.id) do %>
@@ -22,7 +27,7 @@
   </div>
 </div>
 
-<!-- main-contents -->
+<!-- 投稿・お気に入りした記事一覧 -->
 <div class="article-index-main-contents mb-50">
   <div class="content-width" style="width: 60%;">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -45,6 +50,11 @@
               <div class="author-header contents-tidy">
                 <div>
                   <%= link_to user_path(article.user_id) do %>
+                    <% if article.user.profile? %>
+                      <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+                    <% else %>
+                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                    <% end %>
                     <%= article.user.name %>
                   <% end %>
                   さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
@@ -70,6 +80,11 @@
                 <div class="author-header contents-tidy">
                   <div>
                     <%= link_to user_path(article.user_id) do %>
+                      <% if article.user.profile? %>
+                        <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+                      <% else %>
+                        <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                      <% end %>
                       <%= article.user.name %>
                     <% end %>
                     さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成

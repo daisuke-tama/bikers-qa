@@ -14,7 +14,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
         <a class="navbar-brand" href="/">
-          <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="Bikers-QA">
           Bikers-QA
         </a>
         <% flash.each do |key, value| %>
@@ -22,14 +22,19 @@
         <% end %>
         <div class="navber-right">
           <% if user_signed_in? %>
+            <%= link_to user_path(current_user.id), class: "navbar-brand navber-username" do %> 
+              <% if current_user.profile? %>
+                <span><%= image_tag current_user.profile.url, class: "navber-profile-icon" %></span>
+              <% else %>
+                <span><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+              <% end %>
+              <%= current_user.name %>
+            <% end %>
             <%= link_to articles_path do %> 
               <button type="button" class="btn btn-outline-success">記事一覧</button>
             <% end %>
             <%= link_to new_article_path do %> 
               <button type="button" class="btn btn-outline-success">記事作成</button>
-            <% end %>
-            <%= link_to user_path(current_user.id) do %> 
-              <button type="button" class="btn btn-outline-primary">会員情報</button>
             <% end %>
             <%= link_to destroy_user_session_path, method: :delete do %> 
               <button type="button" class="btn btn-outline-secondary">ログアウト</button>
