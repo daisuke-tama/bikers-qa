@@ -17,9 +17,14 @@
           <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="Bikers-QA">
           Bikers-QA
         </a>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "flash flash-#{key}") %>
-        <% end %>
+        <!-- 検索フォーム -->
+        <div>
+          <%= search_form_for @q, url: search_articles_path do |f| %>
+            <%= f.label :title_cont, '記事検索' %>
+            <%= f.search_field :title_cont %>
+            <%= f.submit '検索', class: "btn btn-outline-success" %>
+          <% end %>
+        </div>
         <div class="navber-right">
           <% if user_signed_in? %>
             <%= link_to user_path(current_user.id), class: "navbar-brand navber-username" do %> 
@@ -53,6 +58,14 @@
         </div>
       </nav>
     </header>
+    <!-- flashメッセージの表示 -->
+    <div class="flash-wrapper">
+      <div class="flash-content-wrapper">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "flash flash-#{key}") %>
+        <% end %>
+      </div>
+    </div>
 
     <main>
       <%= yield %>
