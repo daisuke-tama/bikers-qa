@@ -20,7 +20,16 @@
           <%= link_to article do %>
             <h5 class="card-title article-title-text"><%= article.title %></h5>
           <% end %>
-          <%= truncate(article.body, length: 100) %>
+          <% if article.tags.present? %>
+            <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
+            <% article.tags.each do |article_tags| %>
+              <%= article_tags.tag_name %>
+            <% end %>
+            <br>
+          <% end %>
+          <div style="margin-top: 15px;">
+            <%= truncate(article.body, length: 100) %>
+          </div>
         </div>
       </div>
     <% end %>

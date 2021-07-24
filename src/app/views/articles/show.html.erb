@@ -41,7 +41,7 @@
 <div class="article-show-main-contents article-show-bgc">
   <div class="content-width" style="width: 75%;">
     <div class="card-custom">
-      <div class="card-body">
+      <div class="card-body" style="padding: 2.25rem;">
         <div class="author-header-show">
           <%= link_to user_path(@article.user_id) do %>
             <% if @article.user.profile? %>
@@ -57,7 +57,13 @@
           </div>
         </div>
         <h5 class="card-title article-title-text" style="font-size: 28px;"><%= @article.title %></h5>
-        <div style="font-size: 15px;"><%= safe_join(@article.body.split("\n"),tag(:br)) %></div>
+        <% if @article.tags.present? %>
+          <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
+          <% @article.tags.each do |article_tags| %>
+            <%= article_tags.tag_name %>
+          <% end %>
+        <% end %>
+        <div class="article-body-show"><%= safe_join(@article.body.split("\n"),tag(:br)) %></div>
       </div>
     </div>
   </div>

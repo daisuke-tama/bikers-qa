@@ -1,6 +1,7 @@
 <div class="card col-sm-6 mx-auto mt-5">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">記事を編集する</h3>
+
     <%= form_with model: @article do |f| %>
       <% @article.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -9,10 +10,17 @@
         <%= f.label :title, "タイトルを入力してください" %><br />
         <%= f.text_field :title, class: "form-control", placeholder: "例） シグナスX タイヤ交換の方法", autofocus: true, autocomplete: "title" %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :tag_names, "タグ(最大４つ、最大文字数１０)" %><br />
+        <%= f.text_field :tag_names, class: "form-control", style: "width: 100%;", placeholder: "タグを付ける場合は入力してください", autocomplete: "tag_names", data: {role: "tagsinput"} %>
+      </div>
+
       <div class="form-group">
         <%= f.label :body, "記事本文" %><br />
         <%= f.text_area :body, class: "form-control", rows: "50", autocomplete: "body" %>
       </div>
+
       <div class="actions">
         <%= f.submit "編集する", class: "btn btn-outline-success btn-block" %>
       </div>

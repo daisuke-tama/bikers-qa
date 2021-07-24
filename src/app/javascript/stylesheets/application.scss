@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'tagsinput';
 
 //=========== BASE STYLE ============
 html {
@@ -155,6 +156,11 @@ header {
 }
 .favorite-icon {
   color: #ef60ff;
+}
+.tag-icon {
+  height: 25px;
+  color: gray;
+  margin-right: 10px;
 }
 //========== 記事表示部 =============
 .card-custom {

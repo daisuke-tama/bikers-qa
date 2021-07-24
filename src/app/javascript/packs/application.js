@@ -16,7 +16,7 @@ import "../stylesheets/reset.scss"
 import "../stylesheets/users.scss"
 import "../stylesheets/articles.scss"
 import "../stylesheets/favorites.scss"
-
+import "tagsinput"
 
 Rails.start()
 Turbolinks.start()

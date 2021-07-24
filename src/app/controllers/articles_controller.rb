@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
+    tag_list = params[:article][:tag_names].split(",")
+    @article.tags_save(tag_list)
     if @article.save
       redirect_to articles_path
     else
@@ -27,6 +29,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+    tag_list = params[:article][:tag_names].split(",")
+    @article.tags_save(tag_list)
     if @article.update(article_params)
       redirect_to @article
     else

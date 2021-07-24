@@ -52,34 +52,50 @@
   <% end %>
 </div>
 
-<!-- 新着１０記事を表示 -->
 <div class="main-contents">
-  <div class="content-width" style="width: 60%;">
-    <div class="card">
-      <div style="padding: 5px 10px;">
-        <P style="font-size: 20px; font-weight: bold; font-family: cursive,sans-serif;"><i class="far fa-lightbulb new-article-icon"></i>NEW ARTICLES</p>
+  <div class="contents-tidy">
+    <div class="content-width">
+      <!-- 新着１０記事を表示 -->
+      <% @articles.each do |article| %>
+        <div class="card-custom">
+          <div class="card-body">
+            <%= link_to user_path(article.user_id) do %>
+              <% if article.user.profile? %>
+                <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+              <% else %>
+                <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+              <% end %>
+              <%= article.user.name %>
+            <% end %>
+            さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+            <div style="float: right;">
+              <i class="fas fa-heart favorites-icon"></i>✖<%= article.favorites.count %>
+            </div>
+            <%= link_to article do %>
+              <h5 class="card-title article-title-text"><%= article.title %></h5>
+            <% end %>
+            <% if article.tags.present? %>
+              <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
+              <% article.tags.each do |article_tags| %>
+                <%= article_tags.tag_name %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!-- ランキング -->
+    <div style="margin: 0 auto; width: 22.5rem; height: fit-content;">
+      <!-- タグ ランキング -->
+      <div style="padding: 10px 13px; background-color: white;">
+        <% @tag_ranking.each_with_index do |tr, index| %>
+          <ul class="contents-tidy tag-runking-style">
+            <li><%= index + 1 %>位</li>
+            <li><%= tr.tag_name %></li>
+            <li class="tag-runking-count-font"><%= tr.tag_maps.count %>記事</li>
+          </ul>
+        <% end %>
       </div>
     </div>
-    <% @articles.each do |article| %>
-      <div class="card-custom">
-        <div class="card-body">
-          <%= link_to user_path(article.user_id) do %>
-            <% if article.user.profile? %>
-              <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
-            <% else %>
-              <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-            <% end %>
-            <%= article.user.name %>
-          <% end %>
-          さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-          <div style="float: right;">
-            <i class="fas fa-heart favorites-icon"></i>✖<%= article.favorites.count %>
-          </div>
-          <%= link_to article do %>
-            <h5 class="card-title article-title-text"><%= article.title %></h5>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>

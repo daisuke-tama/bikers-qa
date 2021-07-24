@@ -14,6 +14,8 @@ AllCops:
     - 'path/ruby'
     # Do not use block commentsを回避するため
     - 'spec/spec_helper.rb'
+    # Redundant self detected.を回避するため
+    - 'app/models/article.rb'
 
 # コメントに日本語許可
 Style/AsciiComments:
