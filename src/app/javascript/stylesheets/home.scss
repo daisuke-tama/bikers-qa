@@ -52,14 +52,23 @@
   font-size: 30px;
   margin-right: 10px;
 }
-//========== tag-runking =============
-.tag-runking-style {
+//========== runking =============
+.ranking-wrapper {
+  margin: 0 auto;
+  width: 22.5rem;
+  height: fit-content;
+}
+.each-ranking-wrapper {
+  padding: 10px 13px;
+  background-color: white;
+}
+.ranking-style {
   margin-bottom: 3px;
   padding-bottom: 6px;
   align-items: baseline;
   border-bottom: 1px solid gray;
 }
-.tag-runking-count-font {
+.ranking-count-font {
   font-weight: bold;
   font-size: 16px;
 }

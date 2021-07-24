@@ -85,14 +85,41 @@
       <% end %>
     </div>
     <!-- ランキング -->
-    <div style="margin: 0 auto; width: 22.5rem; height: fit-content;">
+    <div class="ranking-wrapper">
       <!-- タグ ランキング -->
-      <div style="padding: 10px 13px; background-color: white;">
+      <div class="each-ranking-wrapper">
+        <p>タグランキング</p>
         <% @tag_ranking.each_with_index do |tr, index| %>
-          <ul class="contents-tidy tag-runking-style">
+          <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
             <li><%= tr.tag_name %></li>
-            <li class="tag-runking-count-font"><%= tr.tag_maps.count %>記事</li>
+            <li class="ranking-count-font"><%= tr.tag_maps.count %>記事</li>
+          </ul>
+        <% end %>
+      </div>
+      <!-- お気に入りランキング -->
+      <div class="each-ranking-wrapper" style="margin-top: 30px;">
+        <p>お気に入りランキング</p>
+        <% @article_ranking.each_with_index do |ar, index| %>
+          <ul class="contents-tidy ranking-style">
+            <li><%= index + 1 %>位</li>
+            <li><%= ar.title %></li>
+            <li class="ranking-count-font">
+              <i class="fas fa-heart favorites-icon"></i>✖<%= ar.favorites.count %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+      <!-- フォローランキング -->
+      <div class="each-ranking-wrapper" style="margin-top: 30px;">
+        <p>フォローランキング</p>
+        <% @favorite_ranking.each_with_index do |fr, index| %>
+          <ul class="contents-tidy ranking-style">
+            <li><%= index + 1 %>位</li>
+            <li><%= fr.name %></li>
+            <li class="ranking-count-font">
+              <%= fr.passive_relationships.count %>人
+            </li>
           </ul>
         <% end %>
       </div>
