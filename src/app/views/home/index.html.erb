@@ -89,23 +89,27 @@
       <!-- タグ ランキング -->
       <div class="each-ranking-wrapper">
         <p>タグランキング</p>
-        <% @tag_ranking.each_with_index do |tr, index| %>
+        <% @tag_ranking.each_with_index do |tag, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
-            <li><%= tr.tag_name %></li>
-            <li class="ranking-count-font"><%= tr.tag_maps.count %>記事</li>
+            <%= link_to tag do %>
+              <li><%= tag.tag_name %></li>
+            <% end %>
+            <li class="ranking-count-font"><%= tag.tag_maps.count %>記事</li>
           </ul>
         <% end %>
       </div>
       <!-- お気に入りランキング -->
       <div class="each-ranking-wrapper" style="margin-top: 30px;">
         <p>お気に入りランキング</p>
-        <% @article_ranking.each_with_index do |ar, index| %>
+        <% @article_ranking.each_with_index do |article, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
-            <li><%= ar.title %></li>
+            <%= link_to article do %>
+              <li><%= article.title %></li>
+            <% end %>
             <li class="ranking-count-font">
-              <i class="fas fa-heart favorites-icon"></i>✖<%= ar.favorites.count %>
+              <i class="fas fa-heart favorites-icon"></i>✖<%= article.favorites.count %>
             </li>
           </ul>
         <% end %>
@@ -113,12 +117,14 @@
       <!-- フォローランキング -->
       <div class="each-ranking-wrapper" style="margin-top: 30px;">
         <p>フォローランキング</p>
-        <% @favorite_ranking.each_with_index do |fr, index| %>
+        <% @favorite_ranking.each_with_index do |user, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
-            <li><%= fr.name %></li>
+            <%= link_to user do %>
+              <li><%= user.name %></li>
+            <% end %>
             <li class="ranking-count-font">
-              <%= fr.passive_relationships.count %>人
+              <%= user.passive_relationships.count %>人
             </li>
           </ul>
         <% end %>
