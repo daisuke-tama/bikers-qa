@@ -63,7 +63,7 @@
             <%= article_tags.tag_name %>
           <% end %>
         <% end %>
-        <div class="article-body-show"><%= safe_join(@article.body.split("\n"),tag(:br)) %></div>
+        <div class="article-body-show"><%= @article.content %></div>
       </div>
     </div>
   </div>

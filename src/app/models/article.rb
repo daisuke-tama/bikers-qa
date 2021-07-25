@@ -7,9 +7,11 @@ class Article < ApplicationRecord
   has_many :tags, through: :tag_maps
   # コメント機能
   has_many :comments, dependent: :destroy
+  # Action Text(リッチテキスト)機能
+  has_rich_text :content
 
   validates :title, presence: true
-  validates :body, presence: true, length: { in: 1..10000, message: "記事が短すぎるか、長すぎます" }
+  validates :content, presence: true, length: { in: 1..10000, message: "記事が短すぎるか、長すぎます" }
   # userがこの記事を既にお気に入り登録しているかどうか
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

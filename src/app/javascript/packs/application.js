@@ -68,3 +68,6 @@ $(document).on('turbolinks:load', function () {
     });
   });
 });
+
+require("trix")
+require("@rails/actiontext")

@@ -28,7 +28,7 @@
             <br>
           <% end %>
           <div style="margin-top: 15px;">
-            <%= truncate(article.body, length: 100) %>
+            <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").truncate(100) %>
           </div>
         </div>
       </div>

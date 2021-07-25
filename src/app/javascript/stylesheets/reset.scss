@@ -35,3 +35,10 @@ address {
 .flash-timeout {
   display: none;
 }
+// 記事に添付した写真の下にある写真名とサイズの表記を削除
+.attachment__name {
+  display: none;
+}
+.attachment__size {
+  display: none;
+}

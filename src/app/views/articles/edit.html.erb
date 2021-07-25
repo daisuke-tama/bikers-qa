@@ -17,8 +17,8 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :body, "記事本文" %><br />
-        <%= f.text_area :body, class: "form-control", rows: "50", autocomplete: "body" %>
+        <%= f.label :content, "記事本文" %><br />
+        <%= f.rich_text_area :content, rows: "50", autocomplete: "content" %>
       </div>
 
       <div class="actions">

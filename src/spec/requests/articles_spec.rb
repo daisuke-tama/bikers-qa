@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Articles", type: :request do
   describe "ArticlesTest" do
-    let(:article) { create(:article, :skip_validate, title: "test", body: "test") }
+    let(:article) { create(:article, :skip_validate, title: "test") }
 
     describe "#index" do
       it "HTTPレスポンスステータス200番台を返すこと" do
