@@ -21,10 +21,6 @@
   font-size: 12px;
 }
 //========== article/show ================
-.article-show-bgc {
-  height: auto;
-  min-height: 600px;// 記事が短い時にfooterまでの隙間をなくす
-}
 .article-show-main-contents {
   padding-top: 30px;
   padding-bottom: 80px;
@@ -45,4 +41,14 @@
 .article-body-show {
   font-size: 15px;
   margin-top: 46px;
+}
+.comment-text-area {
+  width: 100%;
+}
+.comment-btn {
+  float: right;
+}
+.comment-icon {
+  font-size: 20px;
+  margin-right: 5px;
 }

@@ -38,7 +38,7 @@
   </ul>
 </div>
 <!-- 記事本文 -->
-<div class="article-show-main-contents article-show-bgc">
+<div class="article-show-main-contents">
   <div class="content-width" style="width: 75%;">
     <div class="card-custom">
       <div class="card-body" style="padding: 2.25rem;">
@@ -64,6 +64,47 @@
           <% end %>
         <% end %>
         <div class="article-body-show"><%= safe_join(@article.body.split("\n"),tag(:br)) %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- コメント機能 -->
+<div class="article-show-main-contents">
+  <div class="content-width" style="width: 75%;">
+    <h4>＜コメント＞</h4>
+    <div class="card-custom">
+      <div class="card-body" style="padding: 2.25rem;">
+        <% @comments.each do |comment| %>
+          <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #c1c1c1;">
+            <div class="author-header-show"">
+              <%= link_to user_path(comment.user_id) do %>
+                <% if comment.user.profile? %>
+                  <span style="margin-right: 5px;"><%= image_tag comment.user.profile.url, class: "navber-profile-icon" %></span>
+                <% else %>
+                  <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                <% end %>
+                <%= comment.user.name %>
+              <% end %>
+              さんが<%= comment.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+              <% if user_signed_in? && current_user.id == comment.user_id %>
+                <div style="float: right;">
+                  <%= link_to "削除", article_comment_path(comment.article.id, comment.id), data: { confirm: "コメントを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+                </div>
+              <% end %>
+            </div>
+            <div style="margin-top: 20px;"><%= comment.body %></div>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= form_with model: [@article, @comment], local: true do |f| %>
+            <%= f.text_area :body, placeholder: "適切なマナーを守り、心地よいコメントをしましょう！", rows: "10", class: "comment-text-area" %>
+            <br>
+            <%= f.submit "コメントする", class: "btn btn-outline-success comment-btn" %>
+          <% end %>
+        <% else %>
+          <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+        <% end %>
       </div>
     </div>
   </div>

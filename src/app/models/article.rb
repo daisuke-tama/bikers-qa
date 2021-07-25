@@ -5,6 +5,8 @@ class Article < ApplicationRecord
   # タグ機能
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  # コメント機能
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { in: 1..10000, message: "記事が短すぎるか、長すぎます" }

@@ -68,9 +68,6 @@
               <%= article.user.name %>
             <% end %>
             さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-            <div style="float: right;">
-              <i class="fas fa-heart favorites-icon"></i>✖<%= article.favorites.count %>
-            </div>
             <%= link_to article do %>
               <h5 class="card-title article-title-text"><%= article.title %></h5>
             <% end %>
@@ -80,6 +77,10 @@
                 <%= article_tags.tag_name %>
               <% end %>
             <% end %>
+            <div style="float: right; font-size: 18px;">
+              <i class="far fa-comment-dots comment-icon"></i><%= article.comments.count %>
+              <i class="fas fa-heart favorite-icon comment-icon"></i><%= article.favorites.count %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -88,7 +89,7 @@
     <div class="ranking-wrapper">
       <!-- タグ ランキング -->
       <div class="each-ranking-wrapper">
-        <p>タグランキング</p>
+        <p style="margin-bottom: 10px;">タグランキング</p>
         <% @tag_ranking.each_with_index do |tag, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
@@ -101,7 +102,7 @@
       </div>
       <!-- お気に入りランキング -->
       <div class="each-ranking-wrapper" style="margin-top: 30px;">
-        <p>お気に入りランキング</p>
+        <p style="margin-bottom: 10px;">お気に入りランキング</p>
         <% @article_ranking.each_with_index do |article, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
@@ -116,7 +117,7 @@
       </div>
       <!-- フォローランキング -->
       <div class="each-ranking-wrapper" style="margin-top: 30px;">
-        <p>フォローランキング</p>
+        <p style="margin-bottom: 10px;">フォローランキング</p>
         <% @favorite_ranking.each_with_index do |user, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
