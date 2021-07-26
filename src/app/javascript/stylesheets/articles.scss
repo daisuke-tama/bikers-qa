@@ -20,6 +20,11 @@
   color: #696468;
   font-size: 12px;
 }
+// kaminariの位置調整
+.pagination {
+  justify-content: center;
+  margin-top: 35px;
+}
 //========== article/show ================
 .article-show-main-contents {
   padding-top: 30px;

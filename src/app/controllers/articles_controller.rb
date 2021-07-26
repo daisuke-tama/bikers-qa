@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all.order(id: :desc)
+    # kaminariによるpage perメソッドを使用し、１０記事毎にページネイション
+    @articles = Article.page(params[:page]).per(10).order('created_at DESC')
   end
 
   def show
