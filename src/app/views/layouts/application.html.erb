@@ -15,10 +15,10 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
-        <a class="navbar-brand" href="/">
+        <%= link_to root_path, class: "navbar-brand", data: {"turbolinks" => false} do %>
           <img src="/assets/site-logo.png" width="30" height="30" class="d-inline-block align-top" alt="Bikers-QA">
           Bikers-QA
-        </a>
+        <% end %>
         <!-- 検索フォーム -->
         <div>
           <%= search_form_for @q, url: search_articles_path do |f| %>

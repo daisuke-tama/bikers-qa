@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
+window.addEventListener("turbolinks:load", function() {
   scroll_effect();
 
   function scroll_effect(){
