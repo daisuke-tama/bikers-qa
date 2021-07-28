@@ -4,12 +4,12 @@
     <div class="carousel-inner" style="height: 600px;">
       <div class="carousel-item active">
         <div class="filter">
-          <img src="/assets/bike1.jpg" class="d-block w-100 filter-img" alt="...">
+          <img src="/assets/bike2.jpg" class="d-block w-100 filter-img" alt="...">
         </div>
       </div>
       <div class="carousel-item">
         <div class="filter">
-          <img src="/assets/bike2.jpg" class="d-block w-100 filter-img" alt="...">
+          <img src="/assets/engine.jpg" class="d-block w-100 filter-img" alt="...">
         </div>
       </div>
       <div class="carousel-item">
@@ -20,17 +20,67 @@
     </div>
   </div>
   <!-- carousel上のコンテンツ -->
-  <% unless user_signed_in? %>
-    <div class="ps-absolute w-100" style="top: 30%;">
-      <div class="content-width" >
+  <!-- ログイン後 -->
+  <% if user_signed_in? %>
+    <div class="ps-absolute w-100" style="top: 48%;">
+      <div class="content-width contents-tidy" style="color: white;">
+        <!-- 記事を書いてみよう -->
+        <section class="effect-fade">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag '/assets/show-article', class: "calousel-on-card-img" %>
+            <div class="card-body" style="background-color: #b5b5b5;">
+              <%= link_to articles_path do %>
+                <h5 class="card-title card-title-custom">記事を見る</h5>
+              <% end %>
+              <p class="card-text" style="line-height: 2.0;">
+              みんなの記事を見てみよう！
+              知らない情報が手に入るかも♪</p>
+            </div>
+          </div>
+        </section>
+        <!-- 質問してみる -->
+        <section class="effect-fade">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag '/assets/question', class: "calousel-on-card-img" %>
+            <div class="card-body" style="background-color: #b5b5b5;">
+              <div>
+                <h5 class="card-title card-title-custom">質問する</h5>
+              </div>
+              <p class="card-text" style="line-height: 2.0;">
+              TRYしてわからなかったことは気軽に質問してみよう</p>
+            </div>
+          </div>
+        </section>
+        <!-- 記事を書いてみる -->
+        <section class="effect-fade">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag '/assets/write', class: "calousel-on-card-img" %>
+            <div class="card-body" style="background-color: #b5b5b5;">
+              <%= link_to new_article_path do %>
+                <h5 class="card-title card-title-custom">記事を書く</h5>
+              <% end %>
+              <p class="card-text" style="line-height: 2.0;">
+              経験を身にするためと困っている人の力になろう</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  <% else %>
+    <!-- 未ログイン -->
+    <div class="ps-absolute w-100" style="top: 25%;">
+      <div class="content-width">
         <div class="contents-tidy">
           <!-- サイト説明欄 -->
           <div class="carousel-on-text">
-            <%= image_tag '/assets/carousel-on-logo.png', style: "height: 200px;" %>
+            <%= image_tag '/assets/contents-on-logo.png', style: "height: 200px;" %>
             <h2 style="text-align: center;">バイク専門の整備情報サイト</h2>
             <p>Bikers-QAはバイク整備に関する知識を記録・共有するサービスです</p>
             <p>整備をしていて気がついた事や、大変だった事など</p>
             <p>他の方と共有しましょう!!!</p>
+            <div style="border-bottom: 1px solid white; margin-top: 15px;">
+              <a href="/about" style="font-size: 16px;">もっと詳しくみてみる</a>
+            </div>
           </div>
           <!-- 新規登録関連 -->
           <div class="mt-80">
@@ -54,7 +104,7 @@
 
 <div class="main-contents">
   <div class="contents-tidy">
-    <div class="content-width">
+    <div class="content-width" style="width: 50%">
       <!-- 新着１０記事を表示 -->
       <% @articles.each do |article| %>
         <div class="card-custom">
@@ -133,3 +183,5 @@
     </div>
   </div>
 </div>
+<!-- カルーセル上のcardの出現アニメーション用 -->
+<%= javascript_pack_tag 'calousel-on-card-animation' %>

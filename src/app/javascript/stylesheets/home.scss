@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//======= トップページのcardのアニメーション ========
+.effect-fade {
+  opacity : 0;
+  transform : translate(0, 45px);
+  transition : all 1000ms;
+  }
+.effect-fade.effect-scroll {
+  opacity : 1;
+  transform : translate(0, 0);
+  }
+//======== home/index ===========
 //========= carousel ============
 // carouselの画像を暗くする
 .filter {
@@ -29,6 +40,17 @@
   color: white;
   font-weight: bold;
 }
+// ログイン後
+.calousel-on-card-img {
+  width: 190px;
+  margin: 0 auto;
+  height: 160px;
+}
+.card-title-custom {
+  text-align: center;
+  font-weight: bold;
+  font-size: 23px;
+}
 //========= main-contents ===========
 .main-contents {
   padding-top: 30px;
@@ -37,6 +59,7 @@
 .main-contents .article-title-text {
   font-size: 20px;
   font-weight: bold;
+  margin-top: 10px;
 }
 .new-article-icon {
   color: yellow;
@@ -62,4 +85,28 @@
 .ranking-count-font {
   font-weight: bold;
   font-size: 16px;
+}
+
+//========== home/about ============
+.about-contents-header {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #2d9087;
+}
+.about-contents-title {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.about-contents-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+.about-contents-body {
+  font-size: 15px;
+  line-height: 1.8;
 }
