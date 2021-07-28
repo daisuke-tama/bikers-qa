@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  resources :questions
   # タグ検索結果表示ページ
   resources :tags, only: [:show]
 

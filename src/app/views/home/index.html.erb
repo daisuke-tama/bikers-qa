@@ -43,9 +43,9 @@
           <div class="card" style="width: 18rem;">
             <%= image_tag '/assets/question', class: "calousel-on-card-img" %>
             <div class="card-body" style="background-color: #b5b5b5;">
-              <div>
+              <%= link_to new_question_path do %>
                 <h5 class="card-title card-title-custom">質問する</h5>
-              </div>
+              <% end %>
               <p class="card-text" style="line-height: 2.0;">
               TRYしてわからなかったことは気軽に質問してみよう</p>
             </div>
@@ -105,35 +105,68 @@
 <div class="main-contents">
   <div class="contents-tidy">
     <div class="content-width" style="width: 50%">
-      <!-- 新着１０記事を表示 -->
-      <% @articles.each do |article| %>
-        <div class="card-custom">
-          <div class="card-body">
-            <%= link_to user_path(article.user_id) do %>
-              <% if article.user.profile? %>
-                <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
-              <% else %>
-                <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-              <% end %>
-              <%= article.user.name %>
-            <% end %>
-            さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-            <%= link_to article do %>
-              <h5 class="card-title article-title-text"><%= article.title %></h5>
-            <% end %>
-            <% if article.tags.present? %>
-              <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
-              <% article.tags.each do |article_tags| %>
-                <%= article_tags.tag_name %>
-              <% end %>
-            <% end %>
-            <div style="float: right; font-size: 18px;">
-              <i class="far fa-comment-dots comment-icon"></i><%= article.comments.count %>
-              <i class="fas fa-heart favorite-icon comment-icon"></i><%= article.favorites.count %>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">記事</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="question-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">質問</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <!-- 新着１０記事を表示 -->
+        <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
+          <% @articles.each do |article| %>
+            <div class="card-custom">
+              <div class="card-body">
+                <%= link_to user_path(article.user_id) do %>
+                  <% if article.user.profile? %>
+                    <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+                  <% else %>
+                    <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                  <% end %>
+                  <%= article.user.name %>
+                <% end %>
+                さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+                <%= link_to article do %>
+                  <h5 class="card-title article-title-text"><%= article.title %></h5>
+                <% end %>
+                <% if article.tags.present? %>
+                  <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
+                  <% article.tags.each do |article_tags| %>
+                    <%= article_tags.tag_name %>
+                  <% end %>
+                <% end %>
+                <div style="float: right; font-size: 18px;">
+                  <i class="far fa-comment-dots comment-icon"></i><%= article.comments.count %>
+                  <i class="fas fa-heart favorite-icon comment-icon"></i><%= article.favorites.count %>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+        <!-- 新着１０質問を表示 -->
+        <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="question-tub">
+          <% @questions.each do |question| %>
+            <div class="card-custom">
+              <div class="card-body">
+                <%= link_to user_path(question.user_id) do %>
+                  <% if question.user.profile? %>
+                    <span style="margin-right: 5px;"><%= image_tag question.user.profile.url, class: "navber-profile-icon" %></span>
+                  <% else %>
+                    <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                  <% end %>
+                  <%= question.user.name %>
+                <% end %>
+                さんが<%= question.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+                <%= link_to question do %>
+                  <h5 class="card-title question-title-text"><%= question.title %></h5>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <!-- ランキング -->
     <div class="ranking-wrapper">

@@ -1,11 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable,
+  # ======================== devise機能欄 ======================================
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable,
          :lockable, :trackable, :timeoutable,
          :omniauthable, omniauth_providers: %i(facebook twitter google_oauth2)
-
+  # ===========================================================================
+  # ======================== アソシエーション関連 ================================
   has_many :articles, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favorites, source: :article
@@ -14,7 +16,8 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
   has_many :comments, dependent: :destroy
-
+  has_many :questions, dependent: :destroy
+  # ===========================================================================
   # プロフィール画像アップロード
   mount_uploader :profile, ProfileUploader
 

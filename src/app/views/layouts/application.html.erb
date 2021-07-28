@@ -43,6 +43,12 @@
             <%= link_to new_article_path do %> 
               <button type="button" class="btn btn-outline-success">記事作成</button>
             <% end %>
+            <%= link_to questions_path do %> 
+              <button type="button" class="btn btn-outline-success">質問一覧</button>
+            <% end %>
+            <%= link_to new_question_path do %> 
+              <button type="button" class="btn btn-outline-success">質問作成</button>
+            <% end %>
             <%= link_to destroy_user_session_path, method: :delete do %> 
               <button type="button" class="btn btn-outline-secondary">ログアウト</button>
             <% end %>

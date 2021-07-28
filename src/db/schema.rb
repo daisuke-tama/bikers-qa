@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_25_134939) do
+ActiveRecord::Schema.define(version: 2021_07_28_072812) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(version: 2021_07_25_134939) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "questions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "relationships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
@@ -136,6 +144,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_134939) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "articles"
   add_foreign_key "favorites", "users"
+  add_foreign_key "questions", "users"
   add_foreign_key "tag_maps", "articles"
   add_foreign_key "tag_maps", "tags"
 end

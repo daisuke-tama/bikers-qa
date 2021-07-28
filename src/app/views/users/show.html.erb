@@ -32,18 +32,18 @@
   <div class="content-width" style="width: 60%;">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">作成した記事</a>
+        <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">作成した記事</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">お気に入り</a>
+        <a class="nav-link" id="favorites-tub" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">お気に入り</a>
       </li>
-      <!--タグ追加場所<li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-      </li>-->
+      <li class="nav-item">
+        <a class="nav-link" id="question-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
+      </li>
     </ul>
-    <!-- @userが作成した記事一覧 -->
+    <!-- 作成した記事一覧 -->
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
         <% @articles.each do |article| %>
           <div class="card-custom">
             <div class="card-body">
@@ -70,9 +70,11 @@
             </div>
           </div>
         <% end %>
+        <!-- kaminari ページネイション -->
+        <%= paginate @articles %>
       </div>
       <!-- お気に入りした記事一覧 -->
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tub">
         <% @favorite_articles.each do |article| %>
           <div id="user_favorite_buttons_<%= article.id %>">
             <div class="card-custom">
@@ -101,8 +103,37 @@
             </div>
           </div>
         <% end %>
+        <!-- kaminari ページネイション -->
+        <%= paginate @favorite_articles %>
       </div>
-      <!--<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">タグを追加場所</div>-->
+      <!-- 作成した質問 -->
+      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="question-tub">
+        <% @questions.each do |question| %>
+          <div class="card-custom">
+            <div class="card-body">
+              <div class="author-header contents-tidy">
+                <div>
+                  <%= link_to user_path(question.user_id) do %>
+                    <% if question.user.profile? %>
+                      <span style="margin-right: 5px;"><%= image_tag question.user.profile.url, class: "navber-profile-icon" %></span>
+                    <% else %>
+                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                    <% end %>
+                    <%= question.user.name %>
+                  <% end %>
+                  さんが<%= question.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+                </div>         
+              </div>
+              <%= link_to question do %>
+                <h5 class="card-title question-title-text"><%= question.title %></h5>
+              <% end %>
+              <%= strip_tags(question.content.to_s).gsub(/[\n]/,"").truncate(100) %>
+            </div>
+          </div>
+        <% end %>
+        <!-- kaminari ページネイション -->
+        <%= paginate @questions %>
+      </div>
     </div>
   </div>
 </div>

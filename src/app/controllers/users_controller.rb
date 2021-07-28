@@ -7,8 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles.order(id: :desc)
-    @favorite_articles = @user.favorite_articles.order(id: :desc)
+    # kaminariによるpage perメソッドを使用し、１０記事毎にページネイション
+    @articles = @user.articles.page(params[:page]).per(10).order('created_at DESC')
+    @favorite_articles = @user.favorite_articles.page(params[:page]).per(10).order('created_at DESC')
+    @questions = @user.questions.page(params[:page]).per(10).order('created_at DESC')
   end
 
   def follows

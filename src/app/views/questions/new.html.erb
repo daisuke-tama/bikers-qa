@@ -1,0 +1,24 @@
+<div class="card col-sm-6 mx-auto mt-5" style="margin-bottom: 80px;">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3 text-center">質問を新規作成する</h3>
+    <%= form_with model: @question do |f| %>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :title, "タイトルを入力してください" %><br />
+        <%= f.text_field :title, class: "form-control", placeholder: "例） シグナスX タイヤ交換の方法がわからない", autofocus: true, autocomplete: "title" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content, "質問本文" %><br />
+        <%= f.rich_text_area :content, placeholder: "質問内容を書いてください", autocomplete: "question_content" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "質問をする", class: "btn btn-outline-success btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
