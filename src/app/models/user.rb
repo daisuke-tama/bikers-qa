@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
   has_many :comments, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :answer_articles, through: :answers, source: :question
   # ===========================================================================
   # プロフィール画像アップロード
   mount_uploader :profile, ProfileUploader

@@ -28,7 +28,7 @@
   </ul>
 </div>
 <!-- 記事本文 -->
-<div class="question-show-main-contents">
+<div class="article-show-main-contents">
   <div class="content-width" style="width: 75%;">
     <div class="card-custom">
       <div class="card-body" style="padding: 2.25rem;">
@@ -44,7 +44,47 @@
           さんが<%= @question.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
         </div>
         <h5 class="card-title question-title-text" style="font-size: 28px;"><%= @question.title %></h5>
-        <div class="question-body-show"><%= @question.content %></div>
+        <div class="article-body-show"><%= @question.content %></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 回答機能 -->
+<div class="article-show-main-contents">
+  <div class="content-width" style="width: 75%;">
+    <h4>＜回答＞</h4>
+    <div class="card-custom">
+      <div class="card-body" style="padding: 2.25rem;">
+        <% @answers.each do |answer| %>
+          <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #c1c1c1;">
+            <div class="author-header-show">
+              <%= link_to user_path(answer.user_id) do %>
+                <% if answer.user.profile? %>
+                  <span style="margin-right: 5px;"><%= image_tag answer.user.profile.url, class: "navber-profile-icon" %></span>
+                <% else %>
+                  <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                <% end %>
+                <%= answer.user.name %>
+              <% end %>
+              さんが<%= answer.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+              <% if user_signed_in? && current_user.id == answer.user_id %>
+                <div style="float: right;">
+                  <%= link_to "削除", question_answer_path(answer.question.id, answer.id), data: { confirm: "コメントを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+                </div>
+              <% end %>
+            </div>
+            <div style="margin-top: 20px;"><%= answer.body %></div>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= form_with model: [@question, @answer], local: true do |f| %>
+            <%= f.text_area :body, placeholder: "適切なマナーを守り、心地よいコメントをしましょう！", rows: "10", class: "comment-text-area" %>
+            <br>
+            <%= f.submit "コメントする", class: "btn btn-outline-success comment-btn" %>
+          <% end %>
+        <% else %>
+          <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+        <% end %>
       </div>
     </div>
   </div>

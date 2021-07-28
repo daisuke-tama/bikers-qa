@@ -38,7 +38,10 @@
         <a class="nav-link" id="favorites-tub" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">お気に入り</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="question-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
+        <a class="nav-link" id="questions-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="answers-tub" data-toggle="tab" href="#answers" role="tab" aria-controls="answers" aria-selected="false">回答した質問</a>
       </li>
     </ul>
     <!-- 作成した記事一覧 -->
@@ -107,7 +110,7 @@
         <%= paginate @favorite_articles %>
       </div>
       <!-- 作成した質問 -->
-      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="question-tub">
+      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tub">
         <% @questions.each do |question| %>
           <div class="card-custom">
             <div class="card-body">
@@ -125,7 +128,7 @@
                 </div>         
               </div>
               <%= link_to question do %>
-                <h5 class="card-title question-title-text"><%= question.title %></h5>
+                <h5 class="card-title article-title-text"><%= question.title %></h5>
               <% end %>
               <%= strip_tags(question.content.to_s).gsub(/[\n]/,"").truncate(100) %>
             </div>
@@ -133,6 +136,33 @@
         <% end %>
         <!-- kaminari ページネイション -->
         <%= paginate @questions %>
+      </div>
+      <!-- 回答した質問 -->
+      <div class="tab-pane fade" id="answers" role="tabpanel" aria-labelledby="answers-tub">
+        <% @answers.each do |answer| %>
+          <div class="card-custom">
+            <div class="card-body">
+              <div class="author-header contents-tidy">
+                <div>
+                  <%= link_to user_path(answer.user_id) do %>
+                    <% if answer.user.profile? %>
+                      <span style="margin-right: 5px;"><%= image_tag answer.user.profile.url, class: "navber-profile-icon" %></span>
+                    <% else %>
+                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                    <% end %>
+                    <%= answer.user.name %>
+                  <% end %>
+                  さんが<%= answer.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+                </div>         
+              </div>
+              <%= link_to answer do %>
+                <h5 class="card-title article-title-text"><%= answer.title %></h5>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <!-- kaminari ページネイション -->
+        <%= paginate @answers %>
       </div>
     </div>
   </div>

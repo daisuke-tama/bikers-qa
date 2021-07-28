@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:create, :destroy]
+  end
   # タグ検索結果表示ページ
   resources :tags, only: [:show]
 
