@@ -36,7 +36,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: "が有効ではありません" }
   validates :password, length: { in: 6..20 }, confirmation: true
   validates :password_confirmation, presence: true
-# ========================================
+  # ========================================
 
   # omniauthのコールバック時に呼ばれるメソッド
   def self.from_omniauth(auth)
