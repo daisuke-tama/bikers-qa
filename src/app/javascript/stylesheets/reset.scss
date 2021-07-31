@@ -31,6 +31,10 @@ p {
 address {
     font-style : normal;
 }
+// deviseエラーメッセージの「〜件のエラーが発生したため ユーザー は保存されませんでした。」を消去
+#error_explanation h2 {
+  display: none;
+}
 // セッションタイムアウト時の「true」表示を消す
 .flash-timeout {
   display: none;

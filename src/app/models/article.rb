@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  # ========== アソシエーション関連 =================
   belongs_to :user
   # お気に入り機能
   has_many :favorites, dependent: :destroy
@@ -9,9 +10,11 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   # Action Text(リッチテキスト)機能
   has_rich_text :content
-
-  validates :title, presence: true
-  validates :content, presence: true, length: { in: 1..10000, message: "記事が短すぎるか、長すぎます" }
+  # ================================================
+  # ========= validates ============================
+  validates :title, presence: true, length: { maximum: 100 }
+  validates :content, presence: true, length: { maximum: 20000, message: "が長すぎます" }
+  # ================================================
   # userがこの記事を既にお気に入り登録しているかどうか
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

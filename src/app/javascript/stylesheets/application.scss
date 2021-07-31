@@ -114,6 +114,22 @@ header {
   color: inherit;
   text-decoration: none;
 }
+// deviseエラーメッセージの色
+#error_explanation {
+  color: red;
+}
+// validation エラーメッセージの調整
+.error-messages {
+  color: red;
+  list-style : none;
+}
+.error-message-wrapper {
+  margin-bottom: 36px;
+}
+// ActionText 入力欄の調整
+.trix-content {
+  min-height: 200px;
+}
 //===========flex-contents =========
 .flex-contents-wrapper {
   display: flex;

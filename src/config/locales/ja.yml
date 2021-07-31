@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      article: 記事
+      question: 質問
+      message: ダイレクトメッセージ
+    attributes:
+      user:
+        id: ID
+        name: 名前
+        introduce: 自己紹介
+        created_at: 登録日時
+        updated_at: 更新日時
+        birthday: 生年月日
+        email: メールアドレス
+        salon_id: サロン
+        password: パスワード
+        Password confirmation: 確認用パスワード
+      article:
+        title: タイトル
+        content: 記事内容
+      question:
+        title: タイトル
+        content: 質問内容
+      message:
+        content: メッセージ内容

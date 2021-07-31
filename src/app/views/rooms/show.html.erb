@@ -63,7 +63,7 @@
           <% end %>
           <!-- form -->
           <%= form_with model: @message do |f| %>
-            <%= f.text_area :content, placeholder: "適切なマナーを守り、心地よいメッセージを送りましょう！", rows: "10", class: "comment-text-area" %>
+            <%= f.text_area :content, placeholder: "適切なマナーを守り、心地よいメッセージを送りましょう！\r無記入や５００文字を超えたメッセージは送ることができません", rows: "10", class: "comment-text-area" %>
             <br>
             <%= f.hidden_field :room_id, value: @room.id %>
             <%= f.submit "メッセージを送信する", class: "btn btn-outline-success comment-btn" %>

@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      flash[:notice] = "コメントを投稿しました"
       redirect_to article_path(@comment.article)
     else
       @article = @comment.article

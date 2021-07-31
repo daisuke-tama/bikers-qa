@@ -21,6 +21,8 @@ module App
 
     # deviseの日本語化
     config.i18n.default_locale = :ja
+    # validateのエラーメッセージを日本語化するためにconfig/locales以下のymlを読ませる
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     # タイムゾーンの変更
     config.time_zone = 'Asia/Tokyo'
     # RSpecテスト時に下記ドメインを許可

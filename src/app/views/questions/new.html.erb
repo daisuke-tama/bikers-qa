@@ -2,9 +2,11 @@
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">質問を新規作成する</h3>
     <%= form_with model: @question do |f| %>
-      <% @question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <div class="error-message-wrapper">
+        <% @question.errors.full_messages.each do |message| %>
+          <li class="error-messages"><%= message %></li>
+        <% end %>
+      </div>
 
       <div class="form-group">
         <%= f.label :title, "タイトルを入力してください" %><br />
