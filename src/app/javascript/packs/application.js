@@ -16,6 +16,7 @@ import "../stylesheets/reset.scss"
 import "../stylesheets/users.scss"
 import "../stylesheets/articles.scss"
 import "../stylesheets/favorites.scss"
+import "../stylesheets/rooms.scss"
 import "tagsinput"
 
 Rails.start()

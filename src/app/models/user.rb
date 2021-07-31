@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :answer_articles, through: :answers, source: :question
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   # ===========================================================================
   # プロフィール画像アップロード
   mount_uploader :profile, ProfileUploader

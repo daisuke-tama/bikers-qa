@@ -1,0 +1,75 @@
+<div class="ps-relative">
+  <%= image_tag '/assets/contents-on-logo.png', class:"filter-img dmr-header-bg" %>
+  <div class="ps-absolute dmr-header-contents-wrapper">
+    <h2 class="dmr-header">ダイレクトメッセージルームへようこそ！</h2>
+    <div class="dmr-header-contents">
+      <p>ここでは二人だけの会話ができます</p>
+      <p>最低限のマナーを守り、心地よい会話を心がけてください</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<div class="flex-contents-wrapper">
+  <div class="flex-contents-left-section" style="margin-top: 30px;">
+    <div class="card-body" style="width: 265px;">
+      <p class="left-section-dmr-name"><%= @room.name %></p>
+      <p class="mb-10">参加者:</p>
+      <% @entries.each do |entry| %>
+        <%= link_to user_path(entry.user_id) do %>
+          <% if entry.user.profile? %>
+            <span style="margin-right: 5px;"><%= image_tag entry.user.profile.url, class: "navber-profile-icon" %></span>
+          <% else %>
+            <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+          <% end %>
+          <%= entry.user.name %>
+        <% end %>
+        <br>
+      <% end %>
+      <p class="mt-20">作成日:</p>
+      <%= @room.created_at.strftime("%Y年%m月%d日").to_s %>
+      <p class="mt-10">最終更新日:</p>
+      <%= @room.updated_at.strftime("%Y年%m月%d日").to_s %>
+      <%= link_to "ルーム削除", @room, class: "btn btn-outline-danger room-delete-btn", data: { confirm: "ルームを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+    </div>
+  </div>
+  <div class="flex-contents-center-section mb-50">
+    <div class="content-width">
+      <div class="card-custom">
+        <div class="card-body" style="padding: 2.25rem;">
+          <% if @messages.present? %>
+            <% @messages.each do |message| %>
+              <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #c1c1c1;">
+                <div class="author-header-show">
+                  <%= link_to user_path(message.user_id) do %>
+                    <% if message.user.profile? %>
+                      <span style="margin-right: 5px;"><%= image_tag message.user.profile.url, class: "navber-profile-icon" %></span>
+                    <% else %>
+                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                    <% end %>
+                    <%= message.user.name %>
+                  <% end %>
+                  さんが<%= message.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+                  <% if user_signed_in? && current_user.id == message.user_id %>
+                    <div style="float: right;">
+                      <%= link_to "削除", message_path(message.id), data: { confirm: "メッセージを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+                    </div>
+                  <% end %>
+                </div>
+                <div style="margin-top: 20px;"><%= message.content %></div>
+              </div>
+            <% end %>
+          <% else %>
+            <h3 class="text-center">メッセージはまだありません</h3>
+          <% end %>
+          <!-- form -->
+          <%= form_with model: @message do |f| %>
+            <%= f.text_area :content, placeholder: "適切なマナーを守り、心地よいメッセージを送りましょう！", rows: "10", class: "comment-text-area" %>
+            <br>
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.submit "メッセージを送信する", class: "btn btn-outline-success comment-btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

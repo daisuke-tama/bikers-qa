@@ -26,8 +26,11 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: [:create, :destroy]
   end
+
+  resources :messages, only: [:create, :destroy]
+  resources :rooms,    only: [:show, :create, :destroy]
   # タグ検索結果表示ページ
-  resources :tags, only: [:show]
+  resources :tags,     only: [:show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -67,7 +67,7 @@
   margin-right: 10px;
 }
 //========== runking =============
-.ranking-wrapper {
+.toppage-right-contents-wrapper {
   margin: 0 auto;
   width: 22.5rem;
   height: fit-content;
@@ -75,12 +75,18 @@
 .each-ranking-wrapper {
   padding: 10px 13px;
   background-color: white;
+  margin-bottom: 30px;
 }
 .ranking-style {
   margin-bottom: 3px;
   padding-bottom: 6px;
   align-items: baseline;
   border-bottom: 1px solid gray;
+}
+.ranking-header {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
 }
 .ranking-count-font {
   font-weight: bold;

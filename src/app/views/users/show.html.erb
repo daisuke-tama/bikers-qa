@@ -1,89 +1,62 @@
 <!-- 画面左側のメニュー欄 -->
-<div class="navber-editer" style="width: 20%;">
-  <div class="card-body">
-    <% if @user.profile.blank? %>
-      <%= image_tag '/assets/profile_defalt.png', class: "profile-image" %>
-    <% else %>
-      <%= image_tag @user.profile.url, class: "profile-image"%>
-    <% end %>
-    <h5 class="card-title username-font"><%= @user.name %></h5>
-    <div class="relationship-link-text">
-      <%= link_to follows_user_path(@user.id) do %>
-        <p><%= @user.followings.count %></p>
-        <p>フォロー</p>
+<div class="flex-contents-wrapper">
+  <div class="flex-contents-left-section">
+    <div class="card-body" style="width: 265px;">
+      <% if @user.profile.blank? %>
+        <%= image_tag '/assets/profile_defalt.png', class: "profile-image" %>
+      <% else %>
+        <%= image_tag @user.profile.url, class: "profile-image"%>
       <% end %>
-      <%= link_to followers_user_path(@user.id) do %>
-        <p><%= @user.followers.count %></p>
-        <p>フォロワー</p>
+      <h5 class="card-title username-font"><%= @user.name %></h5>
+      <div class="relationship-link-text">
+        <%= link_to follows_user_path(@user.id) do %>
+          <p><%= @user.followings.count %></p>
+          <p>フォロー</p>
+        <% end %>
+        <%= link_to followers_user_path(@user.id) do %>
+          <p><%= @user.followers.count %></p>
+          <p>フォロワー</p>
+        <% end %>
+      </div>
+      <h5 style="font-size: 15px;"><%= @user.introduce %></h5>
+      <% if @user == current_user %>
+        <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
       <% end %>
-    </div>
-    <h5 style="font-size: 15px;"><%= @user.introduce %></h5>
-    <% if @user == current_user %>
-      <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
-    <% end %>
-    <div id="relation_buttons_<%= @user.id %>">
-      <%= render 'relationships/relationship', user: @user %>
+      <div id="relation_buttons_<%= @user.id %>">
+        <%= render 'relationships/relationship', user: @user %>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- 投稿・お気に入りした記事一覧 -->
-<div class="article-index-main-contents mb-50">
-  <div class="content-width" style="width: 60%;">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">作成した記事</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="favorites-tub" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">お気に入り</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="questions-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="answers-tub" data-toggle="tab" href="#answers" role="tab" aria-controls="answers" aria-selected="false">回答した質問</a>
-      </li>
-    </ul>
-    <!-- 作成した記事一覧 -->
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
-        <% @articles.each do |article| %>
-          <div class="card-custom">
-            <div class="card-body">
-              <div class="author-header contents-tidy">
-                <div>
-                  <%= link_to user_path(article.user_id) do %>
-                    <% if article.user.profile? %>
-                      <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
-                    <% else %>
-                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-                    <% end %>
-                    <%= article.user.name %>
-                  <% end %>
-                  さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
-                </div>         
-                <div>
-                  <i class="fas fa-heart favorite-icon"></i>✖<%= article.favorites.count %>
-                </div>
-              </div>
-              <%= link_to article do %>
-                <h5 class="card-title article-title-text"><%= article.title %></h5>
-              <% end %>
-              <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").truncate(100) %>
-            </div>
-          </div>
+  <!-- 投稿・お気に入りした記事＋参加したダイレクトメッセージルーム一覧 -->
+  <div class="flex-contents-center-section mb-50">
+    <div class="content-width">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">作成した記事</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="favorites-tub" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">お気に入り</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="questions-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="answers-tub" data-toggle="tab" href="#answers" role="tab" aria-controls="answers" aria-selected="false">回答した質問</a>
+        </li>
+        <% if @user == current_user %>
+          <li class="nav-item">
+            <a class="nav-link" id="dm_entries-tub" data-toggle="tab" href="#dm_entries" role="tab" aria-controls="dm_entries" aria-selected="false">ダイレクトメッセージ</a>
+          </li>
         <% end %>
-        <!-- kaminari ページネイション -->
-        <%= paginate @articles %>
-      </div>
-      <!-- お気に入りした記事一覧 -->
-      <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tub">
-        <% @favorite_articles.each do |article| %>
-          <div id="user_favorite_buttons_<%= article.id %>">
+      </ul>
+      <!-- 作成した記事一覧 -->
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
+          <% @articles.each do |article| %>
             <div class="card-custom">
               <div class="card-body">
                 <div class="author-header contents-tidy">
-                  <div>
+                  <div class="mb-10">
                     <%= link_to user_path(article.user_id) do %>
                       <% if article.user.profile? %>
                         <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
@@ -92,78 +65,153 @@
                       <% end %>
                       <%= article.user.name %>
                     <% end %>
-                    さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-                  </div>
+                    さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+                  </div>         
                   <div>
-                    <%= render 'users/favorite', article: article %>
+                    <i class="fas fa-heart favorite-icon"></i>✖<%= article.favorites.count %>
                   </div>
                 </div>
                 <%= link_to article do %>
-                  <h5 class="card-title article-title-text"><%= article.title %></h5>
+                  <h5 class="card-title user-show-indextitle"><%= article.title %></h5>
                 <% end %>
                 <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").truncate(100) %>
               </div>
             </div>
-          </div>
-        <% end %>
-        <!-- kaminari ページネイション -->
-        <%= paginate @favorite_articles %>
-      </div>
-      <!-- 作成した質問 -->
-      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tub">
-        <% @questions.each do |question| %>
-          <div class="card-custom">
-            <div class="card-body">
-              <div class="author-header contents-tidy">
-                <div>
-                  <%= link_to user_path(question.user_id) do %>
-                    <% if question.user.profile? %>
-                      <span style="margin-right: 5px;"><%= image_tag question.user.profile.url, class: "navber-profile-icon" %></span>
-                    <% else %>
-                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-                    <% end %>
-                    <%= question.user.name %>
+          <% end %>
+          <!-- kaminari ページネイション -->
+          <%= paginate @articles %>
+        </div>
+        <!-- お気に入りした記事一覧 -->
+        <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tub">
+          <% @favorite_articles.each do |article| %>
+            <div id="user_favorite_buttons_<%= article.id %>">
+              <div class="card-custom">
+                <div class="card-body">
+                  <div class="author-header contents-tidy">
+                    <div class="mb-10">
+                      <%= link_to user_path(article.user_id) do %>
+                        <% if article.user.profile? %>
+                          <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+                        <% else %>
+                          <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                        <% end %>
+                        <%= article.user.name %>
+                      <% end %>
+                      さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+                    </div>
+                    <div>
+                      <%= render 'users/favorite', article: article %>
+                    </div>
+                  </div>
+                  <%= link_to article do %>
+                    <h5 class="card-title user-show-indextitle"><%= article.title %></h5>
                   <% end %>
-                  さんが<%= question.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
-                </div>         
+                  <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").truncate(100) %>
+                </div>
               </div>
-              <%= link_to question do %>
-                <h5 class="card-title article-title-text"><%= question.title %></h5>
-              <% end %>
-              <%= strip_tags(question.content.to_s).gsub(/[\n]/,"").truncate(100) %>
             </div>
-          </div>
-        <% end %>
-        <!-- kaminari ページネイション -->
-        <%= paginate @questions %>
-      </div>
-      <!-- 回答した質問 -->
-      <div class="tab-pane fade" id="answers" role="tabpanel" aria-labelledby="answers-tub">
-        <% @answers.each do |answer| %>
-          <div class="card-custom">
-            <div class="card-body">
-              <div class="author-header contents-tidy">
-                <div>
-                  <%= link_to user_path(answer.user_id) do %>
-                    <% if answer.user.profile? %>
-                      <span style="margin-right: 5px;"><%= image_tag answer.user.profile.url, class: "navber-profile-icon" %></span>
-                    <% else %>
-                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+          <% end %>
+          <!-- kaminari ページネイション -->
+          <%= paginate @favorite_articles %>
+        </div>
+        <!-- 作成した質問 -->
+        <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tub">
+          <% @questions.each do |question| %>
+            <div class="card-custom">
+              <div class="card-body">
+                <div class="author-header contents-tidy">
+                  <div class="mb-10">
+                    <%= link_to user_path(question.user_id) do %>
+                      <% if question.user.profile? %>
+                        <span style="margin-right: 5px;"><%= image_tag question.user.profile.url, class: "navber-profile-icon" %></span>
+                      <% else %>
+                        <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                      <% end %>
+                      <%= question.user.name %>
                     <% end %>
-                    <%= answer.user.name %>
-                  <% end %>
-                  さんが<%= answer.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
-                </div>         
+                    さんが<%= question.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+                  </div>         
+                </div>
+                <%= link_to question do %>
+                  <h5 class="card-title user-show-indextitle"><%= question.title %></h5>
+                <% end %>
+                <%= strip_tags(question.content.to_s).gsub(/[\n]/,"").truncate(100) %>
               </div>
-              <%= link_to answer do %>
-                <h5 class="card-title article-title-text"><%= answer.title %></h5>
-              <% end %>
             </div>
-          </div>
-        <% end %>
-        <!-- kaminari ページネイション -->
-        <%= paginate @answers %>
+          <% end %>
+          <!-- kaminari ページネイション -->
+          <%= paginate @questions %>
+        </div>
+        <!-- 回答した質問 -->
+        <div class="tab-pane fade" id="answers" role="tabpanel" aria-labelledby="answers-tub">
+          <% @answers.each do |answer| %>
+            <div class="card-custom">
+              <div class="card-body">
+                <div class="author-header contents-tidy">
+                  <div class="mb-10">
+                    <%= link_to user_path(answer.user_id) do %>
+                      <% if answer.user.profile? %>
+                        <span style="margin-right: 5px;"><%= image_tag answer.user.profile.url, class: "navber-profile-icon" %></span>
+                      <% else %>
+                        <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                      <% end %>
+                      <%= answer.user.name %>
+                    <% end %>
+                    さんが<%= answer.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+                  </div>         
+                </div>
+                <%= link_to answer do %>
+                  <h5 class="card-title user-show-indextitle"><%= answer.title %></h5>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <!-- kaminari ページネイション -->
+          <%= paginate @answers %>
+        </div>
+        <!-- ダイレクトメッセージ -->
+        <div class="tab-pane fade" id="dm_entries" role="tabpanel" aria-labelledby="dm_entries-tub">
+          <% @dm_entries.each do |dm_entry| %>
+            <div class="card-custom">
+              <div class="card-body">
+                <div class="author-header contents-tidy">
+                  <div class="mb-10">
+                    このルームは<%= dm_entry.updated_at.strftime("%Y年%m月%d日").to_s %>に作成されました
+                  </div>         
+                </div>
+                <%= link_to room_path(dm_entry.room.id) do %>
+                  <h5 class="card-title user-show-indextitle"><%= dm_entry.room.name %></h5>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <!-- kaminari ページネイション -->
+          <%= paginate @dm_entries %>
+        </div>
       </div>
     </div>
   </div>
+  <!-- 画面右側のコンテンツ -->
+  <% unless @user.id == current_user.id %>
+    <div class="flex-contents-right-section">
+      <div class="card-body" style="width: 265px;">
+        <%= image_tag '/assets/conversation', class: "w-100" %>
+        <p style="margin-top: 17px; line-height: 1.8;
+    font-size: 16px;margin-bottom: 20px;">
+          <%= @user.name %>さんと
+          ダイレクトメッセージ機能を使って
+          二人だけの会話をしよう！
+          専用のルームを作成し、
+          快適にメッセージを共有♪
+        </p>
+        <%= form_with model: @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.text_field :name, :placeholder => "ルーム名を入力！", class: "w-100" %><br> 
+          <%= f.submit "DMルームを作成", class: "btn btn-outline-secondary follow-btn block-center" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

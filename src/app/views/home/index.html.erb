@@ -107,10 +107,10 @@
     <div class="content-width" style="width: 50%">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">記事</a>
+          <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">最新記事</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="question-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">質問</a>
+          <a class="nav-link" id="question-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">新しい質問</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -168,24 +168,32 @@
         </div>
       </div>
     </div>
-    <!-- ランキング -->
-    <div class="ranking-wrapper">
-      <!-- タグ ランキング -->
+    <!-- 画面右側のコンテンツ -->
+    <div class="toppage-right-contents-wrapper">
+      <!-- サイト説明ページ転移ロゴ -->
       <div class="each-ranking-wrapper">
-        <p style="margin-bottom: 10px;">タグランキング</p>
-        <% @tag_ranking.each_with_index do |tag, index| %>
+        <%= link_to '/about' do %>
+          <%= image_tag '/assets/site-logo', style: "width: 100%;" %>
+        <% end %>
+      </div>
+      <!-- フォロワーランキング -->
+      <div class="each-ranking-wrapper">
+        <p class="ranking-header">フォロワーランキング</p>
+        <% @favorite_ranking.each_with_index do |user, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
-            <%= link_to tag do %>
-              <li><%= tag.tag_name %></li>
+            <%= link_to user do %>
+              <li><%= user.name %></li>
             <% end %>
-            <li class="ranking-count-font"><%= tag.tag_maps.count %>記事</li>
+            <li class="ranking-count-font">
+              <%= user.passive_relationships.count %>人
+            </li>
           </ul>
         <% end %>
       </div>
       <!-- お気に入りランキング -->
-      <div class="each-ranking-wrapper" style="margin-top: 30px;">
-        <p style="margin-bottom: 10px;">お気に入りランキング</p>
+      <div class="each-ranking-wrapper">
+        <p class="ranking-header">お気に入りランキング</p>
         <% @article_ranking.each_with_index do |article, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
@@ -198,18 +206,16 @@
           </ul>
         <% end %>
       </div>
-      <!-- フォローランキング -->
-      <div class="each-ranking-wrapper" style="margin-top: 30px;">
-        <p style="margin-bottom: 10px;">フォローランキング</p>
-        <% @favorite_ranking.each_with_index do |user, index| %>
+      <!-- タグ ランキング -->
+      <div class="each-ranking-wrapper">
+        <p class="ranking-header">タグランキング</p>
+        <% @tag_ranking.each_with_index do |tag, index| %>
           <ul class="contents-tidy ranking-style">
             <li><%= index + 1 %>位</li>
-            <%= link_to user do %>
-              <li><%= user.name %></li>
+            <%= link_to tag do %>
+              <li><%= tag.tag_name %></li>
             <% end %>
-            <li class="ranking-count-font">
-              <%= user.passive_relationships.count %>人
-            </li>
+            <li class="ranking-count-font"><%= tag.tag_maps.count %>記事</li>
           </ul>
         <% end %>
       </div>
