@@ -34,8 +34,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :introduce, length: { maximum: 500 }
   validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: "が有効ではありません" }
-  validates :password, length: { in: 6..20 }, confirmation: true
-  validates :password_confirmation, presence: true
+  validates :password, length: { in: 6..20 }, confirmation: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
   # ========================================
 
   # omniauthのコールバック時に呼ばれるメソッド
@@ -49,7 +49,7 @@ class User < ApplicationRecord
 
   # テストログイン用
   def self.guest
-    find_or_create_by(email: "test@com") do |user|
+    find_or_create_by(email: "test@gmail.com") do |user|
       user.password = ENV["TEST_LOGIN_PASSWORD"]
     end
   end
