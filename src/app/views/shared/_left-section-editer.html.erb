@@ -1,0 +1,38 @@
+<div class="left-section-editer" style="background-color: initial;">
+  <ul style="text-align: center;">
+    <% if article.user == current_user %>
+      <li style="padding-left: 6px;">
+        <%= link_to "/#{move_from}s/#{article[:id]}/edit" do %>
+          <div class="tooltip2">
+            <i class="far fa-edit left-section-editer-icon tooltip2"></i>
+            <div class="description2">編集する</div>
+          </div>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "/#{move_from}", data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete do %>
+          <div class="tooltip2">
+            <i class="far fa-trash-alt left-section-editer-icon tooltip2"></i>
+            <div class="description2">削除する</div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to "/#{move_from}s" do %>
+        <div class="tooltip2">
+          <i class="far fa-list-alt left-section-editer-icon"></i>
+          <div class="description2">一覧へ戻る</div>
+        </div>
+      <% end %>
+    </li>
+    <% if move_from == "article" && user_signed_in? && article.user_id != current_user.id %>
+      <li>
+        <div id="favorite_buttons_<%= article.id %>" class="tooltip2 left-section-editer-icon left-section-editer-favorite-icon">
+          <%= render 'favorites/favorite', article: article %>
+          <div class="description2">お気に入り</div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

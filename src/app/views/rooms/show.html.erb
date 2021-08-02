@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="flex-contents-wrapper">
-  <div class="flex-contents-left-section" style="margin-top: 30px;">
+  <div class="flex-contents-left-section" class="mt-30">
     <div class="card-body" style="width: 265px;">
       <p class="left-section-dmr-name"><%= @room.name %></p>
       <p class="mb-10">参加者:</p>
@@ -38,7 +38,7 @@
         <div class="card-body" style="padding: 2.25rem;">
           <% if @messages.present? %>
             <% @messages.each do |message| %>
-              <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #c1c1c1;">
+              <div class="show-reply-contents-wrapper">
                 <div class="author-header-show">
                   <%= link_to user_path(message.user_id) do %>
                     <% if message.user.profile? %>
@@ -55,7 +55,7 @@
                     </div>
                   <% end %>
                 </div>
-                <div style="margin-top: 20px;"><%= message.content %></div>
+                <div class="mt-20"><%= message.content %></div>
               </div>
             <% end %>
           <% else %>
@@ -63,10 +63,10 @@
           <% end %>
           <!-- form -->
           <%= form_with model: @message do |f| %>
-            <%= f.text_area :content, placeholder: "適切なマナーを守り、心地よいメッセージを送りましょう！\r無記入や５００文字を超えたメッセージは送ることができません", rows: "10", class: "comment-text-area" %>
+            <%= f.text_area :content, placeholder: "適切なマナーを守り、心地よいメッセージを送りましょう！\r無記入や５００文字を超えたメッセージは送ることができません", rows: "10", class: "w-100" %>
             <br>
             <%= f.hidden_field :room_id, value: @room.id %>
-            <%= f.submit "メッセージを送信する", class: "btn btn-outline-success comment-btn" %>
+            <%= f.submit "メッセージを送信する", class: "btn btn-outline-success replay-submit-btn" %>
           <% end %>
         </div>
       </div>

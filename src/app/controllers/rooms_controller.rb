@@ -29,7 +29,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
     redirect_to root_path
-    flash[:notice] = "ダイレクトメッセージを削除しました"
+    flash[:notice] = "ダイレクトメッセージルームを削除しました"
   end
 
   private

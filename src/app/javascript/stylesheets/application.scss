@@ -60,10 +60,7 @@ header {
   justify-content : space-between;
 }
 
-.under-line {
-  border-bottom: 2px solid beige;
-}
-
+// ========= エイリアス ===========
 .mt-10 {
   margin-top: 10px;
 }
@@ -73,9 +70,13 @@ header {
 .mt-30 {
   margin-top: 30px;
 }
+.mt-50 {
+  margin-top: 50px;
+}
 .mt-80 {
   margin-top: 80px;
 }
+
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -91,6 +92,7 @@ header {
 .mb-80 {
   margin-bottom: 80px;
 }
+
 .ml-10 {
   margin-left: 10px;
 }
@@ -105,15 +107,10 @@ header {
 .text-center {
   text-align: center;
 }
-.block-center {
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
+.f-right {
+  float: right;
 }
-.a-hover-cancel {
-  color: inherit;
-  text-decoration: none;
-}
+//==============================
 // deviseエラーメッセージの色
 #error_explanation {
   color: red;
@@ -129,6 +126,15 @@ header {
 // ActionText 入力欄の調整
 .trix-content {
   min-height: 200px;
+}
+// kaminariの位置調整
+.pagination {
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.under-line {
+  border-bottom: 2px solid beige;
 }
 //===========flex-contents =========
 .flex-contents-wrapper {
@@ -155,6 +161,10 @@ header {
 .flex-contents-right-section {
   background-color: white;
   margin-top: 67px;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
 }
 //============ falsh ===============
 .flash-wrapper {
@@ -183,19 +193,6 @@ header {
   border-color: #f5c6cb;
 }
 //========== navber ================
-.navber-editer {
-  position: fixed;
-  top: 100px;
-  left: 20px;
-  width: 130px;
-  background-color: white;
-}
-.navber-editer ul > li + li {
-  margin-top: 20px;
-}
-.navber-editer-icon {
-  font-size: 30px;
-}
 .navber-profile-icon {
   width: 30px;
   height: 30px;
@@ -211,6 +208,24 @@ header {
   width: 100%;
   z-index: 1;
 }
+//==== left-section-editer =======
+.left-section-editer {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  width: 130px;
+  z-index: 10;
+  background-color: white;
+}
+.left-section-editer ul > li + li {
+  margin-top: 20px;
+}
+.left-section-editer-icon {
+  font-size: 30px;
+}
+.left-section-editer-favorite-icon {
+  color: #ef60ff;
+}
 //============ icon ================
 .profile-image {
   width: 100px;
@@ -223,10 +238,23 @@ header {
 .favorite-icon {
   color: #ef60ff;
 }
+.favorites-icon {
+  color: #ef60ff;
+  font-size: 17px;
+  margin-right: 5px;
+}
+.favorite-icon-post-details {
+  font-size: 15px;
+  color: #ef60ff;
+}
 .tag-icon {
   height: 25px;
   color: gray;
   margin-right: 10px;
+}
+.index-comment-icon {
+  font-size: 20px;
+  margin-right: 5px;
 }
 //========== 記事表示部 =============
 .card-custom {
@@ -243,6 +271,28 @@ header {
 .article-font {
   font-family: initial;
   font-size: 20px
+}
+.author-header {
+  color: #696468;
+  font-size: 12px;
+}
+.author-header-show {
+  color: #696468;
+  font-size: 12px;
+}
+.show-reply-contents-wrapper {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c1c1c1;
+}
+.replay-header {
+  font-size: 20px;
+  padding-bottom: 14px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #bfbfbf;
+}
+.replay-submit-btn {
+  float: right;
 }
 //=========== footer ==============
 .footer-bgc {

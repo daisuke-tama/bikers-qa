@@ -1,24 +1,6 @@
 <!-- carousel -->
 <div class="ps-relative">
-  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" style="z-index: 0;" data-ride="carousel" data-interval="2000" data-pause="false">
-    <div class="carousel-inner" style="height: 600px;">
-      <div class="carousel-item active">
-        <div class="filter">
-          <img src="/assets/bike2.jpg" class="d-block w-100 filter-img" alt="...">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="filter">
-          <img src="/assets/engine.jpg" class="d-block w-100 filter-img" alt="...">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="filter">
-          <img src="/assets/bike3.jpg" class="d-block w-100 filter-img" alt="...">
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'carousel' %>
   <!-- carousel上のコンテンツ -->
   <!-- ログイン後 -->
   <% if user_signed_in? %>
@@ -116,55 +98,11 @@
       <div class="tab-content" id="myTabContent">
         <!-- 新着１０記事を表示 -->
         <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
-          <% @articles.each do |article| %>
-            <div class="card-custom">
-              <div class="card-body">
-                <%= link_to user_path(article.user_id) do %>
-                  <% if article.user.profile? %>
-                    <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
-                  <% else %>
-                    <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-                  <% end %>
-                  <%= article.user.name %>
-                <% end %>
-                さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-                <%= link_to article do %>
-                  <h5 class="card-title article-title-text"><%= article.title %></h5>
-                <% end %>
-                <% if article.tags.present? %>
-                  <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
-                  <% article.tags.each do |article_tags| %>
-                    <%= article_tags.tag_name %>
-                  <% end %>
-                <% end %>
-                <div style="float: right; font-size: 18px;">
-                  <i class="far fa-comment-dots comment-icon"></i><%= article.comments.count %>
-                  <i class="fas fa-heart favorite-icon comment-icon"></i><%= article.favorites.count %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render partial: "shared/article_index", collection: @articles, as: "article" %>
         </div>
         <!-- 新着１０質問を表示 -->
         <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="question-tub">
-          <% @questions.each do |question| %>
-            <div class="card-custom">
-              <div class="card-body">
-                <%= link_to user_path(question.user_id) do %>
-                  <% if question.user.profile? %>
-                    <span style="margin-right: 5px;"><%= image_tag question.user.profile.url, class: "navber-profile-icon" %></span>
-                  <% else %>
-                    <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-                  <% end %>
-                  <%= question.user.name %>
-                <% end %>
-                さんが<%= question.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-                <%= link_to question do %>
-                  <h5 class="card-title article-title-text"><%= question.title %></h5>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+          <%= render partial: "shared/question_index", collection: @questions, as: "question" %>
         </div>
       </div>
     </div>

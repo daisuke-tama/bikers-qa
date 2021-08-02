@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @article = Article.find(params[:article_id]) # views/favorites/create.js.erbへ送るため
     favorite = current_user.favorites.build(article_id: params[:article_id])

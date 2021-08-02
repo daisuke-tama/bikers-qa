@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.f-right {
-  float: right;
-}
-
 .edit-user-btn {
   width: 100%;
   margin-top: 20px;
@@ -32,7 +28,12 @@
 .user-show-indextitle {
   font-weight: bold;
 }
-
+.invite-dmroom-text {
+  margin-top: 17px;
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 //========== users/edit =============
 .edit-profile {
   width: 100%;

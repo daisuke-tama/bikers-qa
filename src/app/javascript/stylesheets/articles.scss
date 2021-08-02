@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-//=========== icon =============
-.favorites-icon {
-  color: #ef60ff;
-}
 //=========== article/index ==============
 .article-index-main-contents {
   padding-top: 30px;
@@ -16,14 +12,10 @@
   font-weight: bold;
   margin-top: 10px;
 }
-.author-header {
-  color: #696468;
-  font-size: 12px;
-}
-// kaminariの位置調整
-.pagination {
-  justify-content: center;
-  margin-top: 35px;
+.article-index-tag-style {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
 }
 //========== article/show ================
 .article-show-main-contents {
@@ -35,31 +27,7 @@
   font-weight: bold;
   padding-top: 10px;
 }
-.author-header-show {
-  color: #696468;
-  font-size: 12px;
-}
-.favorite-icon-show {
-  font-size: 15px;
-  color: #ef60ff;
-}
 .article-body-show {
   font-size: 15px;
   margin-top: 46px;
-}
-.comment-header {
-  font-size: 20px;
-  padding-bottom: 14px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid #bfbfbf;
-}
-.comment-text-area {
-  width: 100%;
-}
-.comment-btn {
-  float: right;
-}
-.comment-icon {
-  font-size: 20px;
-  margin-right: 5px;
 }

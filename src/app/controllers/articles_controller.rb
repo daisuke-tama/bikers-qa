@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     # kaminariによるpage perメソッドを使用し、１０記事毎にページネイション
     @articles = Article.page(params[:page]).per(10).order('created_at DESC')

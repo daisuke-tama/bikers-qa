@@ -1,85 +1,16 @@
 <!-- 画面左側のアイコン -->
-<div class="navber-editer" style="background-color: initial;">
-  <ul style="text-align: center;">
-    <% if @article.user == current_user %>
-      <li style="padding-left: 6px;">
-        <%= link_to edit_article_path do %>
-          <div class="tooltip2">
-            <i class="far fa-edit navber-editer-icon tooltip2"></i>
-            <div class="description2">編集する</div>
-          </div>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to @article, data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete do %>
-          <div class="tooltip2">
-            <i class="far fa-trash-alt navber-editer-icon tooltip2"></i>
-            <div class="description2">記事を削除</div>
-          </div>
-        <% end %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to articles_path do %>
-        <div class="tooltip2">
-          <i class="far fa-list-alt navber-editer-icon"></i>
-          <div class="description2">記事一覧へ</div>
-        </div>
-      <% end %>
-    </li>
-    <li>
-      <% if user_signed_in? %>
-        <% unless @article.user_id == current_user.id %>
-          <div id="favorite_buttons_<%= @article.id %>" class="tooltip2 navber-editer-icon">
-            <%= render 'favorites/favorite', article: @article %>
-            <div class="description2">お気に入り</div>
-          </div>
-        <% end %>
-      <% end %>
-    </li>
-  </ul>
-</div>
+<%= render 'shared/left-section-editer', article: @article, move_from: "article" %>
 <!-- 記事本文 -->
-<div class="article-show-main-contents">
-  <div class="content-width" style="width: 75%;">
-    <div class="card-custom">
-      <div class="card-body" style="padding: 2.25rem;">
-        <div class="author-header-show">
-          <%= link_to user_path(@article.user_id) do %>
-            <% if @article.user.profile? %>
-              <span style="margin-right: 5px;"><%= image_tag @article.user.profile.url, class: "navber-profile-icon" %></span>
-            <% else %>
-              <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-            <% end %>
-            <%= @article.user.name %>
-          <% end %>
-          さんが<%= @article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
-          <div style="float: right;">
-            <i class="fas fa-heart favorite-icon-show"></i>✖<%= @article.favorites.count %>        
-          </div>
-        </div>
-        <h5 class="card-title article-title-text" style="font-size: 28px;"><%= @article.title %></h5>
-        <% if @article.tags.present? %>
-          <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
-          <% @article.tags.each do |article_tags| %>
-            <%= article_tags.tag_name %>
-          <% end %>
-        <% end %>
-        <div class="article-body-show"><%= @article.content %></div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%= render 'shared/post_details', post: @article, move_from: "article" %>
 <!-- コメント機能 -->
 <div class="article-show-main-contents">
   <div class="content-width" style="width: 75%;">
     <div class="card-custom">
       <div class="card-body" style="padding: 2.25rem;">
-        <p class="comment-header">コメント</p>
+        <p class="replay-header">コメント</p>
         <% @comments.each do |comment| %>
-          <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #c1c1c1;">
-            <div class="author-header-show"">
+          <div class="show-reply-contents-wrapper">
+            <div class="author-header-show">
               <%= link_to user_path(comment.user_id) do %>
                 <% if comment.user.profile? %>
                   <span style="margin-right: 5px;"><%= image_tag comment.user.profile.url, class: "navber-profile-icon" %></span>
@@ -95,14 +26,14 @@
                 </div>
               <% end %>
             </div>
-            <div style="margin-top: 20px;"><%= comment.body %></div>
+            <div class="mt-20"><%= comment.body %></div>
           </div>
         <% end %>
         <% if user_signed_in? %>
           <%= form_with model: [@article, @comment], local: true do |f| %>
-            <%= f.text_area :body, placeholder: "適切なマナーを守り、心地よいコメントをしましょう！\r無記入や１００００文字を超えたコメントは投稿できません", rows: "10", class: "comment-text-area" %>
+            <%= f.text_area :body, placeholder: "適切なマナーを守り、心地よいコメントをしましょう！\r無記入や１００００文字を超えたコメントは投稿できません", rows: "10", class: "w-100" %>
             <br>
-            <%= f.submit "コメントする", class: "btn btn-outline-success comment-btn" %>
+            <%= f.submit "コメントする", class: "btn btn-outline-success replay-submit-btn" %>
           <% end %>
         <% else %>
           <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>

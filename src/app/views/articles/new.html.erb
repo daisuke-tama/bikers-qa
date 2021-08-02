@@ -1,31 +1,6 @@
-<div class="card col-sm-6 mx-auto mt-5" style="margin-bottom: 80px;">
+<div class="card col-sm-6 mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">記事を新規作成する</h3>
-    <%= form_with model: @article do |f| %>
-      <div class="error-message-wrapper">
-        <% @article.errors.full_messages.each do |message| %>
-          <li class="error-messages"><%= message %></li>
-        <% end %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :title, "タイトルを入力してください" %><br />
-        <%= f.text_field :title, class: "form-control", placeholder: "例） シグナスX タイヤ交換の方法", autofocus: true, autocomplete: "title" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :tag_names, "タグ(最大４つ、最大文字数１０)" %><br />
-        <%= f.text_field :tag_names, class: "form-control", style: "width: 100%;", placeholder: "タグを付ける場合は入力してください", autocomplete: "tag_names", data: {role: "tagsinput"} %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :content, "記事本文" %><br />
-        <%= f.rich_text_area :content, placeholder: "整備方法を書いてください", autocomplete: "content" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "記事を作成", class: "btn btn-outline-success btn-block" %>
-      </div>
-    <% end %>
+    <%= render 'form', article: @article %>
   </div>
 </div>
