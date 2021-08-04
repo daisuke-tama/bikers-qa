@@ -31,6 +31,11 @@ Rails.application.routes.draw do
   resources :rooms,    only: [:show, :create, :destroy]
   # タグ検索結果表示ページ
   resources :tags,     only: [:show]
-
+  # 通知一覧表示ページ
+  resources :notifications, only: :index do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

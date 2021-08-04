@@ -256,6 +256,17 @@ header {
   font-size: 20px;
   margin-right: 5px;
 }
+// ========= 通知用 ==========
+.no-nitification-text {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 20px;
+}
+.bell {
+  color: #ffe048;
+  margin-right: 10px;
+  font-size: 1.5em
+}
 //========== 記事表示部 =============
 .card-custom {
   position: relative;

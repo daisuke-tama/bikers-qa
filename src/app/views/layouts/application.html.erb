@@ -37,6 +37,7 @@
               <% end %>
               <%= current_user.name %>
             <% end %>
+            <%= render 'shared/notification-bell' %>
             <%= link_to articles_path do %> 
               <button type="button" class="btn btn-outline-success">記事一覧</button>
             <% end %>

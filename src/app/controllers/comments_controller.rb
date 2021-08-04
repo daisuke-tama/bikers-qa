@@ -3,7 +3,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @article = @comment.article # 通知作成用
     if @comment.save
+      @article.create_notification_comment!(current_user, @comment.id) # 通知作成用
       flash[:notice] = "コメントを投稿しました"
       redirect_to article_path(@comment.article)
     else

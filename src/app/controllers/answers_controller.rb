@@ -3,7 +3,9 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(answer_params)
+    @question = @answer.question # 通知作成用
     if @answer.save
+      @question.create_notification_answer!(current_user, @answer.id) # 通知作成用
       redirect_to question_path(@answer.question)
     else
       @question = @answer.question

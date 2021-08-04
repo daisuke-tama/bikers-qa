@@ -4,7 +4,21 @@ class MessagesController < ApplicationController
   def create
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
       @message = Message.new(message_params)
+      @room = @message.room
       if @message.save
+        temp_ids = Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
+        @theid=temp_ids.find_by(room_id: @room.id)
+        notification = current_user.active_notifications.new(
+          message_id: @message.id,
+          entry_id: @room.id,
+          visitor_id: current_user.id,
+          visited_id: @theid.user_id,
+          action: 'message'
+        )
+        if notification.visitor_id == notification.visited_id
+          notification.checked = true
+        end
+        notification.save if notification.valid?
         flash[:notice] = "メッセージを送信しました"
       else
         flash[:alert] = "メッセージの送信に失敗しました"
