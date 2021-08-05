@@ -1,0 +1,24 @@
+<div class="card-custom">
+  <div class="card-body">
+    <div class="author-header contents-tidy">
+      <div class="mb-10">
+        <%= link_to user_path(user.id) do %>
+          <% if user.profile? %>
+            <span style="margin-right: 5px;"><%= image_tag user.profile.url, class: "navber-profile-icon" %></span>
+          <% else %>
+            <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+          <% end %>
+          <%= user.name %>さん
+        <% end %>
+      </div>
+    </div>
+    <%= strip_tags(user.introduce.to_s).gsub(/[\n]/,"").truncate(100) %>
+    <% if relation_btn == "on" %>
+      <div id="relation_buttons_<%= user.id %>">
+        <p class="card-text">
+          <%= render 'relationships/relationship', user: user %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

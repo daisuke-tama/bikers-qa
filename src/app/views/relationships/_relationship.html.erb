@@ -1,4 +1,4 @@
-<!-- users/show内のフォロー ON OFF機能(Ajax) -->
+<!-- フォロー ON OFF機能(Ajax) -->
 <% if user != current_user %>
   <% if user.followed_by?(current_user) %>
     <%= link_to user_relationships_path(user.id), method: :delete, remote: true do %>

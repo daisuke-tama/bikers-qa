@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
-
   def show
     @user = User.find(params[:id])
     # kaminariによるpage perメソッドを使用し、１０記事毎にページネイション
@@ -32,13 +29,9 @@ class UsersController < ApplicationController
     # ========================================================
   end
 
-  def follows
+  def relationship_index
     user = User.find(params[:id])
-    @users = user.followings
-  end
-
-  def followers
-    user = User.find(params[:id])
-    @users = user.followers
+    @followings = user.followings.page(params[:page]).per(10).order('created_at DESC')
+    @followers = user.followers.page(params[:page]).per(10).order('created_at DESC')
   end
 end

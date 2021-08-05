@@ -9,11 +9,11 @@
       <% end %>
       <h5 class="card-title username-font"><%= @user.name %></h5>
       <div class="relationship-link-text">
-        <%= link_to follows_user_path(@user.id) do %>
+        <%= link_to relationship_index_user_path(@user.id) do %>
           <p><%= @user.followings.count %></p>
           <p>フォロー</p>
         <% end %>
-        <%= link_to followers_user_path(@user.id) do %>
+        <%= link_to relationship_index_user_path(@user.id) do %>
           <p><%= @user.followers.count %></p>
           <p>フォロワー</p>
         <% end %>
