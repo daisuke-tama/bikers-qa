@@ -6,7 +6,7 @@
   width: 100%;
   margin-top: 20px;
 }
-.follow-btn {
+.move-dm-room-btn {
   font-weight: bold;
   margin-top: 20px;
 }
@@ -33,6 +33,11 @@
   line-height: 1.8;
   font-size: 16px;
   margin-bottom: 20px;
+}
+.user-profile-action-btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 //========== users/edit =============
 .edit-profile {
@@ -66,4 +71,59 @@
 .follow-contents-username {
   font-size: 17px;
   font-weight: bold;
+}
+
+
+.sns-relation-header {
+  font-weight: bold;
+  text-align: center;
+}
+.new-user-form {
+  flex: 0 0 50%;
+  max-width: 80%;
+}
+
+// =============== メディアクエリ ================
+@media screen and (max-width: 730px) {
+  .user-show.flex-contents-wrapper {
+    margin-top: 40px;
+  }
+  .user-show .flex-contents-left-section {
+    position: initial;
+    width: 60%;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-left-section .card-body {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-center-section {
+    width: initial;
+  }
+}
+@media screen and (min-width: 730px) {
+  .user-show .flex-contents-left-section .card-body {
+    width: 265px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .new-user-relation-btns {
+    display: grid;
+  }
+  .new-user-relation-btns > a + a {
+    margin-top: 15px;
+  }
+  .user-show .flex-contents-right-section {
+    display: none;
+  }
+}
+@media screen and (min-width: 900px) {
+  .move-to-dm-room-btn.sp {
+    display: none;
+  }
+}
+@media screen and (max-width: 930px) {
+  .new-user-select-menu {
+    display: none;
+  }
 }

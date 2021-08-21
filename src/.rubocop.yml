@@ -16,7 +16,13 @@ AllCops:
     - 'spec/spec_helper.rb'
     # Redundant self detected.を回避するため
     - 'app/models/article.rb'
-
+    # Avoid default_scopeを回避するため
+    - 'app/models/notification.rb'
+    # Don't repeat examples within an example groupを回避するため
+    - 'spec/models/room_spec.rb'
+    # Slash continuation should be reserved for closed string continuation. Many times it is used to get around other existing rulesを回避するため
+    - 'spec/support/actiontext_helper.rb'
+    
 # コメントに日本語許可
 Style/AsciiComments:
   Enabled: false

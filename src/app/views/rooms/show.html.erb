@@ -1,36 +1,22 @@
 <div class="ps-relative">
-  <%= image_tag '/assets/contents-on-logo.png', class:"filter-img dmr-header-bg" %>
-  <div class="ps-absolute dmr-header-contents-wrapper">
-    <h2 class="dmr-header">ダイレクトメッセージルームへようこそ！</h2>
-    <div class="dmr-header-contents">
+  <%= image_tag '/assets/contents-on-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">ダイレクトメッセージルームへようこそ！</h2>
+    <div class="page-detail-header-contents">
       <p>ここでは二人だけの会話ができます</p>
       <p>最低限のマナーを守り、心地よい会話を心がけてください</p>
       <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
     </div>
   </div>
 </div>
+<!-- 画面サイズ 730 以下で表示 -->
+<div class="room-show flex-contents-left-section sp" class="mt-30">
+  <%= render 'left-section', entries: @entries, room: @room %>
+</div>
 <div class="flex-contents-wrapper">
-  <div class="flex-contents-left-section" class="mt-30">
-    <div class="card-body" style="width: 265px;">
-      <p class="left-section-dmr-name"><%= @room.name %></p>
-      <p class="mb-10">参加者:</p>
-      <% @entries.each do |entry| %>
-        <%= link_to user_path(entry.user_id) do %>
-          <% if entry.user.profile? %>
-            <span style="margin-right: 5px;"><%= image_tag entry.user.profile.url, class: "navber-profile-icon" %></span>
-          <% else %>
-            <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
-          <% end %>
-          <%= entry.user.name %>
-        <% end %>
-        <br>
-      <% end %>
-      <p class="mt-20">作成日:</p>
-      <%= @room.created_at.strftime("%Y年%m月%d日").to_s %>
-      <p class="mt-10">最終更新日:</p>
-      <%= @room.updated_at.strftime("%Y年%m月%d日").to_s %>
-      <%= link_to "ルーム削除", @room, class: "btn btn-outline-danger room-delete-btn", data: { confirm: "ルームを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
-    </div>
+  <!-- 画面サイズ 730 以上で表示 -->
+  <div class="room-show flex-contents-left-section pc" class="mt-30">
+    <%= render 'left-section', entries: @entries, room: @room %>
   </div>
   <div class="flex-contents-center-section mb-50">
     <div class="content-width">

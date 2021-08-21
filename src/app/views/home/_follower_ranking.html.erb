@@ -1,0 +1,14 @@
+<div class="each-ranking-wrapper">
+  <p class="ranking-header">フォロワーランキング</p>
+  <% favorite_ranking.each_with_index do |user, index| %>
+    <ul class="contents-tidy ranking-style">
+      <li><%= index + 1 %>位</li>
+      <%= link_to user do %>
+        <li id="follower-ranking-user-name"><%= truncate(user.name, length: 16) %></li>
+      <% end %>
+      <li class="ranking-count-font">
+        <%= user.passive_relationships.count %>人
+      </li>
+    </ul>
+  <% end %>
+</div>

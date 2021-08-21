@@ -2,7 +2,7 @@
   <p class="no-nitification-text">通知はありません</p>
 <% else %>
 <div class="flex-contents-wrapper">
-  <div class="flex-contents-left-section" style="z-index: 10;">
+  <div class="notification-index flex-contents-left-section" style="z-index: 10;">
     <%= link_to destroy_all_notifications_path, method: :delete do %>
       <div class="tooltip2">
         <i class="fas fa-trash left-section-editer-icon tooltip2"></i>
@@ -10,7 +10,7 @@
       </div>
     <% end %>
   </div>
-  <div class="flex-contents-center-section mb-50">
+  <div class="flex-contents-center-section">
     <div class="content-width">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -32,5 +32,10 @@
       </div>
     </div>
   </div>
+</div>
+<div class="notification-index delete-btn">
+  <%= link_to destroy_all_notifications_path, method: :delete do %>
+    <button class="btn btn-outline-danger">通知を全削除</button>
+  <% end %>
 </div>
 <% end %>

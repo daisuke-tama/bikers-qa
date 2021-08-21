@@ -54,12 +54,22 @@ header {
   margin-right : auto;
   position : relative;
 }
+@media screen and (max-width: 767px) {
+  .content-width {
+    max-width : none;
+    padding-left: 20px;
+    padding-right : 20px;
+  }
+}
 
 .contents-tidy {
   display : flex;
   justify-content : space-between;
 }
 
+.btn-font {
+  font-weight: bold;
+}
 // ========= エイリアス ===========
 .mt-10 {
   margin-top: 10px;
@@ -359,4 +369,217 @@ header {
   display: inline-block;
   top: 0px;
   left: 50px;
+}
+
+.navber-profile-icons {
+  margin-right: 40px;
+}
+
+.navber-right {
+  display: flex;
+  align-items: center;
+}
+
+// ========= page-detail-header ==========
+.page-detail-header-bg {
+  height: 250px;
+  margin: 0 auto;
+}
+.page-detail-header {
+  text-align: center;
+  margin-top: 56px;
+  margin-bottom: 20px;
+}
+.page-detail-header-contents-wrapper {
+  top: 6px;
+  width: 100%;
+}
+.page-detail-header-contents {
+  text-align: center;
+  font-size: 16px;
+}
+
+/*=====================
+        header
+======================*/
+.site-header {
+  padding-top : 20px;
+  padding-bottom : 20px;
+}
+
+.site-header-logo img {
+  width : auto;
+  height : 20px;
+}
+.site-header-logo-sp {
+  display : none;
+}
+
+.header-nav-item-box a:hover {
+  color: #5dff2a;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+  .site-header-logo-pc {
+    display : none;
+  }
+  .site-header-logo-sp {
+    display : block;
+  }
+}
+
+/* header-nav-list */
+
+.header-nav-list li + li {
+  margin-left : 30px;
+}
+.header-nav-list li + li:last-child {
+  margin-left : 20px;
+}
+
+.header-nav-item {
+  display : block;
+  font-family : 'Lato',sans-serif;
+  font-weight : bold;
+  text-align : center;
+  line-height : 1.1;
+}
+.header-nav-item span {
+  font-size : 10px;
+  font-family : 'Noto Sans JP', sans-serif;
+}
+
+.header-nav-item.current {
+  color : #f79314;
+}
+
+@media screen and (max-width: 1080px) {
+  .site-header {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    z-index: 10;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .site-header {
+    padding-top : 15px;
+    padding-bottom : 15px;
+  }
+}
+
+
+/*  hamburger-menu  */
+
+.header-nav-hamburger {
+  display : none;
+}
+#menu-btn-check {
+  display : none;
+}
+
+@media screen and (max-width: 1080px) {
+  .hamburger-menu {
+    display : flex;
+  }
+  .header-nav-hamburger {
+    cursor: pointer;
+    display : block;
+    position : relative;
+    width : 30px;
+    height : 21px;
+    z-index : 10;
+  }
+  
+  /*  hamburger-line  */
+  .header-nav-hamburger-line {
+    position : absolute;
+    top : 50%;
+    width : 100%;
+    height : 3px;
+    background-color : #222222;
+    transform : translate(0, -50%);
+    border-radius : 10px;
+    transition : top 0.2s, transform 0.2s, opacity 0.3s;
+  }
+  .header-nav-hamburger-line:first-child {
+    top : 0;
+  }
+  .header-nav-hamburger-line:last-child {
+    top : 100%;
+  }
+  
+  /*  hamburger-line => cross  */
+  #menu-btn-check:checked ~ .is-active .header-nav-hamburger-line {
+    will-change : top;
+    transform : translate(20px, -50%);
+    opacity : 0;
+  }
+  #menu-btn-check:checked ~ .is-active .header-nav-hamburger-line:first-child {
+    top : 50%;
+    transform : translate(0, -50%) rotate(45deg);
+    opacity : 1
+  }
+  #menu-btn-check:checked ~ .is-active .header-nav-hamburger-line:last-child {
+    top : 50%;
+    transform : translate(0, -50%) rotate(-45deg);
+    opacity : 1
+  }
+  
+  /*  scroll screen contents */
+  .header-nav-list {
+    overflow-y: scroll;
+    position: fixed;
+    top: 60px;
+    left: 100%;
+    width: 100%;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 75px;
+    transition: transform 0.5s;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-overflow-scrolling: touch;
+  }
+  #menu-btn-check:checked ~ .header-nav-list.is-active.menu-btn {
+    transform : translate3d(-100%, 0, 0);
+  }
+  .menu-btn .contents-tidy {
+    display : block;
+  }
+  .header-nav-item {
+    font-size : 16px;
+    letter-spacing : 5px;
+    color : white;
+    padding : 20px 0;
+  }
+  .header-nav-item.current {
+    color : white;
+  }
+  .header-nav-item span {
+    display : block;
+    color : #f79314;
+    font-size : 12px;
+    margin-top : 10px;
+    letter-spacing : 2px;
+  }
+  .header-nav-list li + li {
+    margin-left : 0;
+  }
+  .header-nav-list li + li:last-child {
+    margin-left : 0;
+  }
+  .header-btn-outline {
+    margin-top : 20px;
+  }
+  .header-btn {
+    margin : 0 auto;
+    width : 250px;
+  }
+  .link-btn.menu {
+    height : 60px;
+    font-size : 16px;
+  }
 }

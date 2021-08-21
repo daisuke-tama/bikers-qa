@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    body { "MyText" }
-    user { "" }
-    article { "" }
+    body { "bobはバイク整備が上手だね！" }
+    association :article
+    user { article.user }
   end
 end

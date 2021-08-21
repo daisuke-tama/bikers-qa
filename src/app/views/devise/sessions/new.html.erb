@@ -1,4 +1,4 @@
-<div class="card col-sm-6 mx-auto mt-5">
+<div class="new-user-form card col-sm-6 mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">ログイン</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,16 +20,22 @@
         </div>
       <% end %>
 
-      <div class="actions mb-30">
-        <%= f.submit "Log in", class: "btn btn-outline-success btn-block" %>
+      <div class="actions" style="text-align: center;">
+        <%= f.submit "ログインする", class: "btn btn-outline-success" %>
       </div>
     <% end %>
 
-    <div class="content-width">
-      <p class="subtitle-font under-line mb-30" style="color: black;">SNSと連携してログインする</p>
-      <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
-      <%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
-      <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+    <div class="mt-80" style="text-align: center;">
+      <p class="sns-relation-header under-line mb-30">
+      <span><i class="far fa-arrow-alt-circle-down"></i></span>
+      SNSと連携して新規登録する
+      <span><i class="far fa-arrow-alt-circle-down"></i></span>
+      </p>
+      <div class="new-user-relation-btns">
+        <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
+        <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
+        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+      </div>
     </div>
   </div>
 </div>

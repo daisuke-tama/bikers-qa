@@ -40,6 +40,11 @@
   color: white;
   font-weight: bold;
 }
+@media screen and (max-width: 930px) {
+  .carousel-on-text {
+    margin: 0 auto;
+  }
+}
 // ログイン後
 .calousel-on-card-img {
   width: 190px;
@@ -67,9 +72,14 @@
   margin-right: 10px;
 }
 //========== runking =============
-.toppage-right-contents-wrapper {
+.toppage-right-contents-wrapper-pc {
   margin: 0 auto;
   width: 22.5rem;
+  height: fit-content;
+}
+.toppage-right-contents-wrapper {
+  display: none;
+  margin: 0 auto;
   height: fit-content;
 }
 .each-ranking-wrapper {
@@ -115,4 +125,54 @@
 .about-contents-body {
   font-size: 15px;
   line-height: 1.8;
+}
+
+@media screen and (max-width: 830px) {
+  .search-form-pc {
+    display: none;
+  }
+  .search-form {
+    display: block;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  .toppage-right-contents-wrapper-pc {
+    display: none;
+  }
+  .toppage-right-contents-wrapper {
+    display: block;
+    margin-top: 50px;
+  }
+  .each-ranking-wrapper .ranking-style {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .guide-contents {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 830px) {
+  .search-form {
+    display: none;
+  }
+  .nav-tubs-pc {
+    width: 50%
+  }
+  .carousel-inner {
+    height: 600px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .carousel-on-right-contents.ps-absolute {
+    position: initial;
+    margin-bottom: 40px;
+  }
+  .carousel-on-text {
+    color: black;
+  }
 }

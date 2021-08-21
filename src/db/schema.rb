@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_091119) do
+ActiveRecord::Schema.define(version: 2021_08_08_111313) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_091119) do
     t.integer "question_id"
     t.integer "answer_id"
     t.integer "message_id"
-    t.integer "entry_id"
+    t.integer "room_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -123,9 +123,9 @@ ActiveRecord::Schema.define(version: 2021_08_02_091119) do
     t.index ["answer_id"], name: "index_notifications_on_answer_id"
     t.index ["article_id"], name: "index_notifications_on_article_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
-    t.index ["entry_id"], name: "index_notifications_on_entry_id"
     t.index ["message_id"], name: "index_notifications_on_message_id"
     t.index ["question_id"], name: "index_notifications_on_question_id"
+    t.index ["room_id"], name: "index_notifications_on_room_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end

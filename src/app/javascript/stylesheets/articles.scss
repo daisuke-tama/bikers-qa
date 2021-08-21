@@ -17,6 +17,11 @@
   align-items: center;
   margin-bottom: 13px;
 }
+.new-article-form {
+  flex: 0 0 50%;
+  max-width: 80%;
+}
+
 //========== article/show ================
 .article-show-main-contents {
   padding-top: 30px;

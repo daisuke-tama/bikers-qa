@@ -30,6 +30,10 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    unless @article.user_id == current_user.id
+      redirect_to root_path
+      flash[:alert] = "他の方の記事は編集できません"
+    end
   end
 
   def update

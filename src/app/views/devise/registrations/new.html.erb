@@ -1,4 +1,4 @@
-<div class="card col-sm-6 mx-auto mt-5 mb-80">
+<div class="new-user-form card col-sm-6 mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">新規会員登録</h3>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -34,16 +34,30 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください", autocomplete: "new-password" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "パスワードを入力してください", autocomplete: "password" %>
       </div>
 
       <div class="field mb-20">
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認のためもう一度パスワードを入力してください", autocomplete: "new-password" %>
+        <%= f.label :password_confirmation, "確認のためもう一度入力してください" %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認のためもう一度パスワードを入力してください", autocomplete: "password" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up", class: "btn btn-outline-success btn-block" %>
+      <div class="actions" style="text-align: center;">
+        <%= f.submit "新規会員登録する", class: "btn btn-outline-success" %>
       </div>
     <% end %>
+
+    <div class="mt-80" style="text-align: center;">
+      <p class="sns-relation-header under-line mb-30">
+      <span><i class="far fa-arrow-alt-circle-down"></i></span>
+      SNSと連携して新規登録する
+      <span><i class="far fa-arrow-alt-circle-down"></i></span>
+      </p>
+      <div class="new-user-relation-btns">
+        <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
+        <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
+        <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+      </div>
+    </div>
   </div>
 </div>

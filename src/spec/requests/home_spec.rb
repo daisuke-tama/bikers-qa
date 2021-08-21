@@ -7,4 +7,11 @@ RSpec.describe "Homes", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "#about" do
+    it "HTTPレスポンスステータス200番台を返すこと" do
+      get about_path
+      expect(response).to have_http_status(:success)
+    end
+  end
 end

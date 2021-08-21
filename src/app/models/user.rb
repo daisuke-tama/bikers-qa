@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save :email_downcase
   # Include default devise modules. Others available are:
   # :confirmable,
   # ======================== devise機能欄 ======================================
@@ -34,9 +35,12 @@ class User < ApplicationRecord
   # プロフィール画像アップロード
   mount_uploader :profile, ProfileUploader
   # =========== validates ===============
-  validates :name, presence: true, length: { maximum: 100 }
+  validates :name, presence: true, length: { maximum: 50 }
   validates :introduce, length: { maximum: 500 }
-  validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: "が有効ではありません" }
+  validates :email, presence: true,
+                    length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX, message: "が有効ではありません" },
+                    uniqueness: { case_sensitive: false }
   validates :password, length: { in: 6..20 }, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
   # ========================================
@@ -64,7 +68,7 @@ class User < ApplicationRecord
 
   # 通知機能
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -72,5 +76,11 @@ class User < ApplicationRecord
       )
       notification.save if notification.valid?
     end
+  end
+
+  private
+
+  def email_downcase
+    self.email = email.downcase
   end
 end

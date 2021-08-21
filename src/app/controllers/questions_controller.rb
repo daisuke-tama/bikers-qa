@@ -28,6 +28,10 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    unless @question.user_id == current_user.id
+      redirect_to root_path
+      flash[:alert] = "他の方の質問は編集できません"
+    end
   end
 
   def update

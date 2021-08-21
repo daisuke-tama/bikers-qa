@@ -13,7 +13,7 @@ class Room < ApplicationRecord
     temp_ids = Entry.where(room_id: room_id).where.not(user_id: current_user.id)
     notification = current_user.active_notifications.new(
       message_id: id,
-      entry_id: room_id,
+      room_id: room_id,
       visitor_id: temp_ids.user_id,
       visited_id: visited_id,
       action: 'message'

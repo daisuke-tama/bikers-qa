@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -62,14 +62,12 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # RSpec実行時、ブラウザを非表示
-  config.before(:each) do |example|
-    if example.metadata[:type] == :system
-      driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
-    end
-  end
   # FactoryBotの利用
   config.include FactoryBot::Syntax::Methods
-  # sign_inヘルパーの導入
+  # request specでのsign_inヘルパーの導入
   config.include Devise::Test::IntegrationHelpers, type: :request
+  # system spec でのログインヘルパー
+  config.include E2eLoginSupport
+  # ActionTextをcapybaraに認識させるため
+  config.include ActionTextHelper, type: :system
 end

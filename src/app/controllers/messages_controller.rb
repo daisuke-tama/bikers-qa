@@ -7,10 +7,10 @@ class MessagesController < ApplicationController
       @room = @message.room
       if @message.save
         temp_ids = Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
-        @theid=temp_ids.find_by(room_id: @room.id)
+        @theid = temp_ids.find_by(room_id: @room.id)
         notification = current_user.active_notifications.new(
           message_id: @message.id,
-          entry_id: @room.id,
+          room_id: @room.id,
           visitor_id: current_user.id,
           visited_id: @theid.user_id,
           action: 'message'

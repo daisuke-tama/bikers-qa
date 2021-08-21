@@ -1,0 +1,13 @@
+// Place all the styles related to the Questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//=========== question/index ==============
+.question-index-main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.new-question-form {
+  flex: 0 0 50%;
+  max-width: 80%;
+}

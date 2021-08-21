@@ -14,9 +14,8 @@ ja:
         updated_at: 更新日時
         birthday: 生年月日
         email: メールアドレス
-        salon_id: サロン
         password: パスワード
-        Password confirmation: 確認用パスワード
+        password_confirmation: 確認用パスワード
       article:
         title: タイトル
         content: 記事内容

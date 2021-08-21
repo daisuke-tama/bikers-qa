@@ -4,12 +4,12 @@
   <!-- carousel上のコンテンツ -->
   <!-- ログイン後 -->
   <% if user_signed_in? %>
-    <div class="ps-absolute w-100" style="top: 48%;">
+    <div class="guide-contents ps-absolute w-100" style="top: 48%;">
       <div class="content-width contents-tidy" style="color: white;">
         <!-- 記事を書いてみよう -->
         <section class="effect-fade">
           <div class="card" style="width: 18rem;">
-            <%= image_tag '/assets/show-article', class: "calousel-on-card-img" %>
+            <%= image_tag '/assets/show-article', class: "calousel-on-card-img", style: "width: 130px;" %>
             <div class="card-body" style="background-color: #b5b5b5;">
               <%= link_to articles_path do %>
                 <h5 class="card-title card-title-custom">記事を見る</h5>
@@ -50,7 +50,7 @@
     </div>
   <% else %>
     <!-- 未ログイン -->
-    <div class="ps-absolute w-100" style="top: 25%;">
+    <div class="carousel-on-right-contents ps-absolute w-100" style="top: 21%;">
       <div class="content-width">
         <div class="contents-tidy">
           <!-- サイト説明欄 -->
@@ -65,7 +65,7 @@
             </div>
           </div>
           <!-- 新規登録関連 -->
-          <div class="mt-80">
+          <div class="new-user-select-menu mt-80">
             <%= link_to new_user_registration_path do %> 
               <button type="button" class="btn btn-outline-primary mb-20" style="width: -webkit-fill-available;">メールアドレスで登録</button>
             <% end %>
@@ -85,8 +85,16 @@
 </div>
 
 <div class="main-contents">
+  <!-- 検索フォーム 画面サイズ 730px以下で表示-->
+  <div class="search-form">
+    <%= search_form_for @q, url: search_articles_path do |f| %>
+      <%= f.label :title_cont, '記事検索' %>
+      <%= f.search_field :title_cont, style: "width: 250px;" %>
+      <%= f.submit '検索', class: "btn btn-outline-success" %>
+    <% end %>
+  </div>
   <div class="contents-tidy">
-    <div class="content-width" style="width: 50%">
+    <div class="content-width nav-tubs-pc">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">最新記事</a>
@@ -105,58 +113,30 @@
           <%= render partial: "shared/question_index", collection: @questions, as: "question" %>
         </div>
       </div>
+      <!-- 画面下側のコンテンツ(画面サイズ 830px 以下で表示) -->
+      <div class="toppage-right-contents-wrapper">
+        <!-- フォロワーランキング -->
+        <%= render 'follower_ranking', favorite_ranking: @favorite_ranking %>
+        <!-- お気に入りランキング -->
+        <%= render 'favorite_ranking', article_ranking: @article_ranking %>
+        <!-- タグ ランキング -->
+        <%= render 'tag_ranking', tag_ranking: @tag_ranking %>
+      </div>
     </div>
-    <!-- 画面右側のコンテンツ -->
-    <div class="toppage-right-contents-wrapper">
+    <!-- 画面右側のコンテンツ 画面サイズ 830px 以下で非表示 -->
+    <div class="toppage-right-contents-wrapper-pc">
       <!-- サイト説明ページ転移ロゴ -->
       <div class="each-ranking-wrapper">
         <%= link_to '/about' do %>
-          <%= image_tag '/assets/site-logo', style: "width: 100%;" %>
+          <%= image_tag '/assets/site-logo', id: "about-link-logo", style: "width: 100%;" %>
         <% end %>
       </div>
       <!-- フォロワーランキング -->
-      <div class="each-ranking-wrapper">
-        <p class="ranking-header">フォロワーランキング</p>
-        <% @favorite_ranking.each_with_index do |user, index| %>
-          <ul class="contents-tidy ranking-style">
-            <li><%= index + 1 %>位</li>
-            <%= link_to user do %>
-              <li><%= user.name %></li>
-            <% end %>
-            <li class="ranking-count-font">
-              <%= user.passive_relationships.count %>人
-            </li>
-          </ul>
-        <% end %>
-      </div>
+      <%= render 'follower_ranking', favorite_ranking: @favorite_ranking %>
       <!-- お気に入りランキング -->
-      <div class="each-ranking-wrapper">
-        <p class="ranking-header">お気に入りランキング</p>
-        <% @article_ranking.each_with_index do |article, index| %>
-          <ul class="contents-tidy ranking-style">
-            <li><%= index + 1 %>位</li>
-            <%= link_to article do %>
-              <li><%= article.title %></li>
-            <% end %>
-            <li class="ranking-count-font">
-              <i class="fas fa-heart favorites-icon"></i>✖<%= article.favorites.count %>
-            </li>
-          </ul>
-        <% end %>
-      </div>
+      <%= render 'favorite_ranking', article_ranking: @article_ranking %>
       <!-- タグ ランキング -->
-      <div class="each-ranking-wrapper">
-        <p class="ranking-header">タグランキング</p>
-        <% @tag_ranking.each_with_index do |tag, index| %>
-          <ul class="contents-tidy ranking-style">
-            <li><%= index + 1 %>位</li>
-            <%= link_to tag do %>
-              <li><%= tag.tag_name %></li>
-            <% end %>
-            <li class="ranking-count-font"><%= tag.tag_maps.count %>記事</li>
-          </ul>
-        <% end %>
-      </div>
+      <%= render 'tag_ranking', tag_ranking: @tag_ranking %>
     </div>
   </div>
 </div>

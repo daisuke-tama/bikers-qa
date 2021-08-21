@@ -9,7 +9,7 @@ class Question < ApplicationRecord
   # ======================================
   # ========= validates ==================
   validates :title, presence: true, length: { maximum: 100 }
-  validates :content, presence: true, length: { maximum: 20000, message: "が長すぎます" }
+  validates :content, presence: true, length: { maximum: 20000 }
   # ======================================
 
   def create_notification_answer!(current_user, answer_id)

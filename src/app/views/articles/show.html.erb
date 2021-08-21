@@ -19,7 +19,7 @@
                 <% end %>
                 <%= comment.user.name %>
               <% end %>
-              さんが<%= comment.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+              さんが<%= comment.created_at.strftime("%Y年%m月%d日").to_s %>に作成
               <% if user_signed_in? && current_user.id == comment.user_id %>
                 <div style="float: right;">
                   <%= link_to "削除", article_comment_path(comment.article.id, comment.id), data: { confirm: "コメントを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
@@ -31,7 +31,7 @@
         <% end %>
         <% if user_signed_in? %>
           <%= form_with model: [@article, @comment], local: true do |f| %>
-            <%= f.text_area :body, placeholder: "適切なマナーを守り、心地よいコメントをしましょう！\r無記入や１００００文字を超えたコメントは投稿できません", rows: "10", class: "w-100" %>
+            <%= f.text_area :body, id: "create-comment-form", placeholder: "適切なマナーを守り、心地よいコメントをしましょう！\r無記入や１００００文字を超えたコメントは投稿できません", rows: "10", class: "w-100" %>
             <br>
             <%= f.submit "コメントする", class: "btn btn-outline-success replay-submit-btn" %>
           <% end %>

@@ -31,7 +31,7 @@
         <% end %>
         <% if user_signed_in? %>
           <%= form_with model: [@question, @answer], local: true do |f| %>
-            <%= f.text_area :body, placeholder: "適切なマナーを守り、心地よい回答をしましょう！", rows: "10", class: "w-100" %>
+            <%= f.text_area :body, id: "create-answer-form", placeholder: "適切なマナーを守り、心地よい回答をしましょう！", rows: "10", class: "w-100" %>
             <br>
             <%= f.submit "回答する", class: "btn btn-outline-success replay-submit-btn" %>
           <% end %>

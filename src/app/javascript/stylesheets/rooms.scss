@@ -1,21 +1,4 @@
 //==================== room/show =======================
-.dmr-header-bg {
-  height: 250px;
-  margin: 0 auto;
-}
-.dmr-header {
-  text-align: center;
-  margin-top: 56px;
-  margin-bottom: 20px;
-}
-.dmr-header-contents-wrapper {
-  top: 6px;
-  width: 100%;
-}
-.dmr-header-contents {
-  text-align: center;
-  font-size: 16px;
-}
 .left-section-dmr-name {
   font-size: 20px;
   border-bottom: 1px solid #d6d4d4;
@@ -26,4 +9,42 @@
 .room-delete-btn {
   width: 100%;
   margin-top: 30px;
+}
+
+// =============== レスポンシブデザイン ================
+.room-show.flex-contents-left-section.pc .card-body {
+  width: 265px;
+}
+.room-show.flex-contents-left-section.pc .room-detail-partner-profile > a + a {
+  margin-left: 10px;
+}
+.room-show.flex-contents-left-section.sp {
+  position : initial;
+}
+.room-show.flex-contents-left-section.sp .card-body {
+  text-align: center;
+}
+.room-show.flex-contents-left-section.sp .room-detail-partner-profile {
+  display: flex;
+  justify-content: space-around;
+}
+.room-show.flex-contents-left-section.sp .room-detailed-date {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.room-show.flex-contents-left-section.sp {
+  display: none;
+}
+// =============== メディアクエリ ================
+@media screen and (max-width: 730px) {
+  .room-show.flex-contents-left-section.pc {
+    display: none;
+  }
+  .room-show.flex-contents-left-section.sp {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+  }
 }

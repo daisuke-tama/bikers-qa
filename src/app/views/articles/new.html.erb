@@ -1,4 +1,15 @@
-<div class="card col-sm-6 mx-auto mt-5 mb-80">
+<div class="ps-relative">
+  <%= image_tag '/assets/contents-on-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">記事を作成してみよう！</h2>
+    <div class="page-detail-header-contents">
+      <p>記事を作成し、情報を共有しましょう！</p>
+      <p>最低限のマナーを守り、見た人が不快にならないよう気をつけましょう</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<div class="new-article-form card mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">記事を新規作成する</h3>
     <%= render 'form', article: @article %>

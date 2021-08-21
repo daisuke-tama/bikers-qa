@@ -11,12 +11,13 @@
             <% end %>
             <%= post.user.name %>
           <% end %>
-          さんが<%= post.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+          さんが<%= post.created_at.strftime("%Y年%m月%d日").to_s %>に作成
           <% if move_from == "article" %>
             <div style="float: right;">
               <i class="fas fa-heart favorite-icon-post-details"></i>✖<%= post.favorites.count %>        
             </div>
           <% end %>
+          <p><span style="margin-left: 65px;">最終更新：</span><%= post.updated_at.strftime("%Y年%m月%d日").to_s %>に更新</p>
         </div>
         <h5 class="card-title article-title-text"><%= post.title %></h5>
         <% if move_from == "article" && post.tags.present? %>
