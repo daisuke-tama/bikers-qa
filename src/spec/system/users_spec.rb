@@ -53,6 +53,7 @@ RSpec.describe 'Users', type: :system, js: true do
     visit user_path(other_user)
     expect do
       find('#follow-btn').click
+      sleep 0.5
       expect(page).to have_content 'フォロー解除'
     end.to change(Relationship, :count).by(+1)
   end
