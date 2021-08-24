@@ -27,6 +27,8 @@ module App
     config.time_zone = 'Asia/Tokyo'
     # RSpecテスト時に下記ドメインを許可
     config.hosts << '.example.com'
+    # Rails6系 DNSリバインディング攻撃からの保護 によりブロックされてしまうため、circleci上で使用許可するために記述
+    config.hosts << "127.0.0.1"
 
     config.generators do |g|
       g.stylesheets false

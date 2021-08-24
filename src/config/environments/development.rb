@@ -76,7 +76,6 @@ Rails.application.configure do
 
   #devise mailer setting
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
   # 10MBでローテート 3ファイル超えたら古いファイルから削除
   config.logger = Logger.new("log/development.log", 3, 10 * 1024 * 1024)
 end

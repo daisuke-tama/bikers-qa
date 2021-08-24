@@ -10,7 +10,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to "/#{move_from}", data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete do %>
+        <%= link_to "/#{move_from}s/#{article[:id]}", data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete do %>
           <div class="tooltip2">
             <i class="far fa-trash-alt left-section-editer-icon tooltip2"></i>
             <div class="description2">削除する</div>

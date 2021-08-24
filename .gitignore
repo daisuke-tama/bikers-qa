@@ -11,6 +11,8 @@ src/.bundle
 src/log/*
 src/tmp/*
 !src/log/.keep
+# heroku で使用するため除外禁止
+!src/log/production.log
 !src/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
