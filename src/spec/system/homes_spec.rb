@@ -55,5 +55,33 @@ RSpec.describe 'Comments', type: :system, js: true do
         expect(current_path).to eq notifications_path
       end
     end
+
+    describe "管理者用ページへの転移" do
+      let(:user)              { create(:user, admin: true) }
+      let(:unauthorized_user) { create(:user, admin: false) }
+
+      context "管理者権限を持つユーザーでログインしている時" do
+        it "管理用ページに転移できること" do
+          login(user)
+          visit rails_admin.dashboard_path
+          expect(current_path).to eq rails_admin.dashboard_path
+        end
+      end
+
+      context "管理者権限がないユーザーでログインしている時" do
+        it "管理用ページに転移出来ず、トップページへ転移すること" do
+          login(unauthorized_user)
+          visit rails_admin.dashboard_path
+          expect(current_path).to eq root_path
+        end
+      end
+
+      context "ログインしていない場合" do
+        it "ログイン画面へ転移すること" do
+          visit rails_admin.dashboard_path
+          expect(current_path).to eq new_user_session_path
+        end
+      end
+    end
   end
 end

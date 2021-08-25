@@ -85,6 +85,14 @@
 </div>
 
 <div class="main-contents">
+  <!-- 管理者用ページへ誘導 テストログインした時のみ表示-->
+  <% if user_signed_in? && current_user.admin == true %>
+    <div class="toppage-move-admin-btn">
+      <%= link_to '/admin' do %>
+        <button type="button" class="btn btn-outline-danger admin-btn">管理者用ページはこちら！</button>
+      <% end %>
+    </div>
+  <% end %>
   <!-- 検索フォーム 画面サイズ 730px以下で表示-->
   <div class="search-form">
     <%= search_form_for @q, url: search_articles_path do |f| %>
