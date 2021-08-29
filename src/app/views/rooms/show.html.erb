@@ -28,9 +28,9 @@
                 <div class="author-header-show">
                   <%= link_to user_path(message.user_id) do %>
                     <% if message.user.profile? %>
-                      <span style="margin-right: 5px;"><%= image_tag message.user.profile.url, class: "navber-profile-icon" %></span>
+                      <span style="margin-right: 5px;"><%= image_tag message.user.profile.url, class: "user-profile-icon" %></span>
                     <% else %>
-                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %></span>
                     <% end %>
                     <%= message.user.name %>
                   <% end %>

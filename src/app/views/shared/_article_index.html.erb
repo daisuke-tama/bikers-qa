@@ -4,9 +4,9 @@
       <div class="mb-10">
         <%= link_to user_path(article.user_id) do %>
           <% if article.user.profile? %>
-            <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "navber-profile-icon" %></span>
+            <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "user-profile-icon" %></span>
           <% else %>
-            <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+            <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %></span>
           <% end %>
           <%= article.user.name %>
         <% end %>
@@ -22,7 +22,7 @@
     <% end %>
     <% if article.tags.present? %>
       <div class="article-index-tag-style">
-        <i class="fas fa-tags tag-icon" style="width: 20px;"></i>
+        <i class="fas fa-tags tag-icon" style="width: 15px;"></i>
         <% article.tags.each do |article_tags| %>
           <%= article_tags.tag_name %>
         <% end %>

@@ -7,12 +7,12 @@
 
   <div class="form-group">
     <%= f.label :title, "タイトルを入力してください" %><br/>
-    <%= f.text_field :title, class: "form-control", placeholder: "例） シグナスX タイヤ交換の方法", autofocus: true, autocomplete: "title" %>
+    <%= f.text_field :title, class: "form-control form-article-title", placeholder: "例） シグナスX タイヤ交換の方法", autofocus: true, autocomplete: "title" %>
   </div>
 
   <div class="form-group">
     <%= f.label :tag_names, "タグ(最大４つ、最大文字数１０)" %><br/>
-    <%= f.text_field :tag_names, class: "form-control", style: "width: 100%;", placeholder: "タグを付ける場合は入力してください", autocomplete: "tag_names", data: {role: "tagsinput"} %>
+    <%= f.text_field :tag_names, class: "form-control form-article-tags", style: "width: 100%;", placeholder: "タグを付ける場合は入力してください", autocomplete: "tag_names", data: {role: "tagsinput"} %>
   </div>
 
   <div class="form-group">
@@ -20,7 +20,7 @@
     <%= f.rich_text_area :content, placeholder: "整備方法を書いてください", autocomplete: "content" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "確定する", class: "btn btn-outline-success btn-block" %>
+  <div class="actions mt-40 mb-30 text-center">
+    <%= f.submit "上記内容で確定する", class: "btn btn-outline-success" %>
   </div>
 <% end %>

@@ -52,7 +52,7 @@ RSpec.describe 'Articles', type: :system, js: true do
         fill_in 'タイトルを入力してください', with: 'bobの物語'
         fill_in 'タグ', with: 'bob'
         fill_in_rich_text_area '記事本文', with: 'まずボブの家に向かいます'
-        click_on '確定する'
+        click_on '上記内容で確定する'
         expect(page).to have_content 'bobの物語'
         expect(page).to have_content 'bob'
         expect(page).to have_content 'まずボブの家に向かいます'

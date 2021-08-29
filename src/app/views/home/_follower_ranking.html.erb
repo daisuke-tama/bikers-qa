@@ -1,14 +1,20 @@
 <div class="each-ranking-wrapper">
   <p class="ranking-header">フォロワーランキング</p>
-  <% favorite_ranking.each_with_index do |user, index| %>
-    <ul class="contents-tidy ranking-style">
-      <li><%= index + 1 %>位</li>
-      <%= link_to user do %>
-        <li id="follower-ranking-user-name"><%= truncate(user.name, length: 16) %></li>
+  <% follower_ranking.each_with_index do |user, index| %>
+    <div class="ranking-style">
+      <p class="ranking-number"><%= index + 1 %>位</p>
+      <%= link_to user, class: "follower-ranking-user-profile" do %>
+        <% if user.profile.blank? %>
+          <%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %>
+        <% else %>
+          <%= image_tag user.profile.url, class: "user-profile-icon" %>
+        <% end %>
+        <div id="follower-ranking-user-name"><%= truncate(user.name, length: 16) %></div>
       <% end %>
-      <li class="ranking-count-font">
-        <%= user.passive_relationships.count %>人
-      </li>
-    </ul>
+      <div class="ranking-count-wrapper">
+        <div class="ranking-count"><%= user.passive_relationships.count %></div>
+        <div class="ranking-count-detail">フォロー</div>
+      </div>
+    </div>
   <% end %>
 </div>

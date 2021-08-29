@@ -80,6 +80,9 @@ header {
 .mt-30 {
   margin-top: 30px;
 }
+.mt-40 {
+  margin-top: 40px;
+}
 .mt-50 {
   margin-top: 50px;
 }
@@ -245,6 +248,11 @@ header {
   margin-bottom: 15px;
   border-radius: 50%;
 }
+.user-profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 .favorite-icon {
   color: #ef60ff;
 }
@@ -265,6 +273,16 @@ header {
 .index-comment-icon {
   font-size: 20px;
   margin-right: 5px;
+}
+// ======= SNS icon =========
+.fa-facebook {
+  margin-right: 6px;
+}
+.fa-twitter {
+  margin-right: 6px;
+}
+.fa-google {
+  margin-right: 6px;
 }
 // ========= 通知用 ==========
 .no-nitification-text {
@@ -386,6 +404,7 @@ header {
   margin: 0 auto;
 }
 .page-detail-header {
+  font-weight: bold;
   text-align: center;
   margin-top: 56px;
   margin-bottom: 20px;
@@ -416,7 +435,7 @@ header {
 }
 
 .header-nav-item-box a:hover {
-  color: #5dff2a;
+  color: #24d45b;
   text-decoration: none;
 }
 

@@ -9,8 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # ひとまずユーザー編集時、パスワード入力無しで行えるようにする。
-  # 将来的に削除予定
+  # ユーザー編集時、パスワード入力無しで行えるようにする。
   def update_resource(resource, params)
     resource.update_without_password(params)
   end

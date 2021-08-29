@@ -1,4 +1,4 @@
-<div class="new-user-form card col-sm-6 mx-auto mt-5 mb-80">
+<div class="card col-sm-6 mx-auto mt-5 mb-80">
   <div class="card-body">
     <h3 class="mt-1 mb-3 text-center">ログイン</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,22 +20,28 @@
         </div>
       <% end %>
 
-      <div class="actions" style="text-align: center;">
+      <div class="actions mt-40 text-center">
         <%= f.submit "ログインする", class: "btn btn-outline-success" %>
       </div>
     <% end %>
 
-    <div class="mt-80" style="text-align: center;">
-      <p class="sns-relation-header under-line mb-30">
-      <span><i class="far fa-arrow-alt-circle-down"></i></span>
-      SNSと連携して新規登録する
-      <span><i class="far fa-arrow-alt-circle-down"></i></span>
-      </p>
-      <div class="new-user-relation-btns">
-        <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
-        <%= link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
-        <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+      <div class="mt-30 text-center">
+        <p class="sns-relation-header under-line mb-30">
+          <span><i class="far fa-arrow-alt-circle-down"></i></span>
+          SNSと連携して新規登録する
+          <span><i class="far fa-arrow-alt-circle-down"></i></span>
+        </p>
+        <div class="new-user-relation-btns">
+          <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+            <div class="btn btn-outline-primary"><i class="fab fa-facebook"></i>Facebookでログイン</div>
+          <% end %>
+          <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+            <div class="btn btn-outline-secondary"><i class="fab fa-twitter"></i>Twitterでログイン</div>
+          <% end %>
+          <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+            <div class="btn btn-outline-success"><i class="fab fa-google"></i>Googleでログイン</div>
+          <% end %>
+        </div>
       </div>
-    </div>
   </div>
 </div>

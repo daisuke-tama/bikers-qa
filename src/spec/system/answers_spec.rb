@@ -13,6 +13,7 @@ RSpec.describe 'Answers', type: :system, js: true do
         visit root_path
 
         find('#question-index-btn').click
+        sleep 0.5
         click_on 'bobの物語'
         fill_in 'create-answer-form', with: '魔法を使いましょう'
         expect  do

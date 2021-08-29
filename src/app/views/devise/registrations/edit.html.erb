@@ -1,55 +1,61 @@
-<div class="card col-sm-6 mx-auto mt-5 mb-80">
-  <div class="card-body">
-    <h3 class="mt-1 mb-3 text-center">会員情報の編集</h3>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <!-- 画像アップロード -->
-      <%= f.label :profile, class: "image_label edit-profile" do %>
-        <div class="prev-contents">
-          <% if current_user.profile.blank? %>
-            <%= image_tag '/assets/profile_defalt.png', class: "photo-icon profile-image" %>
-          <% else %>
-            <div class="prev-content">
-              <%= image_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
-            </div>
-          <% end %>
-          <p style="text-align: center;">プロフィール画像を変更したい場合は画像をクリックしてください</p>
+<div class="content-width contents-tidy">
+  <!-- ユーザー編集入力フォーム -->
+  <div class="form-user-registrations card mt-5 mb-80">
+    <div class="card-body">
+      <h3 class="mt-1 mb-3 text-center">会員情報の編集</h3>
+      <div><span style="color: red;">*</span>が付いている箇所は必須項目です</div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <!-- 画像アップロード -->
+        <%= f.label :profile, class: "image_label edit-profile" do %>
+          <div class="prev-contents">
+            <% if current_user.profile.blank? %>
+              <%= image_tag '/assets/profile_defalt.png', class: "photo-icon profile-image" %>
+            <% else %>
+              <div class="prev-content">
+                <%= image_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
+              </div>
+            <% end %>
+            <p style="text-align: center;">プロフィール画像を変更したい場合はこちらをクリックしてください</p>
+          </div>
+        <% end %>
+        <p class="mb-20">
+          <label>
+            <%= f.check_box :remove_profile %>
+            デフォルト画像に戻したい時はチェックを入れてください
+          </label>
+        </p>
+        <%= f.file_field :profile, class: 'image_form__contents__field hidden_file', style: "display: none;"%>
+
+        <div class="form-group">
+          <%= f.label :name, "名前を入力してください" %><br />
+          <%= f.text_field :name, class: "form-control", placeholder: "例） 二輪 太郎", autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :introduce, "自己紹介内容を入力してください" %><br />
+          <%= f.text_area :introduce, class: "form-control", placeholder: "例） どうもはじめまして！よろしくおねがいします！", autocomplete: "introduce", rows: "10"%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, class: "form-control", placeholder: "例） bikers-qa@gmail.com", autocomplete: "email" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="actions mt-40 mb-30 text-center">
+          <%= f.submit "編集を完了する", class: "btn btn-outline-success" %>
         </div>
       <% end %>
-      <p class="mb-20">
-        <label>
-          <%= f.check_box :remove_profile %>
-          デフォルト画像に戻したい時はチェックを入れてください
-        </label>
-      </p>
-      <%= f.file_field :profile, class: 'image_form__contents__field hidden_file', style: "display: none;"%>
 
-      <div class="form-group">
-        <%= f.label :name, "名前を入力してください" %><br />
-        <%= f.text_field :name, class: "form-control", placeholder: "例） 二輪 太郎", autofocus: true, autocomplete: "name" %>
-      </div>
+      <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "アカウントを削除すると戻すことは出来ません。本当によろしいですか？" }, class: "btn btn-outline-danger f-right", method: :delete %>
 
-      <div class="form-group">
-        <%= f.label :introduce, "自己紹介内容を入力してください" %><br />
-        <%= f.text_area :introduce, class: "form-control", placeholder: "例） どうもはじめまして！よろしくおねがいします！", autocomplete: "introduce", rows: "10"%>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, class: "form-control", placeholder: "例） bikers-qa@gmail.com", autocomplete: "email" %>
-      </div>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-
-      <div class="actions mb-50">
-        <%= f.submit "編集を完了する", class: "btn btn-outline-success btn-block" %>
-      </div>
-    <% end %>
-
-    <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "アカウントを削除すると戻すことは出来ません。本当によろしいですか？" }, class: "btn btn-outline-danger f-right", method: :delete %>
-
-    <%= link_to "戻る", :back, class: "btn btn-outline-primary" %>
+      <%= link_to "戻る", :back, class: "btn btn-outline-primary" %>
+    </div>
   </div>
+  <!-- 新規登録の入力方法の説明 画面サイズ 758px で非表示 -->
+  <%= render "devise/shared/explanation_of_input_method" %>
 </div>

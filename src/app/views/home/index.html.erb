@@ -4,48 +4,10 @@
   <!-- carousel上のコンテンツ -->
   <!-- ログイン後 -->
   <% if user_signed_in? %>
-    <div class="guide-contents ps-absolute w-100" style="top: 48%;">
-      <div class="content-width contents-tidy" style="color: white;">
-        <!-- 記事を書いてみよう -->
-        <section class="effect-fade">
-          <div class="card" style="width: 18rem;">
-            <%= image_tag '/assets/show-article', class: "calousel-on-card-img", style: "width: 130px;" %>
-            <div class="card-body" style="background-color: #b5b5b5;">
-              <%= link_to articles_path do %>
-                <h5 class="card-title card-title-custom">記事を見る</h5>
-              <% end %>
-              <p class="card-text" style="line-height: 2.0;">
-              みんなの記事を見てみよう！
-              知らない情報が手に入るかも♪</p>
-            </div>
-          </div>
-        </section>
-        <!-- 質問してみる -->
-        <section class="effect-fade">
-          <div class="card" style="width: 18rem;">
-            <%= image_tag '/assets/question', class: "calousel-on-card-img" %>
-            <div class="card-body" style="background-color: #b5b5b5;">
-              <%= link_to new_question_path do %>
-                <h5 class="card-title card-title-custom">質問する</h5>
-              <% end %>
-              <p class="card-text" style="line-height: 2.0;">
-              TRYしてわからなかったことは気軽に質問してみよう</p>
-            </div>
-          </div>
-        </section>
-        <!-- 記事を書いてみる -->
-        <section class="effect-fade">
-          <div class="card" style="width: 18rem;">
-            <%= image_tag '/assets/write', class: "calousel-on-card-img" %>
-            <div class="card-body" style="background-color: #b5b5b5;">
-              <%= link_to new_article_path do %>
-                <h5 class="card-title card-title-custom">記事を書く</h5>
-              <% end %>
-              <p class="card-text" style="line-height: 2.0;">
-              経験を身にするためと困っている人の力になろう</p>
-            </div>
-          </div>
-        </section>
+    <div class="guidance-contents-pc ps-absolute w-100" style="top: 34%;">
+      <div class="content-width contents-tidy">
+        <!-- 画面サイズ 900px 以下で非表示 -->
+        <%= render "guidance" %>
       </div>
     </div>
   <% else %>
@@ -74,9 +36,15 @@
             SNSと連携して新規登録する
             <span><i class="far fa-arrow-alt-circle-down"></i></span>
             </p>
-            <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class: "btn btn-outline-primary", method: :post %>
-            <%= link_to 'Twitterで登録', user_twitter_omniauth_authorize_path, class: "btn btn-outline-secondary", method: :post %>
-            <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success", method: :post %>
+            <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+              <div class="btn btn-outline-primary"><i class="fab fa-facebook"></i>Facebookで登録</div>
+            <% end %>
+            <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+              <div class="btn btn-outline-secondary"><i class="fab fa-twitter"></i>Twitterで登録</div>
+            <% end %>
+            <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+              <div class="btn btn-outline-success"><i class="fab fa-google"></i>Googleで登録</div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -84,7 +52,7 @@
   <% end %>
 </div>
 
-<div class="main-contents">
+<div class="main-contents content-width">
   <!-- 管理者用ページへ誘導 テストログインした時のみ表示-->
   <% if user_signed_in? && current_user.admin == true %>
     <div class="toppage-move-admin-btn">
@@ -93,6 +61,12 @@
       <% end %>
     </div>
   <% end %>
+  <!-- 画面サイズ 900px 以下で表示 -->
+  <div class="guidance-contents-sp">
+    <div class="content-width contents-tidy">
+      <%= render "guidance" %>
+    </div>
+  </div>
   <!-- 検索フォーム 画面サイズ 730px以下で表示-->
   <div class="search-form">
     <%= search_form_for @q, url: search_articles_path do |f| %>
@@ -102,7 +76,7 @@
     <% end %>
   </div>
   <div class="contents-tidy">
-    <div class="content-width nav-tubs-pc">
+    <div class="nav-tubs-pc">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">最新記事</a>
@@ -124,7 +98,7 @@
       <!-- 画面下側のコンテンツ(画面サイズ 830px 以下で表示) -->
       <div class="toppage-right-contents-wrapper">
         <!-- フォロワーランキング -->
-        <%= render 'follower_ranking', favorite_ranking: @favorite_ranking %>
+        <%= render 'follower_ranking', follower_ranking: @follower_ranking %>
         <!-- お気に入りランキング -->
         <%= render 'favorite_ranking', article_ranking: @article_ranking %>
         <!-- タグ ランキング -->
@@ -140,7 +114,7 @@
         <% end %>
       </div>
       <!-- フォロワーランキング -->
-      <%= render 'follower_ranking', favorite_ranking: @favorite_ranking %>
+      <%= render 'follower_ranking', follower_ranking: @follower_ranking %>
       <!-- お気に入りランキング -->
       <%= render 'favorite_ranking', article_ranking: @article_ranking %>
       <!-- タグ ランキング -->

@@ -1,12 +1,15 @@
 <div class="each-ranking-wrapper">
   <p class="ranking-header">タグランキング</p>
   <% tag_ranking.each_with_index do |tag, index| %>
-    <ul class="contents-tidy ranking-style">
-      <li><%= index + 1 %>位</li>
+    <div class="ranking-style">
+      <p class="ranking-number"><%= index + 1 %>位</p>
       <%= link_to tag do %>
-        <li id="tag-ranking-article-title"><%= tag.tag_name %></li>
+        <div id="tag-ranking-article-title"><%= tag.tag_name %></div>
       <% end %>
-      <li class="ranking-count-font"><%= tag.tag_maps.count %>記事</li>
-    </ul>
+      <div class="ranking-count-wrapper">
+        <div class="ranking-count"><%= tag.tag_maps.count %></div>
+        <div class="ranking-count-detail">記事で使用</div>
+      </div>
+    </div>
   <% end %>
 </div>

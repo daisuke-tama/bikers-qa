@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     # =============== ランキング関連 =====================================
     @article_ranking = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(10).pluck(:article_id))
     @tag_ranking = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
-    @favorite_ranking = User.find(Relationship.group(:follower_id).order('count(follower_id) desc').limit(10).pluck(:follower_id))
+    @follower_ranking = User.find(Relationship.group(:follower_id).order('count(follower_id) desc').limit(10).pluck(:follower_id))
     # ==================================================================
   end
 

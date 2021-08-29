@@ -16,7 +16,8 @@ RSpec.describe 'Questions', type: :system, js: true do
         fill_in 'タイトル', with: 'aliceの冒険について'
         fill_in_rich_text_area '質問本文', with: 'どうやって小さくなればいいですか？'
         expect do
-          click_on '質問をする'
+          click_on '上記内容で確定する'
+          sleep 0.5
         end.to change(Question, :count).by(+1)
       end
     end

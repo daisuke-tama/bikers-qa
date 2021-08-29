@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//=========== question/new ==============
+.form-question-title {
+  width: 60%;
+}
 //=========== question/index ==============
 .question-index-main-contents {
   padding-top: 30px;
@@ -10,4 +14,8 @@
 .new-question-form {
   flex: 0 0 50%;
   max-width: 80%;
+}
+.answer-count-icon {
+  font-size: 20px;
+  margin-right: 5px;
 }
