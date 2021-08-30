@@ -1,0 +1,24 @@
+{
+  "application.js": "/packs/js/application-5ccd84f6cbe2b5c2896d.js",
+  "application.js.map": "/packs/js/application-5ccd84f6cbe2b5c2896d.js.map",
+  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js",
+  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-5ccd84f6cbe2b5c2896d.js"
+      ],
+      "js.map": [
+        "/packs/js/application-5ccd84f6cbe2b5c2896d.js.map"
+      ]
+    },
+    "calousel-on-card-animation": {
+      "js": [
+        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js"
+      ],
+      "js.map": [
+        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map"
+      ]
+    }
+  }
+}
