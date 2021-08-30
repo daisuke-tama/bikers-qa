@@ -12,3 +12,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# circleci上でのセグメンテーションエラー回避。詳しくは下記記事を参照
+# https://qiita.com/SoarTec-lab/items/5266b4465b417b641d73
+Sprockets.export_concurrent = false
