@@ -19,13 +19,16 @@
 .article-index-tag-style {
   display: flex;
   align-items: center;
-  margin-bottom: 13px;
+  margin-bottom: 4px;
 }
 .new-article-form {
   flex: 0 0 50%;
   max-width: 80%;
 }
-
+.latest-article-reaction-icon {
+  margin-top: 10px;
+  text-align: end;
+}
 //========== article/show ================
 .article-show-main-contents {
   padding-top: 30px;

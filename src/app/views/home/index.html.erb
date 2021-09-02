@@ -1,34 +1,40 @@
 <!-- carousel -->
 <div class="ps-relative">
-  <%= render 'carousel' %>
+  <div class="carousel-pc">
+    <%= render 'carousel' %>
+  </div>
   <!-- carousel上のコンテンツ -->
   <!-- ログイン後 -->
+  <!-- 画面サイズ 900px 以下で非表示 -->
   <% if user_signed_in? %>
     <div class="guidance-contents-pc ps-absolute w-100" style="top: 34%;">
-      <div class="content-width contents-tidy">
-        <!-- 画面サイズ 900px 以下で非表示 -->
-        <%= render "guidance" %>
+      <div class="content-width">
+        <section class="effect-fade a-hover-style-cancel contents-tidy">
+          <%= render "guidance" %>
+        </section>
       </div>
     </div>
   <% else %>
     <!-- 未ログイン -->
-    <div class="carousel-on-right-contents ps-absolute w-100" style="top: 21%;">
+    <div class="carousel-on-right-contents ps-absolute w-100">
       <div class="content-width">
         <div class="contents-tidy">
           <!-- サイト説明欄 -->
           <div class="carousel-on-text">
-            <%= image_tag '/assets/contents-on-logo.png', style: "height: 200px;" %>
-            <h2 style="text-align: center;">バイク専門の整備情報サイト</h2>
+            <div class="carousel-on-logo">
+              <%= image_tag '/assets/main-logo.png' %>
+            </div>
+            <h2 class="carousel-on-text-header text-center">バイク専門の整備情報サイト</h2>
             <p>Bikers-QAはバイク整備に関する知識を記録・共有するサービスです</p>
             <p>整備をしていて気がついた事や、大変だった事など</p>
             <p>他の方と共有しましょう!!!</p>
-            <div style="border-bottom: 1px solid white; margin-top: 15px;">
+            <div class="about-link-text">
               <a href="/about" style="font-size: 16px;">もっと詳しくみてみる</a>
             </div>
           </div>
           <!-- 新規登録関連 -->
           <div class="new-user-select-menu mt-80">
-            <%= link_to new_user_registration_path do %> 
+            <%= link_to new_user_registration_path do %>
               <button type="button" class="btn btn-outline-primary mb-20" style="width: -webkit-fill-available;">メールアドレスで登録</button>
             <% end %>
             <p class="subtitle-font under-line mb-30">
@@ -61,17 +67,19 @@
       <% end %>
     </div>
   <% end %>
-  <!-- 画面サイズ 900px 以下で表示 -->
-  <div class="guidance-contents-sp">
-    <div class="content-width contents-tidy">
-      <%= render "guidance" %>
+  <!-- ログイン時、画面サイズ 900px 以下で表示 -->
+  <% if user_signed_in? %>
+    <div class="guidance-contents-sp">
+      <div class="content-width contents-tidy">
+        <%= render "guidance" %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <!-- 検索フォーム 画面サイズ 730px以下で表示-->
-  <div class="search-form">
+  <div class="search-form-sp">
     <%= search_form_for @q, url: search_articles_path do |f| %>
-      <%= f.label :title_cont, '記事検索' %>
-      <%= f.search_field :title_cont, style: "width: 250px;" %>
+      <%= f.label :title_cont, '記事検索' %><br>  
+      <%= f.search_field :title_cont, style: "width: 250px;" %><br>  
       <%= f.submit '検索', class: "btn btn-outline-success" %>
     <% end %>
   </div>
@@ -107,10 +115,10 @@
     </div>
     <!-- 画面右側のコンテンツ 画面サイズ 830px 以下で非表示 -->
     <div class="toppage-right-contents-wrapper-pc">
-      <!-- サイト説明ページ転移ロゴ -->
       <div class="each-ranking-wrapper">
+        <!-- サイト説明ページ転移ロゴ -->
         <%= link_to '/about' do %>
-          <%= image_tag '/assets/site-logo', id: "about-link-logo", style: "width: 100%;" %>
+          <%= image_tag '/assets/main-logo', id: "about-link-logo", style: "width: 100%;" %>
         <% end %>
       </div>
       <!-- フォロワーランキング -->

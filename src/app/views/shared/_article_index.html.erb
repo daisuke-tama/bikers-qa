@@ -10,12 +10,8 @@
           <% end %>
           <%= article.user.name %>
         <% end %>
-        さんが<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+        が<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
       </div>         
-      <div>
-        <i class="far fa-comment-dots index-comment-icon"></i><%= article.comments.count %>
-        <i class="fas fa-heart favorites-icon"></i><%= article.favorites.count %>
-      </div>
     </div>
     <%= link_to article do %>
       <h5 class="card-title user-show-indextitle"><%= article.title %></h5>
@@ -29,5 +25,9 @@
       </div>
     <% end %>
     <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").truncate(100) %>
+    <div class="latest-article-reaction-icon">
+      <i class="far fa-comment-dots index-comment-icon"></i><%= article.comments.count %>
+      <i class="far fa-heart favorites-icon"></i><%= article.favorites.count %>
+    </div>
   </div>
 </div>

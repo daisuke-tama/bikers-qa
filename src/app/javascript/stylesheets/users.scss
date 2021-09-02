@@ -29,6 +29,10 @@
   margin-top: 3rem !important;
   width: 25%;
   padding: 0 16px;
+  padding-bottom: 20px;
+}
+.explanation-of-input-method img {
+  margin-top: 10px;
 }
 .explanation-of-input-method h4 {
   text-align: center;
@@ -36,7 +40,6 @@
   margin-bottom: 5px;
   font-weight: bold;
 }
-
 //========= users/show ============
 .username-font {
   font-weight: bold;
@@ -158,11 +161,6 @@
 }
 @media screen and (min-width: 900px) {
   .move-to-dm-room-btn.sp {
-    display: none;
-  }
-}
-@media screen and (max-width: 930px) {
-  .new-user-select-menu {
     display: none;
   }
 }

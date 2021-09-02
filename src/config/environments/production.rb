@@ -51,8 +51,8 @@ Rails.application.configure do
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info
-  # 10MBでローテート 5ファイル超えたら古いファイルから削除
-  config.logger = Logger.new("log/production.log", 5, 10 * 1024 * 1024)
+  # 10MBでローテート 3ファイル超えたら古いファイルから削除
+  config.logger = Logger.new("log/production.log", 3, 10 * 1024 * 1024)
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]

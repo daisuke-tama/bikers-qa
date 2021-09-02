@@ -249,17 +249,16 @@ header {
   border-radius: 50%;
 }
 .user-profile-icon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 .favorite-icon {
   color: #ef60ff;
 }
 .favorites-icon {
-  color: #ef60ff;
-  font-size: 17px;
-  margin-right: 5px;
+  font-size: 15px;
+  margin-right: 2px;
 }
 .favorite-icon-post-details {
   font-size: 15px;
@@ -271,8 +270,8 @@ header {
   margin-right: 10px;
 }
 .index-comment-icon {
-  font-size: 20px;
-  margin-right: 5px;
+  font-size: 16px;
+  margin-right: 2px;
 }
 // ======= SNS icon =========
 .fa-facebook {
@@ -351,6 +350,10 @@ header {
 .footer-right > a + a {
   margin-top: 10px;
 }
+.footer-logo {
+  text-align: center;
+  margin-bottom: 12px;
+}
 //========== tooltip ============
 // bootstrapのtooltipが使用不可のためcssで作成
 .tooltip2{
@@ -389,10 +392,6 @@ header {
   left: 50px;
 }
 
-.navber-profile-icons {
-  margin-right: 40px;
-}
-
 .navber-right {
   display: flex;
   align-items: center;
@@ -421,33 +420,20 @@ header {
 /*=====================
         header
 ======================*/
-.site-header {
-  padding-top : 20px;
-  padding-bottom : 20px;
-}
-
-.site-header-logo img {
-  width : auto;
-  height : 20px;
-}
-.site-header-logo-sp {
-  display : none;
-}
-
 .header-nav-item-box a:hover {
   color: #24d45b;
   text-decoration: none;
 }
-
-@media screen and (max-width: 767px) {
-  .site-header-logo-pc {
-    display : none;
-  }
-  .site-header-logo-sp {
-    display : block;
+@media screen and (max-width: 640px) {
+  .navber-profile-icons {
+    display: none;
   }
 }
-
+@media screen and (min-width: 1080px) {
+  .header-nav-item-sp {
+    display: none;
+  }
+}
 /* header-nav-list */
 
 .header-nav-list li + li {
@@ -472,24 +458,6 @@ header {
 .header-nav-item.current {
   color : #f79314;
 }
-
-@media screen and (max-width: 1080px) {
-  .site-header {
-    position: fixed;
-    background-color: white;
-    width: 100%;
-    z-index: 10;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .site-header {
-    padding-top : 15px;
-    padding-bottom : 15px;
-  }
-}
-
-
 /*  hamburger-menu  */
 
 .header-nav-hamburger {
@@ -500,6 +468,9 @@ header {
 }
 
 @media screen and (max-width: 1080px) {
+  .navber-profile-icons {
+    margin-right: 40px;
+  }
   .hamburger-menu {
     display : flex;
   }

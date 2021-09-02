@@ -3,14 +3,16 @@
   <% follower_ranking.each_with_index do |user, index| %>
     <div class="ranking-style">
       <p class="ranking-number"><%= index + 1 %>位</p>
-      <%= link_to user, class: "follower-ranking-user-profile" do %>
-        <% if user.profile.blank? %>
-          <%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %>
-        <% else %>
-          <%= image_tag user.profile.url, class: "user-profile-icon" %>
+      <div>
+        <%= link_to user, class: "follower-ranking-user-profile" do %>
+          <% if user.profile.blank? %>
+            <%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %>
+          <% else %>
+            <%= image_tag user.profile.url, class: "user-profile-icon" %>
+          <% end %>
+          <div id="follower-ranking-user-name"><%= truncate(user.name, length: 16) %></div>
         <% end %>
-        <div id="follower-ranking-user-name"><%= truncate(user.name, length: 16) %></div>
-      <% end %>
+      </div>
       <div class="ranking-count-wrapper">
         <div class="ranking-count"><%= user.passive_relationships.count %></div>
         <div class="ranking-count-detail">フォロー</div>

@@ -1,3 +1,13 @@
+<div class="ps-relative">
+  <%= image_tag '/assets/main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">あなたへのアクションを確認！</h2>
+    <div class="page-detail-header-contents">
+      <p>お気に入りやフォロー、コメントなどしてもらった事が通知されます</p>
+      <p>ページを離れると新着通知は消えますが、確認済通知で確認できます</p>
+    </div>
+  </div>
+</div>
 <% if @notifications.blank? %>
   <p class="no-nitification-text">通知はありません</p>
 <% else %>

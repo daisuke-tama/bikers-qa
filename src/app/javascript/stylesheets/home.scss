@@ -36,13 +36,57 @@
   font-weight: bold;
   text-align: center;
 }
+.carousel-on-right-contents {
+  top: 21%;
+}
 .carousel-on-text {
   color: white;
   font-weight: bold;
 }
-@media screen and (max-width: 930px) {
+.carousel-on-logo {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.carousel-on-logo img {
+  height: 200px;
+}
+.about-link-text {
+  border-bottom: 1px solid white;
+  margin-top: 15px;
+}
+@media screen and (max-width: 767px) {
+  .carousel-pc {
+    display: none;
+  }
+  .carousel-on-right-contents.ps-absolute {
+    position: initial;
+  }
+  .carousel-on-right-contents .carousel-on-text-header {
+    font-size: 20px;
+    color: black;
+  }
+  .carousel-on-logo img {
+    width: 100%;
+    height: initial;
+    margin-top: 30px;
+  }
+  .carousel-on-text p {
+    text-align: center;
+    font-size: 12px;
+    color: black;
+  }
+  .carousel-on-text .about-link-text {
+  border-bottom: 1px solid #b5b5b5;
+  color: black;
+  margin-top: 15px;
+  }
+}
+@media screen and (max-width: 980px) {
   .carousel-on-text {
     margin: 0 auto;
+  }
+  .new-user-select-menu {
+    display: none;
   }
 }
 // ログイン後
@@ -106,7 +150,7 @@
   .guidance-contents-sp .contents-tidy {
     display: block;
     text-align: -webkit-center;
-    width: 15rem;
+    width: 16rem;
     margin-bottom: 50px;
   }
   .guidance-contents-sp .card {
@@ -191,11 +235,6 @@
 .follower-ranking-user-profile {
   display: flex;
   align-items: center;
-  margin-left: 30px;
-}
-.follower-ranking-user-profile .user-profile-icon {
-  width: 30px;
-  height: 30px;
 }
 #follower-ranking-user-name {
   font-weight: bold;
@@ -211,6 +250,16 @@
 }
 
 //========== home/about ============
+.about-logo-wrapper {
+  text-align: center;
+  background-color: white;
+  margin: 23px;
+}
+.about-logo {
+  margin: 30px;
+  max-height: 300px;
+}
+
 .about-contents-header {
   text-align: center;
   font-size: 30px;
@@ -234,15 +283,23 @@
   line-height: 1.8;
 }
 
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 829px) {
   .search-form-pc {
     display: none;
   }
-  .search-form {
+  .search-form-sp {
     display: block;
     text-align: center;
     margin-bottom: 70px;
   }
+  .search-form-sp label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .search-form-sp #q_title_cont {
+    margin-bottom: 10px;
+  }
+
   .toppage-right-contents-wrapper-pc {
     display: none;
   }
@@ -250,15 +307,10 @@
     display: block;
     margin-top: 50px;
   }
-  .each-ranking-wrapper .ranking-style {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-    padding-right: 40px;
-    padding-left: 40px;
-  }
 }
 
 @media screen and (min-width: 830px) {
-  .search-form {
+  .search-form-sp {
     display: none;
   }
   .nav-tubs-pc {
@@ -266,14 +318,5 @@
   }
   .carousel-inner {
     height: 600px;
-  }
-}
-@media screen and (max-width: 730px) {
-  .carousel-on-right-contents.ps-absolute {
-    position: initial;
-    margin-bottom: 40px;
-  }
-  .carousel-on-text {
-    color: black;
   }
 }
