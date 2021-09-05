@@ -1,23 +1,27 @@
 {
-  "application.js": "/packs/js/application-3beb3de63bce019f6ac3.js",
-  "application.js.map": "/packs/js/application-3beb3de63bce019f6ac3.js.map",
-  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js",
-  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map",
+  "application.css": "/packs/css/application-88645db2.css",
+  "application.js": "/packs/js/application-0514bff6d011d30cbae0.js",
+  "application.js.map": "/packs/js/application-0514bff6d011d30cbae0.js.map",
+  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js",
+  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js.map",
   "entrypoints": {
     "application": {
+      "css": [
+        "/packs/css/application-88645db2.css"
+      ],
       "js": [
-        "/packs/js/application-3beb3de63bce019f6ac3.js"
+        "/packs/js/application-0514bff6d011d30cbae0.js"
       ],
       "js.map": [
-        "/packs/js/application-3beb3de63bce019f6ac3.js.map"
+        "/packs/js/application-0514bff6d011d30cbae0.js.map"
       ]
     },
     "calousel-on-card-animation": {
       "js": [
-        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js"
+        "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js"
       ],
       "js.map": [
-        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map"
+        "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js.map"
       ]
     }
   }

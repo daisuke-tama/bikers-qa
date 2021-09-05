@@ -120,17 +120,11 @@ jobs:
           version: 19.03.13
       - heroku/install
       - run:
-          name: heroku login
-          command: heroku container:login
+          name: Identify current branch name
+          command: echo 'export CURRENT_BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`' >> $BASH_ENV
       - run:
-          name: push docker image
-          command: heroku container:push web -a $HEROKU_APP_NAME
-      - run:
-          name: release docker image
-          command: heroku container:release web -a $HEROKU_APP_NAME
-      - run:
-          name: database setup
-          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
+          name: Heroku Deploy
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git $CURRENT_BRANCH_NAME:master
 
 workflows:
   version: 2
