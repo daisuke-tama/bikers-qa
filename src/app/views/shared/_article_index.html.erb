@@ -4,9 +4,8 @@
       <div class="mb-10">
         <%= link_to user_path(article.user_id) do %>
           <% if article.user.profile? %>
-            <span style="margin-right: 5px;"><%= image_tag article.user.profile.url, class: "user-profile-icon" %></span>
-          <% else %>
-            <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %></span>
+            <%= image_tag article.user.profile.url, class: "user-profile-icon" %>
+            <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
           <% end %>
           <%= article.user.name %>
         <% end %>

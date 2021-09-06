@@ -1,5 +1,5 @@
 <div class="ps-relative">
-  <%= image_tag '/assets/main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
   <div class="ps-absolute page-detail-header-contents-wrapper">
     <h2 class="page-detail-header">ダイレクトメッセージルームへようこそ！</h2>
     <div class="page-detail-header-contents">
@@ -28,9 +28,9 @@
                 <div class="author-header-show">
                   <%= link_to user_path(message.user_id) do %>
                     <% if message.user.profile? %>
-                      <span style="margin-right: 5px;"><%= image_tag message.user.profile.url, class: "user-profile-icon" %></span>
+                      <%= image_pack_tag message.user.profile.url, class: "user-profile-icon" %>
                     <% else %>
-                      <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %></span>
+                      <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
                     <% end %>
                     <%= message.user.name %>
                   <% end %>

@@ -3,7 +3,7 @@
   <div class="flex-contents-left-section">
     <div class="card-body">
       <% if @user.profile.blank? %>
-        <%= image_tag '/assets/profile_defalt.png', class: "profile-image" %>
+        <%= image_pack_tag 'profile_defalt.png', class: "profile-image" %>
       <% else %>
         <%= image_tag @user.profile.url, class: "profile-image"%>
       <% end %>
@@ -92,7 +92,7 @@
   <div class="user-show flex-contents-right-section">
     <% if @user.id != current_user.id && @working_room.blank? %>
       <div class="card-body" style="width: 265px;">
-        <%= image_tag '/assets/conversation', class: "w-100" %>
+        <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
         <p class="invite-dmroom-text">
           <%= @user.name %>さんと
           ダイレクトメッセージ機能を使って
@@ -110,7 +110,7 @@
       </div>
     <% elsif @user.id != current_user.id && @working_room == true %>
       <div class="card-body" style="width: 265px;">
-        <%= image_tag '/assets/conversation', class: "w-100" %>
+        <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
         <p class="invite-dmroom-text">
           <%= @user.name %>さんと
           ダイレクトメッセージ機能を使って

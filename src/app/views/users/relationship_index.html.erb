@@ -3,9 +3,9 @@
   <div class="flex-contents-left-section">
     <div class="card-body" style="width: 265px;">
       <% if current_user.profile.blank? %>
-        <%= image_tag '/assets/profile_defalt.png', class: "profile-image" %>
+        <%= image_pack_tag 'profile_defalt.png', class: "profile-image" %>
       <% else %>
-        <%= image_tag current_user.profile.url, class: "profile-image"%>
+        <%= image_pack_tag current_user.profile.url, class: "profile-image"%>
       <% end %>
       <h5 class="card-title username-font"><%= current_user.name %></h5>
       <div class="relationship-link-text">

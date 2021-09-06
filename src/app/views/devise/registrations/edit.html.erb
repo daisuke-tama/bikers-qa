@@ -10,10 +10,10 @@
         <%= f.label :profile, class: "image_label edit-profile" do %>
           <div class="prev-contents">
             <% if current_user.profile.blank? %>
-              <%= image_tag '/assets/profile_defalt.png', class: "photo-icon profile-image" %>
+              <%= image_pack_tag 'profile_defalt.png', class: "photo-icon profile-image" %>
             <% else %>
               <div class="prev-content">
-                <%= image_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
+                <%= image_pack_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
               </div>
             <% end %>
             <p style="text-align: center;">プロフィール画像を変更したい場合はこちらをクリックしてください</p>
@@ -37,10 +37,12 @@
           <%= f.text_area :introduce, class: "form-control", placeholder: "例） どうもはじめまして！よろしくおねがいします！", autocomplete: "introduce", rows: "10"%>
         </div>
 
-        <div class="form-group">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, class: "form-control", placeholder: "例） bikers-qa@gmail.com", autocomplete: "email" %>
-        </div>
+        <% unless current_user.admin == true %>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "form-control", placeholder: "例） bikers-qa@gmail.com", autocomplete: "email" %>
+          </div>
+        <% end %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

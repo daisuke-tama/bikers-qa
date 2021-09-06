@@ -1,28 +1,31 @@
 {
-  "application.css": "/packs/css/application-88645db2.css",
-  "application.js": "/packs/js/application-0514bff6d011d30cbae0.js",
-  "application.js.map": "/packs/js/application-0514bff6d011d30cbae0.js.map",
-  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js",
-  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js.map",
+  "application.js": "/packs/js/application-cc7c28526d6e50559dc5.js",
+  "application.js.map": "/packs/js/application-cc7c28526d6e50559dc5.js.map",
+  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js",
+  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map",
   "entrypoints": {
     "application": {
-      "css": [
-        "/packs/css/application-88645db2.css"
-      ],
       "js": [
-        "/packs/js/application-0514bff6d011d30cbae0.js"
+        "/packs/js/application-cc7c28526d6e50559dc5.js"
       ],
       "js.map": [
-        "/packs/js/application-0514bff6d011d30cbae0.js.map"
+        "/packs/js/application-cc7c28526d6e50559dc5.js.map"
       ]
     },
     "calousel-on-card-animation": {
       "js": [
-        "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js"
+        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js"
       ],
       "js.map": [
-        "/packs/js/calousel-on-card-animation-ff1119f9a1f38c77a79a.js.map"
+        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map"
       ]
     }
-  }
+  },
+  "media/images/bike2.jpg": "/packs/media/images/bike2-76a3e73e9095ef37b1acdb9645cf5b1f.jpg",
+  "media/images/conversation.jpg": "/packs/media/images/conversation-a7e70199381005eb71942bc0ffb777f1.jpg",
+  "media/images/engine.jpg": "/packs/media/images/engine-3e40076a8ad70fcd3c586a50e1ec522c.jpg",
+  "media/images/favicon.ico": "/packs/media/images/favicon-a7dec576a76451b587466758865f255e.ico",
+  "media/images/garage.jpg": "/packs/media/images/garage-f3443080158660c1020b33f84d41f1ce.jpg",
+  "media/images/main-logo.png": "/packs/media/images/main-logo-7d9760e2111e59e283945f06d79e550e.png",
+  "media/images/profile_defalt.png": "/packs/media/images/profile_defalt-a516390a1e14f3c9c6c874b00a97232b.png"
 }

@@ -252,6 +252,7 @@ header {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  margin-right: 5px;
 }
 .favorite-icon {
   color: #ef60ff;
@@ -420,6 +421,10 @@ header {
 /*=====================
         header
 ======================*/
+.header-on-nain-logo {
+  width: 30px;
+  height:30px;
+}
 .header-nav-item-box a:hover {
   color: #24d45b;
   text-decoration: none;

@@ -39,13 +39,13 @@ RSpec.describe 'Articles', type: :system, js: true do
         create(:article)
 
         find('#article-index-btn').click
-        sleep 2
+        sleep 4
         expect(page).to have_content('aliceの不思議な冒険', count: 2)
       end
 
       it '編集できること' do
-        find('.navber-username').click # headerのuser prfileアイコン
-        sleep 0.5
+        find('.navber-username').click # headerのuser profileアイコン
+        sleep 1
         find('.user-show-indextitle').click
         sleep 0.5
         find('.fa-edit').click

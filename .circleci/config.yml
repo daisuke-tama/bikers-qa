@@ -116,9 +116,6 @@ jobs:
       - image: circleci/ruby:2.7.3
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-      - heroku/install
       - run:
           name: Identify current branch name
           command: echo 'export CURRENT_BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`' >> $BASH_ENV

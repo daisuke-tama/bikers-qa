@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BIKERS_QA</title>
+    <title>BIKERS-QA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- ActiveTextがassetパイプラインを使用するため記述（他の機能に影響を与えにくいよう一番上に記述） -->
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- ブラウザ・ios・androidで表示されるアイコン -->
-    <%= favicon_link_tag('favicon.ico') %>
-    <%= favicon_link_tag 'main-logo.png', rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' %>
-    <%= favicon_link_tag 'main-logo.png', rel: 'android-touch-icon', sizes: '192x192', type: 'image/png' %>
+    <%= favicon_pack_tag('favicon.ico') %>
+    <%= favicon_pack_tag 'main-logo.png', rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' %>
+    <%= favicon_pack_tag 'main-logo.png', rel: 'android-touch-icon', sizes: '192x192', type: 'image/png' %>
   </head>
 
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
         <%= link_to root_path, class: "navbar-brand", data: {"turbolinks" => false} do %>
-          <img src="/assets/main-logo.png" width="30" height="30" id="home-btn" class="d-inline-block align-top" alt="Bikers-QA">
+          <%= image_pack_tag 'main-logo.png', id: "home-btn", class: "header-on-nain-logo d-inline-block align-top", alt: "Bikers-QA" %>
           Bikers-QA
         <% end %>
         <!-- 検索フォーム 画面サイズ 730px で非表示 -->
@@ -38,7 +36,7 @@
                 <% if current_user.profile? %>
                   <span><%= image_tag current_user.profile.url, class: "navber-profile-icon" %></span>
                 <% else %>
-                  <span><%= image_tag '/assets/profile_defalt.png', class: "navber-profile-icon" %></span>
+                  <span><%= image_pack_tag 'profile_defalt.png', class: "navber-profile-icon" %></span>
                 <% end %>
                 <%= current_user.name %>
               <% end %>
@@ -69,7 +67,7 @@
           <div class="footer-style contents-tidy">
             <div class="footer-left">
               <div class="footer-logo">
-                <%= image_tag '/assets/main-logo', style: "height: 80px;" %>
+                <%= image_pack_tag 'main-logo.png', style: "height: 80px;" %>
               </div>
               <i class="fab fa-twitter ml-20"></i>
               <i class="fab fa-facebook ml-10"></i>

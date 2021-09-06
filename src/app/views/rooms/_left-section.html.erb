@@ -5,9 +5,9 @@
     <% entries.each do |entry| %>
       <%= link_to user_path(entry.user_id) do %>
         <% if entry.user.profile? %>
-          <span style="margin-right: 5px;"><%= image_tag entry.user.profile.url, class: "user-profile-icon" %></span>
+          <%= image_pack_tag entry.user.profile.url, class: "user-profile-icon" %>
         <% else %>
-          <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %></span>
+          <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
         <% end %>
         <%= entry.user.name %>
       <% end %>

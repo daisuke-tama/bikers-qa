@@ -5,9 +5,9 @@
         <div class="author-header-show">
           <%= link_to user_path(post.user_id) do %>
             <% if post.user.profile? %>
-              <span style="margin-right: 5px;"><%= image_tag post.user.profile.url, class: "user-profile-icon" %></span>
+              <%= image_tag post.user.profile.url, class: "user-profile-icon" %>
             <% else %>
-              <span style="margin-right: 5px;"><%= image_tag '/assets/profile_defalt.png', class: "user-profile-icon" %></span>
+              <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
             <% end %>
             <%= post.user.name %>
           <% end %>

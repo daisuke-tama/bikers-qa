@@ -20,7 +20,9 @@ RSpec.describe 'Users', type: :system, js: true do
 
     login(user)
     find('.navber-username').click # headerのuser prfileアイコン
+    sleep 0.5
     click_on 'プロフィールを編集する'
+    sleep 0.5
     fill_in '名前を入力してください', with: 'bob'
     fill_in '自己紹介内容を入力してください', with: 'はじめまして'
     fill_in 'メールアドレス', with: 'bob@example.com'
@@ -35,8 +37,10 @@ RSpec.describe 'Users', type: :system, js: true do
     user = create(:user)
 
     login(user)
-    find('.navber-username').click # headerのuser prfileアイコン
+    find('.navber-username').click # headerのuser profileアイコン
+    sleep 0.5
     click_on 'プロフィールを編集する'
+    sleep 0.5
     click_on 'アカウント削除'
 
     expect do

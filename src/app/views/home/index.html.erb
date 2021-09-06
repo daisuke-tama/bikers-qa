@@ -22,7 +22,7 @@
           <!-- サイト説明欄 -->
           <div class="carousel-on-text">
             <div class="carousel-on-logo">
-              <%= image_tag '/assets/main-logo.png' %>
+              <%= image_pack_tag 'main-logo.png' %>
             </div>
             <h2 class="carousel-on-text-header text-center">バイク専門の整備情報サイト</h2>
             <p>Bikers-QAはバイク整備に関する知識を記録・共有するサービスです</p>
@@ -118,7 +118,7 @@
       <div class="each-ranking-wrapper">
         <!-- サイト説明ページ転移ロゴ -->
         <%= link_to '/about' do %>
-          <%= image_tag '/assets/main-logo', id: "about-link-logo", style: "width: 100%;" %>
+          <%= image_pack_tag 'main-logo.png', id: "about-link-logo", style: "width: 100%;" %>
         <% end %>
       </div>
       <!-- フォロワーランキング -->
