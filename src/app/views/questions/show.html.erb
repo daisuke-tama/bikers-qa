@@ -13,7 +13,7 @@
             <div class="author-header-show">
               <%= link_to user_path(answer.user_id) do %>
                 <% if answer.user.profile? %>
-                  <%= image_pack_tag answer.user.profile.url, class: "user-profile-icon" %>
+                  <%= image_tag answer.user.profile.url, class: "user-profile-icon" %>
                 <% else %>
                   <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
                 <% end %>

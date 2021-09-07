@@ -14,9 +14,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favorites, source: :article
   # フォロー フォロワー機能
-  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
   has_many :followings, through: :active_relationships, source: :follower
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
   # 記事に対するコメント機能
   has_many :comments, dependent: :destroy
@@ -50,7 +50,12 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.name = auth.info.name
       user.email = auth.info.email
+      user.introduce = auth.info.description
       user.password = Devise.friendly_token[0, 20]
+      user.password_confirmation = user.password
+      unless user.provider == "facebook" # facebookではremote_profile_urlを使用すると Profilecould not download file: 500 "Internal Server Error" を発生してしまうため除外
+        user.remote_profile_url = auth.info.image # carrierwaveでurl先のファイルをダウンロードし保存するためにprofileではなくremote_profile_urlを使用
+      end
     end
   end
 

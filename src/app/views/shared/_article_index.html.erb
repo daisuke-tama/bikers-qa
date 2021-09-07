@@ -5,6 +5,7 @@
         <%= link_to user_path(article.user_id) do %>
           <% if article.user.profile? %>
             <%= image_tag article.user.profile.url, class: "user-profile-icon" %>
+          <% else %>
             <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
           <% end %>
           <%= article.user.name %>

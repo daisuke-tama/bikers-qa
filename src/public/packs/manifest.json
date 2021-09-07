@@ -1,15 +1,15 @@
 {
-  "application.js": "/packs/js/application-cc7c28526d6e50559dc5.js",
-  "application.js.map": "/packs/js/application-cc7c28526d6e50559dc5.js.map",
+  "application.js": "/packs/js/application-47f2d10f3b0931413546.js",
+  "application.js.map": "/packs/js/application-47f2d10f3b0931413546.js.map",
   "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js",
   "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-cc7c28526d6e50559dc5.js"
+        "/packs/js/application-47f2d10f3b0931413546.js"
       ],
       "js.map": [
-        "/packs/js/application-cc7c28526d6e50559dc5.js.map"
+        "/packs/js/application-47f2d10f3b0931413546.js.map"
       ]
     },
     "calousel-on-card-animation": {

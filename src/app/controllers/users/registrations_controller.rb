@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  # user新規作成・編集用
+  # user新規作成・編集用(email passwordはdeviseがデフォルトで管理している)
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :introduce, :profile])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduce, :profile, :remove_profile])

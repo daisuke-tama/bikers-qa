@@ -13,7 +13,7 @@
               <%= image_pack_tag 'profile_defalt.png', class: "photo-icon profile-image" %>
             <% else %>
               <div class="prev-content">
-                <%= image_pack_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
+                <%= image_tag current_user.profile.url, alt: "preview", class: "prev-image profile-image" %>
               </div>
             <% end %>
             <p style="text-align: center;">プロフィール画像を変更したい場合はこちらをクリックしてください</p>
