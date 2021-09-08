@@ -1,10 +1,16 @@
-<!-- 画面左側のアイコン -->
-<%= render 'shared/left-section-editer', article: @question, move_from: "question" %>
+<!-- 画面サイズ 830px 以上で表示する左側のエディターアイコン -->
+<div class="left-section-editer-pc">
+  <%= render 'shared/left-section-editer', post: @question, move_from: "question" %>
+</div>
 <!-- 記事本文 -->
 <%= render 'shared/post_details', post: @question, move_from: "question" %>
+<!-- 画面サイズ 830px 以下で表示するエディターアイコン -->
+<div class="left-section-editer-sp">
+  <%= render 'shared/left-section-editer', post: @question, move_from: "question" %>
+</div>
 <!-- 回答機能 -->
 <div class="article-show-main-contents">
-  <div class="content-width" style="width: 75%;">
+  <div class="content-width contents-size">
     <div class="card-custom">
       <div class="card-body" style="padding: 2.25rem;">
         <p class="replay-header">回答</p>

@@ -13,6 +13,7 @@ RSpec.describe 'Questions', type: :system, js: true do
         visit root_path
 
         find('#new-question-btn').click
+        sleep 0.5
         fill_in 'タイトル', with: 'aliceの冒険について'
         fill_in_rich_text_area '質問本文', with: 'どうやって小さくなればいいですか？'
         expect do

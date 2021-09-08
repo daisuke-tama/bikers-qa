@@ -12,13 +12,6 @@
     <ul class="contents-tidy">
       <!-- ログイン時 -->
       <% if user_signed_in? %>
-        <li class="header-nav-item-box header-nav-item-sp">
-          <%= link_to notifications_path, id:"new-question-btn", class: "header-nav-item hover-opacity" do %>
-            通知一覧
-            <br>
-            <span>確認しよう！</span>
-          <% end %>
-        </li>
         <li class="header-nav-item-box">
           <%= link_to articles_path, id:"article-index-btn", class: "header-nav-item hover-opacity" do %>
             記事一覧
@@ -52,6 +45,13 @@
             マイページ
             <br>
             <span>履歴や編集はこちら！</span>
+          <% end %>
+        </li>
+        <li class="header-nav-item-box header-nav-item-sp">
+          <%= link_to notifications_path, id:"new-question-btn", class: "header-nav-item hover-opacity" do %>
+            通知一覧
+            <br>
+            <span>確認しよう！</span>
           <% end %>
         </li>
         <li class="header-nav-item-box">

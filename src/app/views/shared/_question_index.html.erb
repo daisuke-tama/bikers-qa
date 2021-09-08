@@ -17,7 +17,7 @@
       <h5 class="card-title user-show-indextitle"><%= question.title %></h5>
     <% end %>
     <%= strip_tags(question.content.to_s).gsub(/[\n]/,"").truncate(100) %>
-    <div>
+    <div class="text-end">
       <i class="far fa-comments answer-count-icon"></i><%= question.answers.count %>
     </div>
   </div>

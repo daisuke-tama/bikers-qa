@@ -120,6 +120,9 @@ header {
 .text-center {
   text-align: center;
 }
+.text-end {
+  text-align: end;
+}
 .f-right {
   float: right;
 }
@@ -221,7 +224,7 @@ header {
   width: 100%;
   z-index: 1;
 }
-//==== left-section-editer =======
+//=========== left-section-editer ===========
 .left-section-editer {
   position: fixed;
   top: 100px;
@@ -229,6 +232,9 @@ header {
   width: 130px;
   z-index: 10;
   background-color: white;
+}
+.article-show-main-contents .contents-size {
+  width: 75%;
 }
 .left-section-editer ul > li + li {
   margin-top: 20px;
@@ -238,6 +244,42 @@ header {
 }
 .left-section-editer-favorite-icon {
   color: #ef60ff;
+}
+
+// メディアクエリ
+.left-section-editer-sp {
+  display: none;
+}
+@media screen and (max-width: 829px) {
+  .article-show-main-contents.post-details {
+    padding-bottom: 20px;
+  }
+  .left-section-editer-pc {
+    display: none;
+  }
+  .left-section-editer-sp {
+    display: block;
+    margin-bottom: 45px;
+  }
+  .left-section-editer-sp .left-section-editer {
+    position: initial;
+  }
+  .left-section-editer-sp .left-section-editer ul {
+    display: flex;
+    margin-left: 20px;
+  }
+  .left-section-editer-sp .left-section-editer ul  li {
+    margin-right: 15px;
+  }
+  .left-section-editer-sp .left-section-editer ul > li + li  {
+    margin-top: 0px;
+  }
+  .left-section-editer-sp .svg-inline--fa {
+    vertical-align: 0.875em;
+  }
+  .article-show-main-contents .contents-size {
+    width: 100%;
+  }
 }
 //============ icon ================
 .profile-image {
@@ -329,32 +371,6 @@ header {
 .replay-submit-btn {
   float: right;
 }
-//=========== footer ==============
-.footer-bgc {
-  background-color: #525252;
-}
-.footer-style {
-  color :#f8d7da;
-  padding-top: 20px;
-  padding-bottom: 30px;
-}
-.footer-left {
-  margin-left: 20px;
-}
-.footer-right {
-  padding-right: 20px;
-}
-.footer-right a {
-  display: block;
-  color: inherit;
-}
-.footer-right > a + a {
-  margin-top: 10px;
-}
-.footer-logo {
-  text-align: center;
-  margin-bottom: 12px;
-}
 //========== tooltip ============
 // bootstrapのtooltipが使用不可のためcssで作成
 .tooltip2{
@@ -421,9 +437,12 @@ header {
 /*=====================
         header
 ======================*/
-.header-on-nain-logo {
+.header-on-main-logo {
   width: 30px;
   height:30px;
+}
+.header-on-logo-text-font {
+  font-weight: bold;
 }
 .header-nav-item-box a:hover {
   color: #24d45b;
@@ -577,4 +596,36 @@ header {
     height : 60px;
     font-size : 16px;
   }
+}
+
+//=========== footer ==============
+.footer-bgc {
+  background-color: #525252;
+}
+.footer-style {
+  color :#f8d7da;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+@media screen and (max-width: 420px) {
+  .footer-style {
+    font-size: 11px;
+  }
+}
+.footer-left {
+  margin-left: 20px;
+}
+.footer-right {
+  padding-right: 20px;
+}
+.footer-right a {
+  display: block;
+  color: inherit;
+}
+.footer-right > a + a {
+  margin-top: 10px;
+}
+.footer-logo {
+  text-align: center;
+  margin-bottom: 12px;
 }
