@@ -11,6 +11,9 @@
   margin-top: 20px;
 }
 //========= users/new ============
+.form-user-registrations {
+  width: 100%;
+}
 .form-user-name {
   width: 37%;
 }
@@ -24,6 +27,9 @@
 }
 .form-user-password {
   width: 55%;
+}
+.new-user-relation-btns .btn {
+  width: 180px;
 }
 .explanation-of-input-method {
   margin-top: 3rem !important;
@@ -108,16 +114,9 @@
   font-weight: bold;
   text-align: center;
 }
-.new-user-form {
-  flex: 0 0 50%;
-  max-width: 80%;
-}
-.form-user-registrations {
-  width: 80%;
-}
 
 // =============== メディアクエリ ================
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 829px) {
   .user-show.flex-contents-wrapper {
     margin-top: 40px;
   }
@@ -134,7 +133,7 @@
     width: initial;
   }
 }
-@media screen and (min-width: 730px) {
+@media screen and (min-width: 829px) {
   .user-show .flex-contents-left-section .card-body {
     width: 265px;
   }
@@ -143,6 +142,15 @@
   .form-user-registrations {
     margin-left: auto;
     margin-right: auto;
+  }
+  .form-user-registrations .form-user-name {
+    width: 100%;
+  }
+  .form-user-registrations .form-user-email {
+    width: 100%;
+  }
+  .form-user-registrations .form-user-password {
+    width: 100%;
   }
   .explanation-of-input-method {
     display: none;

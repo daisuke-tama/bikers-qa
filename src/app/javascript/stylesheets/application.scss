@@ -54,11 +54,11 @@ header {
   margin-right : auto;
   position : relative;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 829px) {
   .content-width {
     max-width : none;
-    padding-left: 20px;
-    padding-right : 20px;
+    padding-left: initial;
+    padding-right : initial;
   }
 }
 
@@ -356,6 +356,11 @@ header {
 .author-header-show {
   color: #696468;
   font-size: 12px;
+}
+@media screen and (max-width: 420px) {
+  .author-header-show {
+    font-size: 10px;
+  }
 }
 .show-reply-contents-wrapper {
   margin-bottom: 20px;

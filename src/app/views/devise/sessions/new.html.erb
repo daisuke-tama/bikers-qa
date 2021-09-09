@@ -1,47 +1,50 @@
-<div class="card col-sm-6 mx-auto mt-5 mb-80">
-  <div class="card-body">
-    <h3 class="mt-1 mb-3 text-center">ログイン</h3>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="content-width contents-tidy">
+  <!-- ログイン入力フォーム -->
+  <div class="form-user-registrations card mt-5 mb-80">
+    <div class="card-body">
+      <h3 class="mt-1 mb-3 text-center">ログイン</h3>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-      <div class="form-group">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+        </div>
 
-      <div class="form-group">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
-      </div>
+        <div class="form-group">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+        </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions mt-40 text-center">
+          <%= f.submit "ログインする", class: "btn btn-outline-success" %>
         </div>
       <% end %>
 
-      <div class="actions mt-40 text-center">
-        <%= f.submit "ログインする", class: "btn btn-outline-success" %>
-      </div>
-    <% end %>
-
-      <div class="mt-30 text-center">
-        <p class="sns-relation-header under-line mb-30">
-          <span><i class="far fa-arrow-alt-circle-down"></i></span>
-          SNSと連携して登録した方は以下からログインしてください
-          <span><i class="far fa-arrow-alt-circle-down"></i></span>
-        </p>
-        <div class="new-user-relation-btns">
-          <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
-            <div class="btn btn-outline-primary"><i class="fab fa-facebook"></i>Facebookでログイン</div>
-          <% end %>
-          <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
-            <div class="btn btn-outline-secondary"><i class="fab fa-twitter"></i>Twitterでログイン</div>
-          <% end %>
-          <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
-            <div class="btn btn-outline-success"><i class="fab fa-google"></i>Googleでログイン</div>
-          <% end %>
+        <div class="mt-30 text-center">
+          <p class="sns-relation-header under-line mb-30">
+            <span><i class="far fa-arrow-alt-circle-down"></i></span>
+            SNSと連携して登録した方は以下からログインしてください
+            <span><i class="far fa-arrow-alt-circle-down"></i></span>
+          </p>
+          <div class="new-user-relation-btns">
+            <%= link_to user_facebook_omniauth_authorize_path, method: :post do %>
+              <div class="btn btn-outline-primary"><i class="fab fa-facebook"></i>Facebookでログイン</div>
+            <% end %>
+            <%= link_to user_twitter_omniauth_authorize_path, method: :post do %>
+              <div class="btn btn-outline-secondary"><i class="fab fa-twitter"></i>Twitterでログイン</div>
+            <% end %>
+            <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+              <div class="btn btn-outline-success"><i class="fab fa-google"></i>Googleでログイン</div>
+            <% end %>
+          </div>
         </div>
-      </div>
+    </div>
   </div>
 </div>
