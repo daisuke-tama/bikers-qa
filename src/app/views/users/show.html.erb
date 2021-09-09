@@ -23,7 +23,7 @@
         <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
       <% end %>
       <div class="user-profile-action-btns">
-        <div id="relation_buttons_<%= @user.id %>" class="flex-center">
+        <div id="relation_buttons_<%= @user.id %>" class="flex-center relation-btn">
           <%= render 'relationships/relationship', user: @user %>
         </div>
         <!-- 画面サイズ 900px 以下で表示 -->

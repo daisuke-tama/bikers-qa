@@ -1,11 +1,11 @@
 <!-- 画面左側のカレントユーザープロフィール -->
-<div class="flex-contents-wrapper">
+<div class="user-show flex-contents-wrapper">
   <div class="flex-contents-left-section">
-    <div class="card-body" style="width: 265px;">
+    <div class="card-body">
       <% if current_user.profile.blank? %>
         <%= image_pack_tag 'profile_defalt.png', class: "profile-image" %>
       <% else %>
-        <%= image_pack_tag current_user.profile.url, class: "profile-image"%>
+        <%= image_tag current_user.profile.url, class: "profile-image"%>
       <% end %>
       <h5 class="card-title username-font"><%= current_user.name %></h5>
       <div class="relationship-link-text">
@@ -41,7 +41,7 @@
           <%= render partial: "relationship_index", collection: @followings, as: "user", locals: {relation_btn: "on"} %>
           <%= paginate @followings %>
         </div>
-        <div class="tab-pane fade show" id="follower" role="tabpanel" aria-labelledby="follower-tub">
+        <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tub">
           <%= render partial: "relationship_index", collection: @followers, as: "user", locals: {relation_btn: "off"} %>
           <%= paginate @followers %>
         </div>

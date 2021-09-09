@@ -6,9 +6,20 @@
 .form-article-title {
   width: 60%;
 }
+.form-new-article {
+  width: 80%;
+}
+@media screen and (max-width: 767px) {
+  .form-article-title {
+    width: 100%;
+  }
+  .form-new-article {
+    width: 100%;
+  }
+}
 //=========== article/index ==============
 .article-index-main-contents {
-  padding-top: 30px;
+  padding-top: 40px;
   padding-bottom: 80px;
 }
 .article-index-main-contents .article-title-text {
@@ -20,10 +31,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 4px;
-}
-.new-article-form {
-  flex: 0 0 50%;
-  max-width: 80%;
 }
 .latest-article-reaction-icon {
   margin-top: 10px;

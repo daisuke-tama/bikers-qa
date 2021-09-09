@@ -75,6 +75,9 @@
   justify-content: space-around;
   margin-top: 20px;
 }
+.user-profile-action-btns .relation-btn {
+  margin-bottom: 20px;
+}
 //========== users/edit =============
 .edit-profile {
   width: 100%;
@@ -116,26 +119,9 @@
 }
 
 // =============== メディアクエリ ================
-@media screen and (max-width: 829px) {
-  .user-show.flex-contents-wrapper {
-    margin-top: 40px;
-  }
-  .user-show .flex-contents-left-section {
-    position: initial;
-    width: 60%;
-    margin: 0 auto;
-  }
-  .user-show .flex-contents-left-section .card-body {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .user-show .flex-contents-center-section {
-    width: initial;
-  }
-}
-@media screen and (min-width: 829px) {
-  .user-show .flex-contents-left-section .card-body {
-    width: 265px;
+@media screen and (max-width: 600px) {
+  .user-profile-action-btns {
+    display: block;
   }
 }
 @media screen and (max-width: 767px) {
@@ -156,6 +142,33 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 829px) {
+  .user-show.flex-contents-wrapper {
+    margin-top: 40px;
+  }
+  .user-show.flex-contents-wrapper {
+    display: block;
+  }
+  .user-show .flex-contents-left-section {
+    position: initial;
+    width: 60%;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-left-section .card-body {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-center-section {
+    width: initial;
+  }
+}
+@media screen and (min-width: 829px) {
+  .user-show .flex-contents-left-section .card-body {
+    width: 265px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .new-user-relation-btns {
     display: grid;
