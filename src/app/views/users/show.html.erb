@@ -1,5 +1,5 @@
 <!-- 画面左側のメニュー欄 -->
-<div class="user-show flex-contents-wrapper">
+<div class="user-show flex-contents-wrapper content-width">
   <div class="flex-contents-left-section">
     <div class="card-body">
       <% if @user.profile.blank? %>
@@ -26,15 +26,11 @@
         <div id="relation_buttons_<%= @user.id %>" class="flex-center relation-btn">
           <%= render 'relationships/relationship', user: @user %>
         </div>
-        <!-- 画面サイズ 900px 以下で表示 -->
-        <% unless @user == current_user %>
-          <div class="move-to-dm-room-btn sp">
-            <%= link_to "/rooms/#{@room_number}", class: "flex-center", style: "text-decoration: none;" do %>
-              <button type="button" class="btn btn-outline-primary btn-font">DMルームへ</button>
-            <% end %>
-          </div>
-        <% end %>
       </div>
+    </div>
+    <!-- 画面サイズ 900px 以下で表示する DMルーム作成 or 転移欄 -->
+    <div class="move-to-dm-room-sp">
+      <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
     </div>
   </div>
   <!-- 投稿・お気に入りした記事＋参加したダイレクトメッセージルーム一覧 -->
@@ -88,38 +84,8 @@
       </div>
     </div>
   </div>
-  <!-- 画面右側のコンテンツ -->
-  <div class="user-show flex-contents-right-section">
-    <% if @user.id != current_user.id && @working_room.blank? %>
-      <div class="card-body" style="width: 265px;">
-        <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
-        <p class="invite-dmroom-text">
-          <%= @user.name %>さんと
-          ダイレクトメッセージ機能を使って
-          二人だけの会話をしよう！
-          専用のルームを作成し、
-          快適にメッセージを共有♪
-        </p>
-        <%= form_with model: @room do |f| %>
-          <%= fields_for @entry do |e| %>
-            <%= e.hidden_field :user_id, value: @user.id %>
-          <% end %>
-          <%= f.text_field :name, :placeholder => "ルーム名を入力！", class: "w-100 flex-center" %><br> 
-          <%= f.submit "DMルームを作成", class: "btn btn-outline-secondary move-dm-room-btn" %>
-        <% end %>
-      </div>
-    <% elsif @user.id != current_user.id && @working_room == true %>
-      <div class="card-body" style="width: 265px;">
-        <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
-        <p class="invite-dmroom-text">
-          <%= @user.name %>さんと
-          ダイレクトメッセージ機能を使って
-          二人だけの会話をしよう！
-        </p>
-        <%= link_to "/rooms/#{@room_number}", class: "flex-center", style: "text-decoration: none;" do %>
-          <button type="button" class="btn btn-outline-primary move-dm-room-btn">DMルームへ</button>
-        <% end %>
-      </div>
-    <% end %>
+  <!-- 画面右側のDMルーム作成 or 転移欄 -->
+  <div class="move-to-dm-room-pc">
+    <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
   </div>
 </div>

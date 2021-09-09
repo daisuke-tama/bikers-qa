@@ -1,0 +1,33 @@
+<div class="user-show flex-contents-right-section">
+  <% if user.id != current_user.id && working_room.blank? %>
+    <div class="card-body" style="width: 200px;">
+      <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
+      <p class="invite-dmroom-text">
+        <%= user.name %>さんと
+        ダイレクトメッセージ機能を使って
+        二人だけの会話をしよう！
+        専用のルームを作成し、
+        快適にメッセージを共有♪
+      </p>
+      <%= form_with model: @room, class: "text-center" do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: user.id %>
+        <% end %>
+        <%= f.text_field :name, :placeholder => "ルーム名を入力！", class: "w-100 flex-center" %><br> 
+        <%= f.submit "DMルームを作成", class: "btn btn-outline-secondary move-dm-room-btn" %>
+      <% end %>
+    </div>
+  <% elsif user.id != current_user.id && working_room == true %>
+    <div class="card-body" style="width: 200px;">
+      <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
+      <p class="invite-dmroom-text">
+        <%= user.name %>さんと
+        ダイレクトメッセージ機能を使って
+        二人だけの会話をしよう！
+      </p>
+      <%= link_to "/rooms/#{room_number}", class: "flex-center", style: "text-decoration: none;" do %>
+        <button type="button" class="btn btn-outline-primary move-dm-room-btn">DMルームへ</button>
+      <% end %>
+    </div>
+  <% end %>
+</div>

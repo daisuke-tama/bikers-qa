@@ -8,7 +8,6 @@
 }
 .move-dm-room-btn {
   font-weight: bold;
-  margin-top: 20px;
 }
 //========= users/new ============
 .form-user-registrations {
@@ -66,8 +65,7 @@
 }
 .invite-dmroom-text {
   margin-top: 17px;
-  line-height: 1.8;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 .user-profile-action-btns {
@@ -152,7 +150,6 @@
   }
   .user-show .flex-contents-left-section {
     position: initial;
-    width: 60%;
     margin: 0 auto;
   }
   .user-show .flex-contents-left-section .card-body {
@@ -169,6 +166,15 @@
   }
 }
 
+.move-to-dm-room-sp {
+  display: none;
+}
+.move-to-dm-room-sp .card-body img {
+  display: none;
+}
+.move-to-dm-room-sp p {
+  display: none;
+}
 @media screen and (max-width: 900px) {
   .new-user-relation-btns {
     display: grid;
@@ -176,12 +182,13 @@
   .new-user-relation-btns > a + a {
     margin-top: 15px;
   }
-  .user-show .flex-contents-right-section {
+  .move-to-dm-room-pc {
     display: none;
   }
-}
-@media screen and (min-width: 900px) {
-  .move-to-dm-room-btn.sp {
-    display: none;
+  .move-to-dm-room-sp {
+    display: block;
+  }
+  .move-to-dm-room-sp .flex-contents-right-section {
+    margin-top: initial;
   }
 }
