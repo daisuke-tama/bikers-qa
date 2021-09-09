@@ -60,6 +60,10 @@
   justify-content: space-around;
   margin-bottom: 20px;
 }
+.user-show .content-width {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .user-show-indextitle {
   font-weight: bold;
 }
@@ -190,5 +194,9 @@
   }
   .move-to-dm-room-sp .flex-contents-right-section {
     margin-top: initial;
+  }
+  .move-to-dm-room-sp .card-body {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

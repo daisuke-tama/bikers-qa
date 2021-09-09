@@ -250,12 +250,21 @@ header {
 .left-section-editer-sp {
   display: none;
 }
+.favorite-btn-sp {
+  display: none;
+}
 @media screen and (max-width: 829px) {
   .article-show-main-contents.post-details {
     padding-bottom: 20px;
   }
   .left-section-editer-pc {
     display: none;
+  }
+  .favorite-btn-pc {
+    display: none;
+  }
+  .favorite-btn-sp {
+    display: block;
   }
   .left-section-editer-sp {
     display: block;

@@ -26,13 +26,21 @@
         </div>
       <% end %>
     </li>
+    <!-- favorite-btn -->
     <% if move_from == "article" && user_signed_in? && post.user_id != current_user.id %>
-      <li>
-        <div id="favorite_buttons_<%= post.id %>" class="tooltip2 left-section-editer-icon left-section-editer-favorite-icon">
-          <%= render 'favorites/favorite', article: post %>
-          <div class="description2">お気に入り</div>
-        </div>
-      </li>
+      <!-- 画面サイズ 830px 以上で表示するお気に入りアイコン（Ajax） -->
+      <div class="favorite-btn-pc">
+        <li>
+          <div id="favorite_buttons_<%= post.id %>" class="tooltip2 left-section-editer-icon left-section-editer-favorite-icon">
+            <%= render 'favorites/favorite', article: post %>
+            <div class="description2">お気に入り</div>
+          </div>
+        </li>
+      </div>
+      <!-- 画面サイズ 830px 以下で表示するお気に入りアイコン -->
+      <div class="favorite-btn-sp left-section-editer-icon left-section-editer-favorite-icon">
+        <%= render 'favorites/non_ajax_favorite', article: post %>
+      </div>
     <% end %>
   </ul>
 </div>

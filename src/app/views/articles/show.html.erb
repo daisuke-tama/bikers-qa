@@ -3,7 +3,9 @@
   <%= render 'shared/left-section-editer', post: @article, move_from: "article" %>
 </div>
 <!-- 記事本文 -->
-<%= render 'shared/post_details', post: @article, move_from: "article" %>
+<div class="article-show-post-details">
+  <%= render 'shared/post_details', post: @article, move_from: "article" %>
+</div>
 <!-- 画面サイズ 830px 以下で表示するエディターアイコン -->
 <div class="left-section-editer-sp">
   <%= render 'shared/left-section-editer', post: @article, move_from: "article" %>

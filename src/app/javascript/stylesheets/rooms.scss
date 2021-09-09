@@ -38,7 +38,7 @@
   display: none;
 }
 // =============== メディアクエリ ================
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 830px) {
   .room-show.flex-contents-left-section.pc {
     display: none;
   }
@@ -46,5 +46,8 @@
     display: block;
     width: 60%;
     margin: 0 auto;
+  }
+  .room-show.flex-contents-left-section.sp .card-body {
+    margin-top: 52px;
   }
 }

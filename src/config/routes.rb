@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   end
   # 記事関連 いいね機能とコメント機能 headerにある検索機能
   resources :articles do
-    resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy] do
+      # 同ページにfavorite-btnが２つあった場合、ajaxの設定上最初に読まれるもののみ動作する。２つ目以降のbtnはリロードしないと反映されないのでajaxを使わないものを用意
+      post :not_ajax_create, on: :member
+      delete :not_ajax_delete, on: :member
+    end
     resources :comments, only: [:create, :destroy]
     collection do
       get 'search'
