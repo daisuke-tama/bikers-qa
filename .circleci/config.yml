@@ -138,3 +138,6 @@ workflows:
           requires:
             - rspec
             - rubocop
+          filters:
+            branches:
+              only: main
