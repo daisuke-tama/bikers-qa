@@ -1,24 +1,112 @@
-# README
+# BIKERS-QA
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![demo](https://gyazo.com/a9e070829484a12467f3bc200db5b9dc/raw)
 
-Things you may want to cover:
+アプリのURL  
+https://bikers-qa.herokuapp.com/
 
-* Ruby version
+<br>
 
-* System dependencies
+## サイトの概要
+Bikers-QAはバイクメンテナンスに携わる方々にとって役に立ち、
+多くの情報が集まる場を提供したい気持ちから生まれた二輪整備専門のQ&Aサイトです
+整備初心者やプロメカニックまで気軽に整備に関する記事や質問を投稿することができます
+レスポンシブ対応してますので、スマートフォンでもアプリを楽しむ事ができます
 
-* Configuration
+<br>
 
-* Database creation
+### 主なサービス
+・ユーザー登録することで、記事・質問を作成・編集・削除ができる  
+・記事・質問には画像を添付する事ができる  
+・投稿に対し、コメント・回答・お気に入りすることで反応することができる  
+・ユーザー間のコミュニケーションを促す目的でフォロー・ダイレクトメッセージを使用可能  
+・記事・質問への反応、フォロー・お気に入り、ダイレクトメッセージの受信にてユーザーに通知される  
+・フォロー数・お気に入り数・使用されているタグのランキングを表示
 
-* Database initialization
+<br>
 
-* How to run the test suite
+### コンセプト
+メンテナンスは基本的にバイクと一対一で行う事が多いと思います。 しかしBikers-QAはその概念を乗り越え より効率的に、楽しく整備が出来るようにバイクと一対多の関係を作れる場でありたい 記事を書いたり、質問したりすることにだけに留まらず Bikers-QAを通してユーザーのコミュニティが広がるきっかけになり バイクライフがより充実する事をサポートして行くことが目的です
 
-* Services (job queues, cache servers, search engines, etc.)
+<br>
 
-* Deployment instructions
+### BIKERS-QAの強み
+多くのメンテナンス情報共有サイトでは車が主役です
+それに対しBikers-QAではカテゴリーを二輪整備に絞ることにより
+知りたい情報へのアクセスを容易化し、必要のないコンテンツを避ける事ができます
+また四輪車と二輪車の世界は似て非なるものであり、
+他の世界に干渉されず、バイクメンテナンスの世界をゆっくりお楽しむことができます
 
-* ...
+<br>
+<br>
+
+## 実装した機能一覧
+
+### ユーザー関連
+||機能|gem / 備考|
+|:---:|:---|:---|
+|1|ユーザー登録・編集|gem 'devise'|
+|2|SNS認証|gem 'devise' /omniauth(google/facebook/twitter)|
+|3|プロフィール画像登録|gem 'carrierwave' / 保存先 AWS S3|
+|4|プロフィール画像のリサイズ|gem 'mini_magick', '>= 4.11.0'|
+|5|ユーザー登録・編集時のプロフィール画像のプレビュー||
+|6|マイページ||
+|7|ゲストログイン（管理者権限有）||
+|8|管理者用ページ|gem 'rails_admin', '~> 2.0'|
+|9|管理者権限|gem 'cancancan'|
+|10|フォロー|Ajax(非同期)|
+|11|ダイレクトメッセージ||
+|12|通知||
+
+---
+
+## 投稿関連
+
+||機能|Gem/備考|
+| :-: | :-- | :-- |
+|12|記事投稿|ActionText(リッチテキストエディタ)|
+|13|コメント||
+|14|質問投稿|ActionText(リッチテキストエディタ)|
+|15|回答||
+|16|記事検索|gem 'ransack' (タイトル部分一致)|
+|17|お気に入り|Ajax(非同期)|
+|18|各ランキング||
+|19|記事のタグ付け|tagsinput|
+|20|ページネイション|gem 'kaminari'|
+---
+
+## システム関連
+
+||機能|Gem/備考|
+| :-: | :-- | :-- |
+|21|rails/devise日本語化|gem 'rails-i18n' / gem 'devise-i18n'|
+|22|管理者用画面の日本語化||
+|23|コード解析|rubocop-airbnb|
+|24|単体・結合テスト|RSpec model/request/system spec|
+|25|CI/CD|CircleCI / heroku|
+---
+
+<br>
+
+# 使用技術
+|名称|バージョン|
+| :-- | :-- |
+|Ruby|2.7.3p183|
+|Ruby on Rails|6.1.3.2|
+|MySQL|5.5 (heroku フリーdynoを使用するため古いバージョンを指定)|
+|Docker|20.10.7|
+|docker-compose|1.29.2|
+|puma|5.3.2|
+|AWS S3||
+|circleci CI/CD|
+|RSpec|3.10|
+|Rubocop|0.76.0|
+|heroku|
+|heroku CLI|
+|API|Twitter/Facebook/Google|
+
+<br>
+
+# ER図
+
+![スクリーンショット 2021-09-11 14 40 46](https://user-images.githubusercontent.com/79883895/132937599-fcc4659b-13b3-4b60-897e-8c9e82ee071a.png)
