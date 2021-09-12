@@ -1,16 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BIKERS-QA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- ブラウザ・ios・androidで表示されるアイコン -->
+    <%= favicon_pack_tag('favicon.ico') %>
+    <%= favicon_pack_tag 'main-logo.png', rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' %>
+    <%= favicon_pack_tag 'main-logo.png', rel: 'android-touch-icon', sizes: '192x192', type: 'image/png' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+        <%= link_to root_path, class: "navbar-brand header-on-logo-text-font", data: {"turbolinks" => false} do %>
+          <%= image_pack_tag 'main-logo.png', id: "home-btn", class: "header-on-main-logo d-inline-block align-top", alt: "Bikers-QA" %>
+          BIKERS-QA
+        <% end %>
+        <!-- 検索フォーム 画面サイズ 730px で非表示 -->
+        <div class="search-form-pc">
+          <%= search_form_for @q, url: search_articles_path do |f| %>
+            <%= f.label :title_cont, '記事検索' %>
+            <%= f.search_field :title_cont %>
+            <%= f.submit '検索', class: "btn btn-outline-success" %>
+          <% end %>
+        </div>
+        <div class="navber-right">
+          <% if user_signed_in? %>
+            <div class="navber-profile-icons">
+              <%= link_to user_path(current_user.id), class: "navbar-brand navber-username" do %> 
+                <% if current_user.profile? %>
+                  <span><%= image_tag current_user.profile.url, class: "navber-profile-icon" %></span>
+                <% else %>
+                  <span><%= image_pack_tag 'profile_defalt.png', class: "navber-profile-icon" %></span>
+                <% end %>
+                <%= current_user.name %>
+              <% end %>
+              <%= render 'shared/notification-bell' %>
+            </div>
+          <% end %>
+          <!-- 画面サイズ 1080px 以下でハンバーガーメニューに変化 -->
+          <%= render 'shared/hamburger-menu' %>
+        </div>
+      </nav>
+    </header>
+    <!-- flashメッセージの表示 -->
+    <div class="flash-wrapper">
+      <div class="flash-content-wrapper">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "flash flash-#{key}") %>
+        <% end %>
+      </div>
+    </div>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div class="footer-bgc">
+        <div class="content-width">
+          <div class="footer-style contents-tidy">
+            <div class="footer-left">
+              <div class="footer-logo">
+                <%= image_pack_tag 'main-logo.png', style: "height: 80px;" %>
+              </div>
+              <i class="fab fa-twitter ml-20"></i>
+              <i class="fab fa-facebook ml-10"></i>
+              <p>© 2021 BIKERS_QA inc.</p>
+            </div>
+            <div class="footer-right">
+              <a href="/about">about</a>
+              <a href="#">利用規約</a>
+              <a href="#">プライバシーポリシー</a>
+              <a href="#">お問い合わせ</a>
+              <a href="#">ヘルプ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

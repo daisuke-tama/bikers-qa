@@ -1,0 +1,38 @@
+<!-- 記事を書いてみよう -->
+<div>
+  <%= link_to articles_path do %>
+    <div class="card carousel-on-card">
+      <i class="fas fa-search icon-style"></i>
+      <div class="card-body">
+        <h5 class="card-title">記事一覧を見る</h5>
+        <p class="card-text">みんなの記事を見てみよう！知らない情報が手に入るかも♪</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!-- 質問してみる -->
+<div>
+  <%= link_to new_question_path do %>
+    <div class="card carousel-on-card">
+      <i class="fas fa-question icon-style"></i>
+      <div class="card-body">
+        <h5 class="card-title">質問する</h5>
+        <p class="card-text">
+        TRYしてわからなかったことは気軽に質問してみよう</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!-- 記事を書いてみる -->
+<div>
+  <%= link_to new_article_path do %>
+    <div class="card carousel-on-card">
+      <i class="far fa-edit icon-style"></i>
+      <div class="card-body">
+        <h5 class="card-title">記事を書く</h5>
+        <p class="card-text">
+        経験を身にするためと困っている人の力になろう</p>
+      </div>
+    </div>
+  <% end %>
+</div>

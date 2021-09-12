@@ -1,0 +1,40 @@
+<div class="card-custom">
+  <div class="card-body">
+    <div class="author-header contents-tidy">
+      <div class="mb-10">
+        <%= link_to user_path(notification.visitor) do %>
+          <%= notification.visitor.name %>さん
+        <% end %>
+        が<%= time_ago_in_words(notification.created_at) %>前に
+      </div>
+    </div>
+    <% case notification.action %>
+      <% when 'follow' %>
+        <p>あなたをフォローしました</p>
+      <% when 'favorite' %>
+        <%= link_to 'あなたの投稿', notification.article, style: "font-weight: bold;" %>
+        <i>をお気に入り登録しました</i>
+      <% when 'comment' %> 
+        <% if notification.article.user_id == notification.visited.id %>
+          <%= link_to "あなたの投稿", article_path(notification.article), style: "font-weight: bold;" %>
+        <% else %>
+          <%= link_to article_path(notification.article), style: "font-weight: bold;" do %>
+            <%= notification.article.user.name + 'さんの投稿' %>
+          <% end %>
+        <% end %>
+        <i>にコメントしました</i>
+      <% when 'answer' %>
+        <% if notification.question.user_id == notification.visited.id %>
+          <%= link_to "あなたの質問", question_path(notification.question), style: "font-weight: bold;" %>
+        <% else %>
+          <%= link_to question_path(notification.answer) do %>
+            <%= notification.question.user.name + 'さんの質問' %>
+          <% end %>
+        <% end %>
+        <i>に回答しました</i>
+      <% when 'message' %>
+        <%= link_to "新しいダイレクトメッセージ", room_path(notification.message.room_id), style: "font-weight: bold;" %>
+        <i>を送りました</i>
+    <% end %>
+  </div>
+</div>

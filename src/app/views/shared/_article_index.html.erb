@@ -1,0 +1,33 @@
+<div class="card-custom">
+  <div class="card-body">
+    <div class="author-header contents-tidy">
+      <div class="mb-10">
+        <%= link_to user_path(article.user_id) do %>
+          <% if article.user.profile? %>
+            <%= image_tag article.user.profile.url, class: "user-profile-icon" %>
+          <% else %>
+            <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
+          <% end %>
+          <%= article.user.name %>
+        <% end %>
+        が<%= article.updated_at.strftime("%Y年%m月%d日").to_s %>に作成 
+      </div>         
+    </div>
+    <%= link_to article do %>
+      <h5 class="card-title user-show-indextitle"><%= article.title %></h5>
+    <% end %>
+    <% if article.tags.present? %>
+      <div class="article-index-tag-style">
+        <i class="fas fa-tags tag-icon" style="width: 15px;"></i>
+        <% article.tags.each do |article_tags| %>
+          <%= article_tags.tag_name %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").truncate(100) %>
+    <div class="latest-article-reaction-icon">
+      <i class="far fa-comment-dots index-comment-icon"></i><%= article.comments.count %>
+      <i class="far fa-heart favorites-icon"></i><%= article.favorites.count %>
+    </div>
+  </div>
+</div>

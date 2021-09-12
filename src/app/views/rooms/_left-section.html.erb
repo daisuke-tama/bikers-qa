@@ -1,0 +1,23 @@
+<div class="card-body">
+  <p class="left-section-dmr-name"><%= room.name %></p>
+  <p class="mb-10">参加者:</p>
+  <div class="room-detail-partner-profile">
+    <% entries.each do |entry| %>
+      <%= link_to user_path(entry.user_id) do %>
+        <% if entry.user.profile? %>
+          <%= image_tag entry.user.profile.url, class: "user-profile-icon" %>
+        <% else %>
+          <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
+        <% end %>
+        <%= entry.user.name %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-20">
+    作成日:<%= room.created_at.strftime("%Y年%m月%d日").to_s %>
+  </div>
+  <div class="mt-10">
+    最終更新日:<%= room.updated_at.strftime("%Y年%m月%d日").to_s %>
+  </div>
+  <%= link_to "ルーム削除", room, class: "btn btn-outline-danger room-delete-btn", data: { confirm: "ルームを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+</div>

@@ -1,0 +1,16 @@
+<div class="ps-relative">
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">みんなの記事を見てみよう！</h2>
+    <div class="page-detail-header-contents">
+      <p>ここから情報を手に入れて、作業に取り組もう！</p>
+      <p>お気に入り登録することでマイページにストックすることができます</p>
+    </div>
+  </div>
+</div>
+<div class="article-index-main-contents">
+  <div class="article-index-pc content-width">
+    <%= render partial: "shared/article_index", collection: @articles, as: "article" %>
+    <%= paginate @articles %>
+  </div>
+</div>

@@ -11,6 +11,8 @@ src/.bundle
 src/log/*
 src/tmp/*
 !src/log/.keep
+# heroku で使用するため除外禁止
+!src/log/production.log
 !src/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
@@ -28,7 +30,6 @@ src/.byebug_history
 # Ignore master key for decrypting credentials and more.
 src/config/master.key
 
-src/public/packs
 src/public/packs-test
 src/node_modules
 src/yarn-error.log
@@ -36,3 +37,7 @@ srcyarn-debug.log*
 src/.yarn-integrity
 
 src/db/mysql_data
+# 環境変数設定ファイル
+src/.env
+# carrierwave導入による画像保管ディレクトリ
+src/public/uploads

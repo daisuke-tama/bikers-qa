@@ -1,0 +1,13 @@
+<% if user_signed_in? && article.favorited_by?(current_user) %>
+  <p>
+    <%= link_to not_ajax_delete_article_favorites_path(article.id), method: :delete do %>
+      <i id="unfavorite-btn" class="fas fa-heart"></i>
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to not_ajax_create_article_favorites_path(article.id), method: :post do %>
+      <i id="favorite-btn" class="far fa-heart"></i>
+    <% end %>
+  </p>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="each-ranking-wrapper">
+  <p class="ranking-header">お気に入りランキング</p>
+  <% article_ranking.each_with_index do |article, index| %>
+    <div class="ranking-style">
+      <p class="ranking-number"><%= index + 1 %>位</p>
+      <%= link_to article do %>
+        <div id="favorite-ranking-article-title"><%= truncate(article.title, length: 16) %></div>
+      <% end %>
+      <div class="ranking-count-wrapper">
+        <div class="ranking-count"><%= article.favorites.count %></div>
+        <div class="ranking-count-detail">お気に入り</div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

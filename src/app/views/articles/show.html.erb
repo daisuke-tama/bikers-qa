@@ -1,0 +1,52 @@
+<!-- 画面サイズ 830px 以上で表示する左側のエディターアイコン -->
+<div class="left-section-editer-pc">
+  <%= render 'shared/left-section-editer', post: @article, move_from: "article" %>
+</div>
+<!-- 記事本文 -->
+<div class="article-show-post-details">
+  <%= render 'shared/post_details', post: @article, move_from: "article" %>
+</div>
+<!-- 画面サイズ 830px 以下で表示するエディターアイコン -->
+<div class="left-section-editer-sp">
+  <%= render 'shared/left-section-editer', post: @article, move_from: "article" %>
+</div>
+<!-- コメント機能 -->
+<div class="article-show-main-contents">
+  <div class="content-width contents-size">
+    <div class="card-custom">
+      <div class="card-body" style="padding: 2.25rem;">
+        <p class="replay-header">コメント</p>
+        <% @comments.each do |comment| %>
+          <div class="show-reply-contents-wrapper">
+            <div class="author-header-show">
+              <%= link_to user_path(comment.user_id) do %>
+                <% if comment.user.profile? %>
+                  <%= image_tag comment.user.profile.url, class: "user-profile-icon" %>
+                <% else %>
+                  <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
+                <% end %>
+                <%= comment.user.name %>
+              <% end %>
+              さんが<%= comment.created_at.strftime("%Y年%m月%d日").to_s %>に作成
+              <% if user_signed_in? && current_user.id == comment.user_id %>
+                <div style="float: right;">
+                  <%= link_to "削除", article_comment_path(comment.article.id, comment.id), data: { confirm: "コメントを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+                </div>
+              <% end %>
+            </div>
+            <div class="mt-20"><%= comment.body %></div>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= form_with model: [@article, @comment], local: true do |f| %>
+            <%= f.text_area :body, id: "create-comment-form", placeholder: "適切なマナーを守り、心地よいコメントをしましょう！\r無記入や１００００文字を超えたコメントは投稿できません", rows: "10", class: "w-100" %>
+            <br>
+            <%= f.submit "コメントする", class: "btn btn-outline-success replay-submit-btn" %>
+          <% end %>
+        <% else %>
+          <strong><p>コメントの投稿には新規登録/ログインが必要です</p></strong>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

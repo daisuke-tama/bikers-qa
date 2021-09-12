@@ -1,0 +1,61 @@
+<div class="ps-relative">
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">ダイレクトメッセージルームへようこそ！</h2>
+    <div class="page-detail-header-contents">
+      <p>ここでは二人だけの会話ができます</p>
+      <p>最低限のマナーを守り、心地よい会話を心がけてください</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<!-- 画面サイズ 730 以下で表示 -->
+<div class="room-show flex-contents-left-section sp" class="mt-30">
+  <%= render 'left-section', entries: @entries, room: @room %>
+</div>
+<div class="flex-contents-wrapper">
+  <!-- 画面サイズ 730 以上で表示 -->
+  <div class="room-show flex-contents-left-section pc" class="mt-30">
+    <%= render 'left-section', entries: @entries, room: @room %>
+  </div>
+  <div class="flex-contents-center-section mb-50">
+    <div class="content-width">
+      <div class="card-custom">
+        <div class="card-body" style="padding: 2.25rem;">
+          <% if @messages.present? %>
+            <% @messages.each do |message| %>
+              <div class="show-reply-contents-wrapper">
+                <div class="author-header-show">
+                  <%= link_to user_path(message.user_id) do %>
+                    <% if message.user.profile? %>
+                      <%= image_tag message.user.profile.url, class: "user-profile-icon" %>
+                    <% else %>
+                      <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
+                    <% end %>
+                    <%= message.user.name %>
+                  <% end %>
+                  さんが<%= message.updated_at.strftime("%Y年%m月%d日").to_s %>に作成
+                  <% if user_signed_in? && current_user.id == message.user_id %>
+                    <div style="float: right;">
+                      <%= link_to "削除", message_path(message.id), data: { confirm: "メッセージを削除すると戻すことは出来ません。本当に削除しますか？" }, method: :delete %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="mt-20"><%= message.content %></div>
+              </div>
+            <% end %>
+          <% else %>
+            <h3 class="text-center">メッセージはまだありません</h3>
+          <% end %>
+          <!-- form -->
+          <%= form_with model: @message do |f| %>
+            <%= f.text_area :content, placeholder: "適切なマナーを守り、心地よいメッセージを送りましょう！\r無記入や５００文字を超えたメッセージは送ることができません", rows: "10", class: "w-100" %>
+            <br>
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.submit "メッセージを送信する", class: "btn btn-outline-success replay-submit-btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

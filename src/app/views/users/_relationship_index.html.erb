@@ -1,0 +1,24 @@
+<div class="card-custom">
+  <div class="card-body">
+    <div class="author-header contents-tidy">
+      <div class="mb-10">
+        <%= link_to user_path(user.id) do %>
+          <% if user.profile? %>
+            <%= image_tag user.profile.url, class: "user-profile-icon" %>
+          <% else %>
+            <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
+          <% end %>
+          <%= user.name %>さん
+        <% end %>
+      </div>
+    </div>
+    <%= strip_tags(user.introduce.to_s).gsub(/[\n]/,"").truncate(100) %>
+    <% if relation_btn == "on" %>
+      <div id="relation_buttons_<%= user.id %>">
+        <p class="card-text">
+          <%= render 'relationships/relationship', user: user %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

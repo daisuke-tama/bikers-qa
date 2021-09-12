@@ -1,0 +1,51 @@
+<!-- 画面左側のカレントユーザープロフィール -->
+<div class="user-show flex-contents-wrapper">
+  <div class="flex-contents-left-section">
+    <div class="card-body">
+      <% if current_user.profile.blank? %>
+        <%= image_pack_tag 'profile_defalt.png', class: "profile-image" %>
+      <% else %>
+        <%= image_tag current_user.profile.url, class: "profile-image"%>
+      <% end %>
+      <h5 class="card-title username-font"><%= current_user.name %></h5>
+      <div class="relationship-link-text">
+        <div>
+          <p><%= current_user.followings.count %></p>
+          <p>フォロー</p>
+        </div>
+        <div>
+          <p><%= current_user.followers.count %></p>
+          <p>フォロワー</p>
+        </div>
+      </div>
+      <h5 style="font-size: 15px;"><%= current_user.introduce %></h5>
+      <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: "btn btn-outline-success edit-user-btn" %>
+      <div id="relation_buttons_<%= current_user.id %>" class="flex-center">
+        <%= render 'relationships/relationship', user: current_user %>
+      </div>
+    </div>
+  </div>
+  <!-- relationship一覧 -->
+  <div class="flex-contents-center-section mb-50">
+    <div class="content-width">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="follows-tub" data-toggle="tab" href="#follows" role="tab" aria-controls="follows" aria-selected="true">フォロー</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="follower-tub" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">フォロワー</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="follows" role="tabpanel" aria-labelledby="follows-tub">
+          <%= render partial: "relationship_index", collection: @followings, as: "user", locals: {relation_btn: "on"} %>
+          <%= paginate @followings %>
+        </div>
+        <div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tub">
+          <%= render partial: "relationship_index", collection: @followers, as: "user", locals: {relation_btn: "off"} %>
+          <%= paginate @followers %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

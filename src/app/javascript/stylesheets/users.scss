@@ -1,0 +1,202 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.edit-user-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+.move-dm-room-btn {
+  font-weight: bold;
+}
+//========= users/new ============
+.form-user-registrations {
+  width: 100%;
+}
+.form-user-name {
+  width: 37%;
+}
+.form-user-email {
+  width: 55%;
+}
+.form-user-profile {
+  width: 100%;
+  margin: 20px 0;
+  cursor: pointer;
+}
+.form-user-password {
+  width: 55%;
+}
+.new-user-relation-btns .btn {
+  width: 180px;
+}
+.explanation-of-input-method {
+  margin-top: 3rem !important;
+  width: 25%;
+  padding: 0 16px;
+  padding-bottom: 20px;
+}
+.explanation-of-input-method img {
+  margin-top: 10px;
+}
+.explanation-of-input-method h4 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+//========= users/show ============
+.username-font {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #dcdcdc;
+}
+.relationship-link-text {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.user-show .content-width {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.user-show-indextitle {
+  font-weight: bold;
+}
+.invite-dmroom-text {
+  margin-top: 17px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.user-profile-action-btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.user-profile-action-btns .relation-btn {
+  margin-bottom: 20px;
+}
+//========== users/edit =============
+.edit-profile {
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+//========= users/follows followers ==========
+.follow-contents-index-style {
+  background-color: white;
+  width: 60%;
+}
+.follow-contents-header {
+  padding-top: 20px;
+  padding-left: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.follow-contents-header-icon{
+  color: #6283ff;
+}
+.follow-contents-index-wrapper .follow-contents-index:last-child {
+  border-bottom: initial;
+}
+.follow-contents-index {
+  border-bottom: 1px solid #dcdcdc;
+  margin: 24px 20px;
+  padding-bottom: 30px;
+}
+.follow-contents-username {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+
+.sns-relation-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+// =============== メディアクエリ ================
+@media screen and (max-width: 600px) {
+  .user-profile-action-btns {
+    display: block;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form-user-registrations {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form-user-registrations .form-user-name {
+    width: 100%;
+  }
+  .form-user-registrations .form-user-email {
+    width: 100%;
+  }
+  .form-user-registrations .form-user-password {
+    width: 100%;
+  }
+  .explanation-of-input-method {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 829px) {
+  .user-show.flex-contents-wrapper {
+    margin-top: 40px;
+  }
+  .user-show.flex-contents-wrapper {
+    display: block;
+  }
+  .user-show .flex-contents-left-section {
+    position: initial;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-left-section .card-body {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-center-section {
+    width: initial;
+  }
+}
+@media screen and (min-width: 829px) {
+  .user-show .flex-contents-left-section .card-body {
+    width: 265px;
+  }
+}
+
+.move-to-dm-room-sp {
+  display: none;
+}
+.move-to-dm-room-sp .card-body img {
+  display: none;
+}
+.move-to-dm-room-sp p {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .new-user-relation-btns {
+    display: grid;
+  }
+  .new-user-relation-btns > a + a {
+    margin-top: 15px;
+  }
+  .move-to-dm-room-pc {
+    display: none;
+  }
+  .move-to-dm-room-sp {
+    display: block;
+  }
+  .move-to-dm-room-sp .flex-contents-right-section {
+    margin-top: initial;
+  }
+  .move-to-dm-room-sp .card-body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

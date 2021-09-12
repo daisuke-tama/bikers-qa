@@ -1,0 +1,29 @@
+// Place all the styles related to the Questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//=========== question/new ==============
+.form-question-title {
+  width: 60%;
+}
+.form-new-question {
+  width: 80%;
+}
+@media screen and (max-width: 767px) {
+  .form-question-title {
+    width: 100%;
+  }
+  .form-new-question {
+    width: 100%;
+  }
+}
+
+//=========== question/index ==============
+.question-index-main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.answer-count-icon {
+  font-size: 17px;
+  margin-right: 2px;
+}

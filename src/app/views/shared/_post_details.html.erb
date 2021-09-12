@@ -1,0 +1,33 @@
+<div class="article-show-main-contents post-details">
+  <div class="content-width contents-size">
+    <div class="card-custom">
+      <div class="card-body" style="padding: 2.25rem;">
+        <div class="author-header-show">
+          <%= link_to user_path(post.user_id) do %>
+            <% if post.user.profile? %>
+              <%= image_tag post.user.profile.url, class: "user-profile-icon" %>
+            <% else %>
+              <%= image_pack_tag 'profile_defalt.png', class: "user-profile-icon" %>
+            <% end %>
+            <%= post.user.name %>
+          <% end %>
+          さんが<%= post.created_at.strftime("%Y年%m月%d日").to_s %>に作成
+          <% if move_from == "article" %>
+            <div style="float: right;">
+              <i class="fas fa-heart favorite-icon-post-details"></i>✖<%= post.favorites.count %>        
+            </div>
+          <% end %>
+          <p><span style="margin-left: 65px;">最終更新：</span><%= post.updated_at.strftime("%Y年%m月%d日").to_s %>に更新</p>
+        </div>
+        <h5 class="card-title article-title-text"><%= post.title %></h5>
+        <% if move_from == "article" && post.tags.present? %>
+          <i class="fas fa-tags tag-icon" style="width: 25px;"></i>
+          <% post.tags.each do |post_tags| %>
+            <%= post_tags.tag_name %>
+          <% end %>
+        <% end %>
+        <div class="article-body-show"><%= post.content %></div>
+      </div>
+    </div>
+  </div>
+</div>

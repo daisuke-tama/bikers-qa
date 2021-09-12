@@ -18,7 +18,7 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 port ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
-#
+# heroku deploy時に No such file or directory @ rb_sysopen - tmp/pids/server.pid が起こる場合はコメントアウトしてください
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.

@@ -1,0 +1,8 @@
+<div class="card col-sm-6 mx-auto mt-5">
+  <div class="card-body">
+    <h3 class="mt-1 mb-3 text-center">質問を編集する</h3>
+    <%= render 'form', question: @question %>
+    <%= link_to "記事一覧へ戻る", questions_path, class: "btn btn-outline-primary" %>
+    <%= link_to "記事を削除する", @question, data: { confirm: "記事を削除すると戻すことは出来ません。本当に削除しますか？" }, class: "btn btn-outline-danger", method: :delete %>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//=========== article/new ==============
+.form-article-title {
+  width: 60%;
+}
+.form-new-article {
+  width: 80%;
+}
+@media screen and (max-width: 767px) {
+  .form-article-title {
+    width: 100%;
+  }
+  .form-new-article {
+    width: 100%;
+  }
+}
+//=========== article/index ==============
+.article-index-main-contents {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+.article-index-main-contents .article-title-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.article-index-tag-style {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.latest-article-reaction-icon {
+  margin-top: 10px;
+  text-align: end;
+}
+//========== article/show ================
+.article-show-main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.article-show-main-contents .article-title-text {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+.article-body-show {
+  font-size: 15px;
+  margin-top: 46px;
+}

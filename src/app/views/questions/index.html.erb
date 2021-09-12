@@ -1,0 +1,17 @@
+<div class="ps-relative">
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">困っている人を助けよう！</h2>
+    <div class="page-detail-header-contents">
+      <p>困っている人を助けよう！</p>
+      <p>最低限のマナーを守りましょう！誹謗中傷など人に対して攻撃するような行為は絶対にしないでください</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<div class="question-index-main-contents">
+  <div class="question-index-pc content-width">
+    <%= render partial: "shared/question_index", collection: @questions, as: "question" %>
+    <%= paginate @questions %>
+  </div>
+</div>

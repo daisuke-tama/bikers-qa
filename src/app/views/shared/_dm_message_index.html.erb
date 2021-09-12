@@ -1,0 +1,12 @@
+<div class="card-custom">
+  <div class="card-body">
+    <div class="author-header contents-tidy">
+      <div class="mb-10">
+        このルームは<%= dm_entry.updated_at.strftime("%Y年%m月%d日").to_s %>に作成されました
+      </div>         
+    </div>
+    <%= link_to room_path(dm_entry.room.id) do %>
+      <h5 class="card-title user-show-indextitle"><%= dm_entry.room.name %></h5>
+    <% end %>
+  </div>
+</div>

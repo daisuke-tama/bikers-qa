@@ -1,0 +1,327 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//======= トップページのcardのアニメーション ========
+.effect-fade {
+  opacity : 0;
+  transform : translate(0, 45px);
+  transition : all 2000ms;
+}
+.effect-fade.effect-scroll {
+  opacity : 1;
+  transform : translate(0, 0);
+}
+//======== home/index ===========
+//========= carousel ============
+// carouselの画像を暗くする
+.filter {
+  background: #000;
+}
+.filter-img {
+  display: block;
+  opacity: .2;
+}
+// carouselに新規登録欄を載せる
+.ps-relative {
+  position: relative;
+}
+.ps-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.subtitle-font {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+.carousel-on-right-contents {
+  top: 21%;
+}
+.carousel-on-text {
+  color: white;
+  font-weight: bold;
+}
+.carousel-on-logo {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.carousel-on-logo img {
+  height: 200px;
+}
+.about-link-text {
+  border-bottom: 1px solid white;
+  margin-top: 15px;
+}
+@media screen and (max-width: 767px) {
+  .carousel-pc {
+    display: none;
+  }
+  .carousel-on-right-contents.ps-absolute {
+    position: initial;
+  }
+  .carousel-on-right-contents .carousel-on-text-header {
+    font-size: 20px;
+    color: black;
+  }
+  .carousel-on-logo img {
+    width: 100%;
+    height: initial;
+    margin-top: 30px;
+  }
+  .carousel-on-text p {
+    text-align: center;
+    font-size: 12px;
+    color: black;
+  }
+  .carousel-on-text .about-link-text {
+  border-bottom: 1px solid #b5b5b5;
+  color: black;
+  margin-top: 15px;
+  }
+}
+@media screen and (max-width: 980px) {
+  .carousel-on-text {
+    margin: 0 auto;
+  }
+  .new-user-select-menu {
+    display: none;
+  }
+}
+// ログイン後
+
+.carousel-on-card {
+  width: 18rem;
+  background-color: initial;
+  color: white;
+}
+.carousel-on-card .icon-style {
+  color: #24d45b;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.carousel-on-card .card-body {
+  margin-top: 16px;
+}
+.carousel-on-card .card-title {
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+}
+.carousel-on-card .card-text {
+  line-height: 2.0;
+  font-weight: bold;
+}
+
+.guidance-contents-sp {
+  display: none;
+}
+.guidance-contents-sp .card {
+  border: initial;
+  color: #a5a5a5;
+}
+.guidance-contents-sp .carousel-on-card {
+  width: 13rem;
+}
+.guidance-contents-sp .icon-style {
+  width: 50px;
+  height: 50px;
+}
+.guidance-contents-sp .card-title {
+  font-size: 15px;
+}
+.guidance-contents-sp .card-text {
+  font-size: 10px;
+}
+@media screen and (max-width: 900px) {
+  .guidance-contents-pc {
+    display: none;
+  }
+  .guidance-contents-sp {
+    display: block;
+  }
+  .guidance-contents-sp .contents-tidy {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .guidance-contents-sp .contents-tidy {
+    display: block;
+    text-align: -webkit-center;
+    width: 16rem;
+    margin-bottom: 50px;
+  }
+  .guidance-contents-sp .card {
+    margin-bottom: 30px;
+  }
+}
+//========= main-contents ===========
+.main-contents {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+.main-contents .article-title-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.new-article-icon {
+  color: yellow;
+  font-size: 30px;
+  margin-right: 10px;
+}
+.toppage-move-admin-btn {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.admin-btn {
+  font-weight: bold;
+}
+//========== runking =============
+.toppage-right-contents-wrapper-pc {
+  margin: 0 auto;
+  width: 30%;
+  height: fit-content;
+}
+.toppage-right-contents-wrapper {
+  display: none;
+  margin: 0 auto;
+  height: fit-content;
+}
+.each-ranking-wrapper {
+  padding: 10px 13px;
+  background-color: white;
+  margin-bottom: 30px;
+}
+.ranking-style {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+.ranking-header {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+.ranking-count-font {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ranking-number {
+  text-align: center;
+  white-space: nowrap;
+  width: 3rem;
+  margin-right: 5px;
+  color: #6b6b6b;
+  font-weight: bold;
+}
+.ranking-count-wrapper {
+  margin-left: auto;
+  text-align: center;
+}
+.ranking-count {
+  font-weight: bold;
+}
+.ranking-count-detail {
+  color: #6f6e6e;
+  font-size: 4px;
+  white-space: nowrap
+}
+// fllower-ranking
+.follower-ranking-user-profile {
+  display: flex;
+  align-items: center;
+}
+#follower-ranking-user-name {
+  font-weight: bold;
+  margin-left: 5px;
+}
+// favorite-ranking
+#favorite-ranking-article-title {
+  font-weight: bold;
+}
+// tag-ranking
+#tag-ranking-article-title {
+  font-weight: bold;
+}
+
+//========== home/about ============
+.about-logo-wrapper {
+  text-align: center;
+  background-color: white;
+  margin: 23px auto;
+  width: 90%;
+}
+.about-logo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-height: 262px;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+.about-contents-header {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #2d9087;
+}
+.about-contents-title {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.about-contents-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+.about-contents-body {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+@media screen and (max-width: 829px) {
+  .search-form-pc {
+    display: none;
+  }
+  .search-form-sp {
+    display: block;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  .search-form-sp label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .search-form-sp #q_title_cont {
+    margin-bottom: 10px;
+  }
+
+  .toppage-right-contents-wrapper-pc {
+    display: none;
+  }
+  .toppage-right-contents-wrapper {
+    display: block;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 830px) {
+  .search-form-sp {
+    display: none;
+  }
+  .nav-tubs-pc {
+    width: 67%
+  }
+  .carousel-inner {
+    height: 600px;
+  }
+}
