@@ -44,6 +44,8 @@ group :development, :test do
   gem 'rubocop-airbnb'
   # 環境変数設定用
   gem 'dotenv-rails'
+  # N+1を検出する
+  gem 'bullet'
 end
 
 group :development do

@@ -4,9 +4,9 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @messages = @room.messages
+      @messages = @room.messages.includes([:user])
       @message = Message.new
-      @entries = @room.entries
+      @entries = @room.entries.includes([:user])
     else
       redirect_to root_path
       flash[:alert] = "あなたはこのダイレクトメッセージルームのメンバーではありません"

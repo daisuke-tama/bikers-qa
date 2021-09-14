@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   def index
     # kaminariによるpage perメソッドを使用し、１０記事毎にページネイション
-    @questions = Question.page(params[:page]).per(10).order('created_at DESC')
+    @questions = Question.includes([:user], [:rich_text_content]).page(params[:page]).per(10).order('created_at DESC')
   end
 
   def show

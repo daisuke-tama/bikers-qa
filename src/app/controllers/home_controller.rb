@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
     # ============== １０記事表示関連 =================
-    @articles = Article.order(id: :desc).limit(10)
-    @questions = Question.order(id: :desc).limit(10)
+    @articles = Article.includes([:user], [:tag_maps], [:tags], [:rich_text_content]).order(id: :desc).limit(10)
+    @questions = Question.includes([:user], [:rich_text_content]).order(id: :desc).limit(10)
     # ===============================================
     # =============== ランキング関連 =====================================
     @article_ranking = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(10).pluck(:article_id))

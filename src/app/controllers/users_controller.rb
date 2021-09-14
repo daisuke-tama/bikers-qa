@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # kaminariによるpage perメソッドを使用し、１０記事毎にページネイション
-    @articles = @user.articles.page(params[:page]).per(10).order('created_at DESC')
-    @favorite_articles = @user.favorite_articles.page(params[:page]).per(10).order('created_at DESC')
-    @questions = @user.questions.page(params[:page]).per(10).order('created_at DESC')
-    @answers = @user.answer_articles.page(params[:page]).per(10).order('created_at DESC')
-    @dm_entries = current_user.entries.page(params[:page]).per(10).order('created_at DESC')
+    @articles = @user.articles.includes([:tag_maps], [:tags], [:rich_text_content]).page(params[:page]).per(10).order('created_at DESC')
+    @favorite_articles = @user.favorite_articles.includes([:user], [:tag_maps], [:tags], [:rich_text_content]).page(params[:page]).per(10).order('created_at DESC')
+    @questions = @user.questions.includes([:rich_text_content]).page(params[:page]).per(10).order('created_at DESC')
+    @answers = @user.answer_articles.includes([:user], [:rich_text_content]).page(params[:page]).per(10).order('created_at DESC')
+    @dm_entries = current_user.entries.includes([:room]).page(params[:page]).per(10).order('created_at DESC')
     # ================== DM機能 =============================
     @current_user_entry = Entry.where(user_id: current_user.id)
     @user_entry = Entry.where(user_id: @user.id)
