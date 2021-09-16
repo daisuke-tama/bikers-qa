@@ -1,6 +1,16 @@
-<div class="card col-sm-6 mx-auto mt-5">
+<div class="ps-relative">
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">記事を編集しよう！</h2>
+    <div class="page-detail-header-contents">
+      <p>加筆・修正を加えて、より良い記事にしましょう！</p>
+      <p>最低限のマナーを守り、見た人が不快にならないよう気をつけましょう</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<div class="form-new-post content-width card mx-auto mt-5 mb-80">
   <div class="card-body">
-    <h3 class="mt-1 mb-3 text-center">記事を編集する</h3>
     <%= render 'form', article: @article %>
     <div class="contents-tidy">
       <%= link_to "記事一覧へ戻る", articles_path, class: "btn btn-outline-primary" %>
