@@ -3,17 +3,17 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 //=========== article/new ==============
-.form-article-title {
+.form-new-article-title {
   width: 60%;
 }
-.form-new-article {
+.form-new-post {
   width: 80%;
 }
 @media screen and (max-width: 767px) {
-  .form-article-title {
+  .form-new-article-title {
     width: 100%;
   }
-  .form-new-article {
+  .form-new-post {
     width: 100%;
   }
 }
