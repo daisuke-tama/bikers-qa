@@ -429,6 +429,10 @@ header {
 }
 
 // ========= page-detail-header ==========
+.page-detail-header-wrapper {
+  position: relative;
+  margin-top: 30px;
+}
 .page-detail-header-bg {
   height: 250px;
   margin: 0 auto;
