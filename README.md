@@ -22,6 +22,7 @@ Bikers-QAはバイクメンテナンスに携わる方々にとって役に立�
 ・ユーザー間のコミュニケーションを促す目的でフォロー・ダイレクトメッセージを使用可能  
 ・記事・質問への反応、フォロー・お気に入り、ダイレクトメッセージの受信にてユーザーに通知される  
 ・フォロー数・お気に入り数・使用されているタグのランキングを表示
+・運営への問い合わせ
 
 <br>
 
@@ -73,34 +74,34 @@ CircleCI と Heroku による CI/CD を構築し、テスト完了後にデプ�
 |10|フォロー|Ajax(非同期)|
 |11|ダイレクトメッセージ||
 |12|通知||
-
+|13|問い合わせ|Google Form|
 ---
 
 ## 投稿関連
 
 ||機能|Gem/備考|
 | :-: | :-- | :-- |
-|12|記事投稿|ActionText(リッチテキストエディタ)|
-|13|コメント||
-|14|質問投稿|ActionText(リッチテキストエディタ)|
-|15|回答||
-|16|記事検索|gem 'ransack' (タイトル部分一致)|
-|17|お気に入り|Ajax(非同期)|
-|18|各ランキング||
-|19|記事のタグ付け|tagsinput|
-|20|ページネイション|gem 'kaminari'|
+|14|記事投稿|ActionText(リッチテキストエディタ)|
+|15|コメント||
+|16|質問投稿|ActionText(リッチテキストエディタ)|
+|17|回答||
+|18|記事検索|gem 'ransack' (タイトル部分一致)|
+|19|お気に入り|Ajax(非同期)|
+|20|各ランキング||
+|21|記事のタグ付け|tagsinput|
+|22|ページネイション|gem 'kaminari'|
 ---
 
 ## システム関連
 
 ||機能|Gem/備考|
 | :-: | :-- | :-- |
-|21|rails/devise日本語化|gem 'rails-i18n' / gem 'devise-i18n'|
-|22|管理者用画面の日本語化||
-|23|コード解析|rubocop-airbnb|
-|24|単体・結合テスト|RSpec model/request/system spec|
-|25|CI/CD|CircleCI / heroku|
-|26|N+1検知|gem 'Bullet'|
+|23|rails/devise日本語化|gem 'rails-i18n' / gem 'devise-i18n'|
+|24|管理者用画面の日本語化||
+|25|コード解析|rubocop-airbnb|
+|26|単体・結合テスト|RSpec model/request/system spec|
+|27|CI/CD|CircleCI / heroku|
+|28|N+1検知|gem 'Bullet'|
 ---
 
 <br>

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # トップページ
   root 'home#index'
   # サイト内容説明ページ
-  get  '/about', to: 'home#about'
+  get '/about', to: 'home#about'
+  # お問合せフォームページ
+  get '/contact', to: 'home#contact'
   # テストログイン用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_login'
