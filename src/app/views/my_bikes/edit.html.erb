@@ -1,0 +1,16 @@
+<div class="page-detail-header-wrapper">
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">マイバイクを編集しよう！</h2>
+    <div class="page-detail-header-contents">
+      <p>加筆・修正を加えて、より良いマイバイクにしましょう！</p>
+      <p>最低限のマナーを守り、見た人が不快にならないよう気をつけましょう</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<div class="form-new-post content-width card mx-auto mt-5 mb-80">
+  <div class="card-body">
+    <%= render 'form', my_bike: @my_bike %>
+  </div>
+</div>

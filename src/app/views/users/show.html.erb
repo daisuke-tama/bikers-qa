@@ -1,5 +1,5 @@
-<!-- 画面左側のメニュー欄 -->
 <div class="user-show flex-contents-wrapper content-width">
+  <!-- 画面左側のメニュー欄 -->
   <div class="flex-contents-left-section">
     <div class="card-body">
       <% if @user.profile.blank? %>
@@ -30,6 +30,22 @@
       <!-- 画面サイズ 900px 以下で表示する DMルーム作成 or 転移欄 -->
       <div class="move-to-dm-room-sp">
         <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
+      </div>
+    </div>
+    <!-- マイバイクの紹介欄 -->
+    <div class="my_bike">
+      <div class="card-body">
+        <% if @user.my_bike.present? %>
+          <% if @user.my_bike.picture.blank? %>
+            <%= image_pack_tag 'my_bike_picture_defalt.png', class: "my_bike_picture" %>
+          <% else %>
+            <%= image_tag @user.my_bike.picture.url, class: "my_bike_picture" %>
+          <% end %>
+          <%= @user.my_bike.name %>
+          <%= link_to "マイバイクを編集する", edit_my_bike_path(@user.my_bike.id) %>
+        <% else %>
+          <%= link_to "マイバイク登録", new_my_bike_path %>
+        <% end %>
       </div>
     </div>
   </div>

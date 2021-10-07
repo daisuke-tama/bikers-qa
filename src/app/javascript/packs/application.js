@@ -19,9 +19,11 @@ import "../stylesheets/rooms.scss"
 import "../stylesheets/questions.scss"
 import "../stylesheets/notifications.scss"
 import "../stylesheets/actiontext.scss"
+import "../stylesheets/my_bikes.scss"
 import "tagsinput"
 import "flash-timeout"
 import "profile-image-prev"
+import "my-bike-picture-prev"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

@@ -154,6 +154,8 @@ var map = {
 	"./garage.jpg": "./app/javascript/images/garage.jpg",
 	"./main-logo": "./app/javascript/images/main-logo.png",
 	"./main-logo.png": "./app/javascript/images/main-logo.png",
+	"./my_bike_picture_defalt": "./app/javascript/images/my_bike_picture_defalt.png",
+	"./my_bike_picture_defalt.png": "./app/javascript/images/my_bike_picture_defalt.png",
 	"./profile_defalt": "./app/javascript/images/profile_defalt.png",
 	"./profile_defalt.png": "./app/javascript/images/profile_defalt.png"
 };
@@ -246,6 +248,17 @@ module.exports = __webpack_require__.p + "media/images/main-logo-7d9760e2111e59e
 
 /***/ }),
 
+/***/ "./app/javascript/images/my_bike_picture_defalt.png":
+/*!**********************************************************!*\
+  !*** ./app/javascript/images/my_bike_picture_defalt.png ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "media/images/my_bike_picture_defalt-e320666dba94d71449fe1f91690cad15.png";
+
+/***/ }),
+
 /***/ "./app/javascript/images/profile_defalt.png":
 /*!**************************************************!*\
   !*** ./app/javascript/images/profile_defalt.png ***!
@@ -254,6 +267,46 @@ module.exports = __webpack_require__.p + "media/images/main-logo-7d9760e2111e59e
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "media/images/profile_defalt-a516390a1e14f3c9c6c874b00a97232b.png";
+
+/***/ }),
+
+/***/ "./app/javascript/my-bike-picture-prev.js":
+/*!************************************************!*\
+  !*** ./app/javascript/my-bike-picture-prev.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {// マイバイクの新規登録・編集時の画像のプレビュー機能
+$(document).on('turbolinks:load', function () {
+  $(function () {
+    function buildHTML(image) {
+      var html = "\n        <div class=\"prev-content\">\n          <img src=\"".concat(image, "\", alt=\"preview\" class=\"prev-image my_bike_picture\">\n        </div>\n        ");
+      return html;
+    }
+
+    $(document).on('change', '.hidden_file_my_bike_picture', function () {
+      var file = this.files[0];
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = function () {
+        var image = this.result;
+
+        if ($('.prev-content').length == 0) {
+          var html = buildHTML(image);
+          $('.prev-contents').prepend(html);
+          $('.photo-icon').hide();
+        } else {
+          $('.prev-content .prev-image').attr({
+            src: image
+          });
+        }
+      };
+    });
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery/src/jquery */ "./node_modules/jquery/src/jquery.js")))
 
 /***/ }),
 
@@ -298,16 +351,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stylesheets_notifications_scss__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_notifications_scss__WEBPACK_IMPORTED_MODULE_14__);
 /* harmony import */ var _stylesheets_actiontext_scss__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../stylesheets/actiontext.scss */ "./app/javascript/stylesheets/actiontext.scss");
 /* harmony import */ var _stylesheets_actiontext_scss__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_actiontext_scss__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var tagsinput__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! tagsinput */ "./app/javascript/tagsinput.js");
-/* harmony import */ var tagsinput__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(tagsinput__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var flash_timeout__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! flash-timeout */ "./app/javascript/flash-timeout.js");
-/* harmony import */ var flash_timeout__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(flash_timeout__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var profile_image_prev__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! profile-image-prev */ "./app/javascript/profile-image-prev.js");
-/* harmony import */ var profile_image_prev__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(profile_image_prev__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _stylesheets_my_bikes_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../stylesheets/my_bikes.scss */ "./app/javascript/stylesheets/my_bikes.scss");
+/* harmony import */ var _stylesheets_my_bikes_scss__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_my_bikes_scss__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var tagsinput__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! tagsinput */ "./app/javascript/tagsinput.js");
+/* harmony import */ var tagsinput__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(tagsinput__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var flash_timeout__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! flash-timeout */ "./app/javascript/flash-timeout.js");
+/* harmony import */ var flash_timeout__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(flash_timeout__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var profile_image_prev__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! profile-image-prev */ "./app/javascript/profile-image-prev.js");
+/* harmony import */ var profile_image_prev__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(profile_image_prev__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var my_bike_picture_prev__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! my-bike-picture-prev */ "./app/javascript/my-bike-picture-prev.js");
+/* harmony import */ var my_bike_picture_prev__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(my_bike_picture_prev__WEBPACK_IMPORTED_MODULE_20__);
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+
+
 
 
 
@@ -359,7 +418,7 @@ $(document).on('turbolinks:load', function () {
       return html;
     }
 
-    $(document).on('change', '.hidden_file', function () {
+    $(document).on('change', '.hidden_file_user_profile', function () {
       var file = this.files[0];
       var reader = new FileReader();
       reader.readAsDataURL(file);
@@ -480,6 +539,35 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/sass-loader/dist/cjs.js??ref--6-3!./home.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/home.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./app/javascript/stylesheets/my_bikes.scss":
+/*!**************************************************!*\
+  !*** ./app/javascript/stylesheets/my_bikes.scss ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/sass-loader/dist/cjs.js??ref--6-3!./my_bikes.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/my_bikes.scss");
 
             content = content.__esModule ? content.default : content;
 
@@ -12438,6 +12526,24 @@ var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
 exports.push([module.i, ".effect-fade {\n  opacity: 0;\n  transform: translate(0, 45px);\n  transition: all 2000ms;\n}\n\n.effect-fade.effect-scroll {\n  opacity: 1;\n  transform: translate(0, 0);\n}\n\n.filter {\n  background: #000;\n}\n\n.filter-img {\n  display: block;\n  opacity: 0.2;\n}\n\n.ps-relative {\n  position: relative;\n}\n\n.ps-absolute {\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n\n.subtitle-font {\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n\n.carousel-on-right-contents {\n  top: 21%;\n}\n\n.carousel-on-text {\n  color: white;\n  font-weight: bold;\n}\n\n.carousel-on-logo {\n  text-align: center;\n  margin-bottom: 12px;\n}\n\n.carousel-on-logo img {\n  height: 200px;\n}\n\n.about-link-text {\n  border-bottom: 1px solid white;\n  margin-top: 15px;\n}\n\n@media screen and (max-width: 767px) {\n  .carousel-pc {\n    display: none;\n  }\n\n  .carousel-on-right-contents.ps-absolute {\n    position: static;\n    position: initial;\n  }\n\n  .carousel-on-right-contents .carousel-on-text-header {\n    font-size: 20px;\n    color: black;\n  }\n\n  .carousel-on-logo img {\n    width: 100%;\n    height: auto;\n    height: initial;\n    margin-top: 30px;\n  }\n\n  .carousel-on-text p {\n    text-align: center;\n    font-size: 12px;\n    color: black;\n  }\n\n  .carousel-on-text .about-link-text {\n    border-bottom: 1px solid #b5b5b5;\n    color: black;\n    margin-top: 15px;\n  }\n}\n\n@media screen and (max-width: 980px) {\n  .carousel-on-text {\n    margin: 0 auto;\n  }\n\n  .new-user-select-menu {\n    display: none;\n  }\n}\n\n.carousel-on-card {\n  width: 18rem;\n  background-color: transparent;\n  background-color: initial;\n  color: white;\n}\n\n.carousel-on-card .icon-style {\n  color: #24d45b;\n  width: 100px;\n  height: 100px;\n  margin: 0 auto;\n}\n\n.carousel-on-card .card-body {\n  margin-top: 16px;\n}\n\n.carousel-on-card .card-title {\n  text-align: center;\n  font-size: 27px;\n  font-weight: bold;\n}\n\n.carousel-on-card .card-text {\n  line-height: 2;\n  font-weight: bold;\n}\n\n.guidance-contents-sp {\n  display: none;\n}\n\n.guidance-contents-sp .card {\n  border: medium none currentColor;\n  border: initial;\n  color: #a5a5a5;\n}\n\n.guidance-contents-sp .carousel-on-card {\n  width: 13rem;\n}\n\n.guidance-contents-sp .icon-style {\n  width: 50px;\n  height: 50px;\n}\n\n.guidance-contents-sp .card-title {\n  font-size: 15px;\n}\n\n.guidance-contents-sp .card-text {\n  font-size: 10px;\n}\n\n@media screen and (max-width: 900px) {\n  .guidance-contents-pc {\n    display: none;\n  }\n\n  .guidance-contents-sp {\n    display: block;\n  }\n\n  .guidance-contents-sp .contents-tidy {\n    margin-bottom: 30px;\n  }\n}\n\n@media screen and (max-width: 640px) {\n  .guidance-contents-sp .contents-tidy {\n    display: block;\n    text-align: -webkit-center;\n    width: 16rem;\n    margin-bottom: 50px;\n  }\n\n  .guidance-contents-sp .card {\n    margin-bottom: 30px;\n  }\n}\n\n.main-contents {\n  padding-top: 30px;\n  padding-bottom: 80px;\n}\n\n.main-contents .article-title-text {\n  font-size: 20px;\n  font-weight: bold;\n  margin-top: 10px;\n}\n\n.new-article-icon {\n  color: yellow;\n  font-size: 30px;\n  margin-right: 10px;\n}\n\n.toppage-move-admin-btn {\n  text-align: center;\n  margin-bottom: 60px;\n}\n\n.admin-btn {\n  font-weight: bold;\n}\n\n.toppage-right-contents-wrapper-pc {\n  margin: 0 auto;\n  width: 30%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n}\n\n.toppage-right-contents-wrapper {\n  display: none;\n  margin: 0 auto;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n}\n\n.each-ranking-wrapper {\n  padding: 10px 13px;\n  background-color: white;\n  margin-bottom: 30px;\n}\n\n.ranking-style {\n  display: flex;\n  align-items: center;\n  padding: 8px 0;\n  border-bottom: 1px solid #d8d8d8;\n}\n\n.ranking-header {\n  margin-bottom: 10px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.ranking-count-font {\n  font-weight: bold;\n  font-size: 16px;\n}\n\n.ranking-number {\n  text-align: center;\n  white-space: nowrap;\n  width: 3rem;\n  margin-right: 5px;\n  color: #6b6b6b;\n  font-weight: bold;\n}\n\n.ranking-count-wrapper {\n  margin-left: auto;\n  text-align: center;\n}\n\n.ranking-count {\n  font-weight: bold;\n}\n\n.ranking-count-detail {\n  color: #6f6e6e;\n  font-size: 4px;\n  white-space: nowrap;\n}\n\n.follower-ranking-user-profile {\n  display: flex;\n  align-items: center;\n}\n\n#follower-ranking-user-name {\n  font-weight: bold;\n  margin-left: 5px;\n}\n\n#favorite-ranking-article-title {\n  font-weight: bold;\n}\n\n#tag-ranking-article-title {\n  font-weight: bold;\n}\n\n.about-logo-wrapper {\n  text-align: center;\n  background-color: white;\n  margin: 23px auto;\n  width: 90%;\n}\n\n.about-logo {\n  margin-top: 30px;\n  margin-bottom: 30px;\n  max-height: 262px;\n  max-width: 100%;\n  height: auto;\n  width: auto;\n}\n\n.about-contents-header {\n  text-align: center;\n  font-size: 30px;\n  font-weight: bold;\n  color: #2d9087;\n}\n\n.about-contents-title {\n  text-align: center;\n  margin-bottom: 10px;\n  margin-top: 20px;\n  font-size: 20px;\n  font-weight: bold;\n}\n\n.about-contents-wrapper {\n  width: 60%;\n  margin: 0 auto;\n  margin-bottom: 80px;\n}\n\n.about-contents-body {\n  font-size: 15px;\n  line-height: 1.8;\n}\n\n@media screen and (max-width: 829px) {\n  .search-form-pc {\n    display: none;\n  }\n\n  .search-form-sp {\n    display: block;\n    text-align: center;\n    margin-bottom: 70px;\n  }\n\n  .search-form-sp label {\n    font-size: 18px;\n    font-weight: bold;\n  }\n\n  .search-form-sp #q_title_cont {\n    margin-bottom: 10px;\n  }\n\n  .toppage-right-contents-wrapper-pc {\n    display: none;\n  }\n\n  .toppage-right-contents-wrapper {\n    display: block;\n    margin-top: 50px;\n  }\n}\n\n@media screen and (min-width: 830px) {\n  .search-form-sp {\n    display: none;\n  }\n\n  .nav-tubs-pc {\n    width: 67%;\n  }\n\n  .carousel-inner {\n    height: 600px;\n  }\n}\n\n.contact-form {\n  margin-bottom: 80px;\n}", "",{"version":3,"sources":["/app/app/javascript/stylesheets/home.scss","home.scss"],"names":[],"mappings":"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","file":"home.scss","sourcesContent":["// Place all the styles related to the home controller here.\n// They will automatically be included in application.css.\n// You can use Sass (SCSS) here: https://sass-lang.com/\n\n//======= トップページのcardのアニメーション ========\n.effect-fade {\n  opacity : 0;\n  transform : translate(0, 45px);\n  transition : all 2000ms;\n}\n.effect-fade.effect-scroll {\n  opacity : 1;\n  transform : translate(0, 0);\n}\n//======== home/index ===========\n//========= carousel ============\n// carouselの画像を暗くする\n.filter {\n  background: #000;\n}\n.filter-img {\n  display: block;\n  opacity: .2;\n}\n// carouselに新規登録欄を載せる\n.ps-relative {\n  position: relative;\n}\n.ps-absolute {\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n.subtitle-font {\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n.carousel-on-right-contents {\n  top: 21%;\n}\n.carousel-on-text {\n  color: white;\n  font-weight: bold;\n}\n.carousel-on-logo {\n  text-align: center;\n  margin-bottom: 12px;\n}\n.carousel-on-logo img {\n  height: 200px;\n}\n.about-link-text {\n  border-bottom: 1px solid white;\n  margin-top: 15px;\n}\n@media screen and (max-width: 767px) {\n  .carousel-pc {\n    display: none;\n  }\n  .carousel-on-right-contents.ps-absolute {\n    position: initial;\n  }\n  .carousel-on-right-contents .carousel-on-text-header {\n    font-size: 20px;\n    color: black;\n  }\n  .carousel-on-logo img {\n    width: 100%;\n    height: initial;\n    margin-top: 30px;\n  }\n  .carousel-on-text p {\n    text-align: center;\n    font-size: 12px;\n    color: black;\n  }\n  .carousel-on-text .about-link-text {\n  border-bottom: 1px solid #b5b5b5;\n  color: black;\n  margin-top: 15px;\n  }\n}\n@media screen and (max-width: 980px) {\n  .carousel-on-text {\n    margin: 0 auto;\n  }\n  .new-user-select-menu {\n    display: none;\n  }\n}\n// ログイン後\n\n.carousel-on-card {\n  width: 18rem;\n  background-color: initial;\n  color: white;\n}\n.carousel-on-card .icon-style {\n  color: #24d45b;\n  width: 100px;\n  height: 100px;\n  margin: 0 auto;\n}\n.carousel-on-card .card-body {\n  margin-top: 16px;\n}\n.carousel-on-card .card-title {\n  text-align: center;\n  font-size: 27px;\n  font-weight: bold;\n}\n.carousel-on-card .card-text {\n  line-height: 2.0;\n  font-weight: bold;\n}\n\n.guidance-contents-sp {\n  display: none;\n}\n.guidance-contents-sp .card {\n  border: initial;\n  color: #a5a5a5;\n}\n.guidance-contents-sp .carousel-on-card {\n  width: 13rem;\n}\n.guidance-contents-sp .icon-style {\n  width: 50px;\n  height: 50px;\n}\n.guidance-contents-sp .card-title {\n  font-size: 15px;\n}\n.guidance-contents-sp .card-text {\n  font-size: 10px;\n}\n@media screen and (max-width: 900px) {\n  .guidance-contents-pc {\n    display: none;\n  }\n  .guidance-contents-sp {\n    display: block;\n  }\n  .guidance-contents-sp .contents-tidy {\n    margin-bottom: 30px;\n  }\n}\n@media screen and (max-width: 640px) {\n  .guidance-contents-sp .contents-tidy {\n    display: block;\n    text-align: -webkit-center;\n    width: 16rem;\n    margin-bottom: 50px;\n  }\n  .guidance-contents-sp .card {\n    margin-bottom: 30px;\n  }\n}\n//========= main-contents ===========\n.main-contents {\n  padding-top: 30px;\n  padding-bottom: 80px;\n}\n.main-contents .article-title-text {\n  font-size: 20px;\n  font-weight: bold;\n  margin-top: 10px;\n}\n.new-article-icon {\n  color: yellow;\n  font-size: 30px;\n  margin-right: 10px;\n}\n.toppage-move-admin-btn {\n  text-align: center;\n  margin-bottom: 60px;\n}\n.admin-btn {\n  font-weight: bold;\n}\n//========== runking =============\n.toppage-right-contents-wrapper-pc {\n  margin: 0 auto;\n  width: 30%;\n  height: fit-content;\n}\n.toppage-right-contents-wrapper {\n  display: none;\n  margin: 0 auto;\n  height: fit-content;\n}\n.each-ranking-wrapper {\n  padding: 10px 13px;\n  background-color: white;\n  margin-bottom: 30px;\n}\n.ranking-style {\n  display: flex;\n  align-items: center;\n  padding: 8px 0;\n  border-bottom: 1px solid #d8d8d8;\n}\n.ranking-header {\n  margin-bottom: 10px;\n  font-weight: bold;\n  text-align: center;\n}\n.ranking-count-font {\n  font-weight: bold;\n  font-size: 16px;\n}\n\n.ranking-number {\n  text-align: center;\n  white-space: nowrap;\n  width: 3rem;\n  margin-right: 5px;\n  color: #6b6b6b;\n  font-weight: bold;\n}\n.ranking-count-wrapper {\n  margin-left: auto;\n  text-align: center;\n}\n.ranking-count {\n  font-weight: bold;\n}\n.ranking-count-detail {\n  color: #6f6e6e;\n  font-size: 4px;\n  white-space: nowrap\n}\n// fllower-ranking\n.follower-ranking-user-profile {\n  display: flex;\n  align-items: center;\n}\n#follower-ranking-user-name {\n  font-weight: bold;\n  margin-left: 5px;\n}\n// favorite-ranking\n#favorite-ranking-article-title {\n  font-weight: bold;\n}\n// tag-ranking\n#tag-ranking-article-title {\n  font-weight: bold;\n}\n\n//========== home/about ============\n.about-logo-wrapper {\n  text-align: center;\n  background-color: white;\n  margin: 23px auto;\n  width: 90%;\n}\n.about-logo {\n  margin-top: 30px;\n  margin-bottom: 30px;\n  max-height: 262px;\n  max-width: 100%;\n  height: auto;\n  width: auto;\n}\n\n.about-contents-header {\n  text-align: center;\n  font-size: 30px;\n  font-weight: bold;\n  color: #2d9087;\n}\n.about-contents-title {\n  text-align: center;\n  margin-bottom: 10px;\n  margin-top: 20px;\n  font-size: 20px;\n  font-weight: bold;\n}\n.about-contents-wrapper {\n  width: 60%;\n  margin: 0 auto;\n  margin-bottom: 80px;\n}\n.about-contents-body {\n  font-size: 15px;\n  line-height: 1.8;\n}\n\n@media screen and (max-width: 829px) {\n  .search-form-pc {\n    display: none;\n  }\n  .search-form-sp {\n    display: block;\n    text-align: center;\n    margin-bottom: 70px;\n  }\n  .search-form-sp label {\n    font-size: 18px;\n    font-weight: bold;\n  }\n  .search-form-sp #q_title_cont {\n    margin-bottom: 10px;\n  }\n\n  .toppage-right-contents-wrapper-pc {\n    display: none;\n  }\n  .toppage-right-contents-wrapper {\n    display: block;\n    margin-top: 50px;\n  }\n}\n\n@media screen and (min-width: 830px) {\n  .search-form-sp {\n    display: none;\n  }\n  .nav-tubs-pc {\n    width: 67%\n  }\n  .carousel-inner {\n    height: 600px;\n  }\n}\n\n//========== home/contact ============\n.contact-form {\n  margin-bottom: 80px;\n}\n",".effect-fade {\n  opacity: 0;\n  transform: translate(0, 45px);\n  transition: all 2000ms;\n}\n\n.effect-fade.effect-scroll {\n  opacity: 1;\n  transform: translate(0, 0);\n}\n\n.filter {\n  background: #000;\n}\n\n.filter-img {\n  display: block;\n  opacity: 0.2;\n}\n\n.ps-relative {\n  position: relative;\n}\n\n.ps-absolute {\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n\n.subtitle-font {\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n\n.carousel-on-right-contents {\n  top: 21%;\n}\n\n.carousel-on-text {\n  color: white;\n  font-weight: bold;\n}\n\n.carousel-on-logo {\n  text-align: center;\n  margin-bottom: 12px;\n}\n\n.carousel-on-logo img {\n  height: 200px;\n}\n\n.about-link-text {\n  border-bottom: 1px solid white;\n  margin-top: 15px;\n}\n\n@media screen and (max-width: 767px) {\n  .carousel-pc {\n    display: none;\n  }\n\n  .carousel-on-right-contents.ps-absolute {\n    position: initial;\n  }\n\n  .carousel-on-right-contents .carousel-on-text-header {\n    font-size: 20px;\n    color: black;\n  }\n\n  .carousel-on-logo img {\n    width: 100%;\n    height: initial;\n    margin-top: 30px;\n  }\n\n  .carousel-on-text p {\n    text-align: center;\n    font-size: 12px;\n    color: black;\n  }\n\n  .carousel-on-text .about-link-text {\n    border-bottom: 1px solid #b5b5b5;\n    color: black;\n    margin-top: 15px;\n  }\n}\n@media screen and (max-width: 980px) {\n  .carousel-on-text {\n    margin: 0 auto;\n  }\n\n  .new-user-select-menu {\n    display: none;\n  }\n}\n.carousel-on-card {\n  width: 18rem;\n  background-color: initial;\n  color: white;\n}\n\n.carousel-on-card .icon-style {\n  color: #24d45b;\n  width: 100px;\n  height: 100px;\n  margin: 0 auto;\n}\n\n.carousel-on-card .card-body {\n  margin-top: 16px;\n}\n\n.carousel-on-card .card-title {\n  text-align: center;\n  font-size: 27px;\n  font-weight: bold;\n}\n\n.carousel-on-card .card-text {\n  line-height: 2;\n  font-weight: bold;\n}\n\n.guidance-contents-sp {\n  display: none;\n}\n\n.guidance-contents-sp .card {\n  border: initial;\n  color: #a5a5a5;\n}\n\n.guidance-contents-sp .carousel-on-card {\n  width: 13rem;\n}\n\n.guidance-contents-sp .icon-style {\n  width: 50px;\n  height: 50px;\n}\n\n.guidance-contents-sp .card-title {\n  font-size: 15px;\n}\n\n.guidance-contents-sp .card-text {\n  font-size: 10px;\n}\n\n@media screen and (max-width: 900px) {\n  .guidance-contents-pc {\n    display: none;\n  }\n\n  .guidance-contents-sp {\n    display: block;\n  }\n\n  .guidance-contents-sp .contents-tidy {\n    margin-bottom: 30px;\n  }\n}\n@media screen and (max-width: 640px) {\n  .guidance-contents-sp .contents-tidy {\n    display: block;\n    text-align: -webkit-center;\n    width: 16rem;\n    margin-bottom: 50px;\n  }\n\n  .guidance-contents-sp .card {\n    margin-bottom: 30px;\n  }\n}\n.main-contents {\n  padding-top: 30px;\n  padding-bottom: 80px;\n}\n\n.main-contents .article-title-text {\n  font-size: 20px;\n  font-weight: bold;\n  margin-top: 10px;\n}\n\n.new-article-icon {\n  color: yellow;\n  font-size: 30px;\n  margin-right: 10px;\n}\n\n.toppage-move-admin-btn {\n  text-align: center;\n  margin-bottom: 60px;\n}\n\n.admin-btn {\n  font-weight: bold;\n}\n\n.toppage-right-contents-wrapper-pc {\n  margin: 0 auto;\n  width: 30%;\n  height: fit-content;\n}\n\n.toppage-right-contents-wrapper {\n  display: none;\n  margin: 0 auto;\n  height: fit-content;\n}\n\n.each-ranking-wrapper {\n  padding: 10px 13px;\n  background-color: white;\n  margin-bottom: 30px;\n}\n\n.ranking-style {\n  display: flex;\n  align-items: center;\n  padding: 8px 0;\n  border-bottom: 1px solid #d8d8d8;\n}\n\n.ranking-header {\n  margin-bottom: 10px;\n  font-weight: bold;\n  text-align: center;\n}\n\n.ranking-count-font {\n  font-weight: bold;\n  font-size: 16px;\n}\n\n.ranking-number {\n  text-align: center;\n  white-space: nowrap;\n  width: 3rem;\n  margin-right: 5px;\n  color: #6b6b6b;\n  font-weight: bold;\n}\n\n.ranking-count-wrapper {\n  margin-left: auto;\n  text-align: center;\n}\n\n.ranking-count {\n  font-weight: bold;\n}\n\n.ranking-count-detail {\n  color: #6f6e6e;\n  font-size: 4px;\n  white-space: nowrap;\n}\n\n.follower-ranking-user-profile {\n  display: flex;\n  align-items: center;\n}\n\n#follower-ranking-user-name {\n  font-weight: bold;\n  margin-left: 5px;\n}\n\n#favorite-ranking-article-title {\n  font-weight: bold;\n}\n\n#tag-ranking-article-title {\n  font-weight: bold;\n}\n\n.about-logo-wrapper {\n  text-align: center;\n  background-color: white;\n  margin: 23px auto;\n  width: 90%;\n}\n\n.about-logo {\n  margin-top: 30px;\n  margin-bottom: 30px;\n  max-height: 262px;\n  max-width: 100%;\n  height: auto;\n  width: auto;\n}\n\n.about-contents-header {\n  text-align: center;\n  font-size: 30px;\n  font-weight: bold;\n  color: #2d9087;\n}\n\n.about-contents-title {\n  text-align: center;\n  margin-bottom: 10px;\n  margin-top: 20px;\n  font-size: 20px;\n  font-weight: bold;\n}\n\n.about-contents-wrapper {\n  width: 60%;\n  margin: 0 auto;\n  margin-bottom: 80px;\n}\n\n.about-contents-body {\n  font-size: 15px;\n  line-height: 1.8;\n}\n\n@media screen and (max-width: 829px) {\n  .search-form-pc {\n    display: none;\n  }\n\n  .search-form-sp {\n    display: block;\n    text-align: center;\n    margin-bottom: 70px;\n  }\n\n  .search-form-sp label {\n    font-size: 18px;\n    font-weight: bold;\n  }\n\n  .search-form-sp #q_title_cont {\n    margin-bottom: 10px;\n  }\n\n  .toppage-right-contents-wrapper-pc {\n    display: none;\n  }\n\n  .toppage-right-contents-wrapper {\n    display: block;\n    margin-top: 50px;\n  }\n}\n@media screen and (min-width: 830px) {\n  .search-form-sp {\n    display: none;\n  }\n\n  .nav-tubs-pc {\n    width: 67%;\n  }\n\n  .carousel-inner {\n    height: 600px;\n  }\n}\n.contact-form {\n  margin-bottom: 80px;\n}"]}]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/my_bikes.scss":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/sass-loader/dist/cjs.js??ref--6-3!./app/javascript/stylesheets/my_bikes.scss ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".my_bike_picture {\n  width: 230px;\n  height: 230px;\n  display: block;\n  margin: 0 auto;\n  margin-bottom: 30px;\n}", "",{"version":3,"sources":["/app/app/javascript/stylesheets/my_bikes.scss","my_bikes.scss"],"names":[],"mappings":"AACA;EACE,YAAA;EACA,aAAA;EACA,cAAA;EACA,cAAA;EACA,mBAAA;ACAF","file":"my_bikes.scss","sourcesContent":["// 画像登録時のプレビュー\n.my_bike_picture {\n  width: 230px;\n  height: 230px;\n  display: block;\n  margin: 0 auto;\n  margin-bottom: 30px;\n}\n\n",".my_bike_picture {\n  width: 230px;\n  height: 230px;\n  display: block;\n  margin: 0 auto;\n  margin-bottom: 30px;\n}"]}]);
 // Exports
 module.exports = exports;
 
@@ -44965,4 +45071,4 @@ module.exports = function (module) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=application-b344baecb290d5169858.js.map
+//# sourceMappingURL=application-c4358c85a0a64d8cdecb.js.map

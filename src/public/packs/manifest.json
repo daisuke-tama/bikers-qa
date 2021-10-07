@@ -1,23 +1,23 @@
 {
-  "application.js": "/packs/js/application-b344baecb290d5169858.js",
-  "application.js.map": "/packs/js/application-b344baecb290d5169858.js.map",
-  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js",
-  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map",
+  "application.js": "/packs/js/application-c4358c85a0a64d8cdecb.js",
+  "application.js.map": "/packs/js/application-c4358c85a0a64d8cdecb.js.map",
+  "calousel-on-card-animation.js": "/packs/js/calousel-on-card-animation-bb46a0d63e94c4628626.js",
+  "calousel-on-card-animation.js.map": "/packs/js/calousel-on-card-animation-bb46a0d63e94c4628626.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-b344baecb290d5169858.js"
+        "/packs/js/application-c4358c85a0a64d8cdecb.js"
       ],
       "js.map": [
-        "/packs/js/application-b344baecb290d5169858.js.map"
+        "/packs/js/application-c4358c85a0a64d8cdecb.js.map"
       ]
     },
     "calousel-on-card-animation": {
       "js": [
-        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js"
+        "/packs/js/calousel-on-card-animation-bb46a0d63e94c4628626.js"
       ],
       "js.map": [
-        "/packs/js/calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map"
+        "/packs/js/calousel-on-card-animation-bb46a0d63e94c4628626.js.map"
       ]
     }
   },
@@ -27,5 +27,6 @@
   "media/images/favicon.ico": "/packs/media/images/favicon-a7dec576a76451b587466758865f255e.ico",
   "media/images/garage.jpg": "/packs/media/images/garage-f3443080158660c1020b33f84d41f1ce.jpg",
   "media/images/main-logo.png": "/packs/media/images/main-logo-7d9760e2111e59e283945f06d79e550e.png",
+  "media/images/my_bike_picture_defalt.png": "/packs/media/images/my_bike_picture_defalt-e320666dba94d71449fe1f91690cad15.png",
   "media/images/profile_defalt.png": "/packs/media/images/profile_defalt-a516390a1e14f3c9c6c874b00a97232b.png"
 }

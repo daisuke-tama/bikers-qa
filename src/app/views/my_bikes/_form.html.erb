@@ -1,0 +1,47 @@
+<%= form_with model: my_bike do |f| %>
+  <div class="error-message-wrapper">
+    <% my_bike.errors.full_messages.each do |message| %>
+      <li class="error-messages"><%= message %></li>
+    <% end %>
+  </div>
+
+  <!-- 画像アップロード -->
+  <%= f.label :picture, class: "image_label form-user-profile" do %>
+    <div class="prev-contents">
+      <% if current_user.my_bike.picture.blank? %>
+        <%= image_pack_tag 'my_bike_picture_defalt.png', class: "photo-icon my_bike_picture" %>
+      <% else %>
+        <div class="prev-content">
+          <%= image_tag current_user.my_bike.picture.url, alt: "preview", class: "my_bike_picture" %>
+        </div>
+      <% end %>
+      <p style="text-align: center;">画像を変更したい場合はこちらをクリックしてください</p>
+    </div>
+  <% end %>
+  <p class="mb-20">
+    <label>
+      <%= f.check_box :remove_picture %>
+      デフォルト画像に戻したい時はチェックを入れてください
+    </label>
+  </p>
+  <%= f.file_field :picture, class: 'image_form__contents__field hidden_file_my_bike_picture', style: "display: none;" %>
+
+  <div class="form-group">
+    <%= f.label :name, "車種を入力してください" %><br/>
+    <%= f.text_field :name, class: "form-control form-new-article-title", placeholder: "シグナスXなど", autocomplete: "name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :purchase_date, "購入日" %><br/>
+    <%= f.date_select :purchase_date, autocomplete: "purchase_date" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "バイクの説明" %>
+    <%= f.text_area :description, class: "form-control", placeholder: "マイバイクについての説明文", autocomplete: "description", rows: "10" %>
+  </div>
+
+  <div class="actions mt-40 mb-30 text-center">
+    <%= f.submit "上記内容で確定する", class: "btn btn-outline-success" %>
+  </div>
+<% end %>
