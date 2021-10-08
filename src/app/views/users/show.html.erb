@@ -1,7 +1,7 @@
 <div class="user-show flex-contents-wrapper">
   <!-- 画面左側のメニュー欄 -->
   <div class="flex-contents-left-section">
-    <div class="card-body">
+    <div class="user-profile card-body">
       <% if @user.profile.blank? %>
         <%= image_pack_tag 'profile_defalt.png', class: "profile-image" %>
       <% else %>
@@ -27,12 +27,18 @@
           <%= render 'relationships/relationship', user: @user %>
         </div>
       </div>
-      <!-- 画面サイズ 900px 以下で表示する DMルーム作成 or 転移欄 -->
+  <!-- 画面サイズ 900px 以下で表示する -->
+      <!--  DMルーム作成 or 転移欄 -->
       <div class="move-to-dm-room-sp">
         <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
       </div>
     </div>
+    <!-- マイバイク機能 -->
+    <div class="my-bike sp">
+      <%= render 'my_bikes/show', user: @user, my_bike: @user.my_bike %>
+    </div>
   </div>
+  <!-- ここまで -->
   <!-- 投稿・お気に入りした記事＋参加したダイレクトメッセージルーム一覧 -->
   <div class="flex-contents-center-section mb-50">
     <ul class="nav nav-tabs" id="myTab" role="tablist">

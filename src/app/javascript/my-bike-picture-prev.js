@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function () {
       var html =
         `
         <div class="prev-content">
-          <img src="${image}", alt="preview" class="prev-image my_bike_picture">
+          <img src="${image}", alt="preview" class="prev-image my-bike-picture">
         </div>
         `
       return html;

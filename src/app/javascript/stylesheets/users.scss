@@ -91,6 +91,9 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+.user-show .flex-contents-left-section .card-body {
+  background-color: white;
+}
 .user-show .flex-contents-center-section {
   margin: 0 15px
 }
@@ -139,9 +142,65 @@
 }
 
 // =============== メディアクエリ ================
-@media screen and (max-width: 600px) {
-  .user-profile-action-btns {
+.move-to-dm-room-sp {
+  display: none;
+}
+.move-to-dm-room-sp .card-body img {
+  display: none;
+}
+.move-to-dm-room-sp p {
+  display: none;
+}
+.my-bike.sp {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .user-show.flex-contents-wrapper {
     display: block;
+    margin-top: 40px;
+  }
+  .user-show .flex-contents-left-section {
+    position: initial;
+    display: flex;
+    margin: 0 auto;
+  }
+  .user-show .flex-contents-left-section .user-profile.card-body {
+    margin: 0 20px;
+  }
+  .user-show .flex-contents-left-section .user-profile.card-body {
+    width: 45%;
+  }
+  .user-show .flex-contents-left-section .my-bike.sp {
+    display: block;
+    width: 45%;
+    margin: 0 20px;
+  }
+  .user-show .flex-contents-center-section {
+    width: initial;
+  }
+  .new-user-relation-btns {
+    display: grid;
+  }
+  .new-user-relation-btns > a + a {
+    margin-top: 15px;
+  }
+  .user-show .flex-contents-right-section {
+    display: none;
+  }
+  .move-to-dm-room-sp {
+    display: block;
+  }
+  .move-to-dm-room-sp .flex-contents-right-section {
+    margin-top: initial;
+  }
+  .move-to-dm-room-sp .card-body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 900px) {
+  .user-show .flex-contents-left-section {
+    width: 265px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -162,57 +221,24 @@
     display: none;
   }
 }
-
-@media screen and (max-width: 829px) {
-  .user-show.flex-contents-wrapper {
-    display: block;
-    margin-top: 40px;
-  }
+@media screen and (max-width: 670px) {
   .user-show .flex-contents-left-section {
-    position: initial;
-    margin: 0 auto;
+    display: block;
   }
-  .user-show .flex-contents-left-section .card-body {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .user-show .flex-contents-center-section {
+  .user-show .flex-contents-left-section .user-profile.card-body {
     width: initial;
   }
-}
-@media screen and (min-width: 829px) {
-  .user-show .flex-contents-left-section {
-    width: 265px;
+  .user-show .flex-contents-left-section .my-bike.sp {
+    width: initial;
+    margin: 20px;
+  }
+  .user-show .flex-contents-left-section .my-bike.sp .my-bike-picture {
+    width: 180px;
+    height: 180px;
   }
 }
-
-.move-to-dm-room-sp {
-  display: none;
-}
-.move-to-dm-room-sp .card-body img {
-  display: none;
-}
-.move-to-dm-room-sp p {
-  display: none;
-}
-@media screen and (max-width: 900px) {
-  .new-user-relation-btns {
-    display: grid;
-  }
-  .new-user-relation-btns > a + a {
-    margin-top: 15px;
-  }
-  .user-show .flex-contents-right-section {
-    display: none;
-  }
-  .move-to-dm-room-sp {
+@media screen and (max-width: 600px) {
+  .user-profile-action-btns {
     display: block;
-  }
-  .move-to-dm-room-sp .flex-contents-right-section {
-    margin-top: initial;
-  }
-  .move-to-dm-room-sp .card-body {
-    margin-left: auto;
-    margin-right: auto;
   }
 }

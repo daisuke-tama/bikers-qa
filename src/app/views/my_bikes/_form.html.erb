@@ -9,10 +9,10 @@
   <%= f.label :picture, class: "image_label form-user-profile" do %>
     <div class="prev-contents">
       <% if current_user.my_bike.picture.blank? %>
-        <%= image_pack_tag 'my_bike_picture_defalt.png', class: "photo-icon my_bike_picture" %>
+        <%= image_pack_tag 'my_bike_picture_defalt.png', class: "photo-icon my-bike-picture" %>
       <% else %>
         <div class="prev-content">
-          <%= image_tag current_user.my_bike.picture.url, alt: "preview", class: "my_bike_picture" %>
+          <%= image_tag current_user.my_bike.picture.url, alt: "preview", class: "my-bike-picture" %>
         </div>
       <% end %>
       <p style="text-align: center;">画像を変更したい場合はこちらをクリックしてください</p>
