@@ -1,17 +1,17 @@
-// 新規登録・プロフィール編集時の画像のプレビュー機能
+// マイバイクの新規登録・編集時の画像のプレビュー機能
 $(document).on('turbolinks:load', function () {
   $(function () {
     function buildHTML(image) {
       var html =
         `
         <div class="prev-content">
-          <img src="${image}", alt="preview" class="prev-image profile-image">
+          <img src="${image}", alt="preview" class="prev-image my-bike-picture">
         </div>
         `
       return html;
     }
 
-    $(document).on('change', '.hidden_file_user_profile', function () {
+    $(document).on('change', '.hidden_file_my_bike_picture', function () {
       var file = this.files[0];
       var reader = new FileReader();
       reader.readAsDataURL(file);

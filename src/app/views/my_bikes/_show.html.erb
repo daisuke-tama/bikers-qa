@@ -1,0 +1,24 @@
+<% if my_bike.present? %> <!-- userは存在してもmy_bikeが存在しない場合があるため、例外処理回避用に用意 -->
+  <div class="card-body">
+    <% if my_bike.picture.present? %>
+      <%= image_tag my_bike.picture.url, class: "my-bike-picture" %>  
+    <% else %>
+      <%= image_pack_tag 'my_bike_picture_defalt.png', class: "my-bike-picture" %>
+    <% end %>
+    <p class="my-bike-name"><%= my_bike.name %></p>
+    <p class="mt-10"><%= my_bike.description %></p>
+    <p class="mt-10">購入日:<%= my_bike.purchase_date.year %>年<%= my_bike.purchase_date.month %>月<%= my_bike.purchase_date.day %>日</p>
+    <% if user == current_user %>
+      <%= link_to "マイバイクを編集する", edit_my_bike_path(my_bike.id), class: "btn btn-outline-primary my-bike-edit-btn" %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="card-body">
+    <%= image_pack_tag 'my_bike_picture_defalt.png', class: "my-bike-picture" %>
+    <p class="mt-10">現在、マイバイクの登録はありません</p>
+    <% if user == current_user %>
+      <%= link_to "マイバイク登録", new_my_bike_path, class: "btn btn-outline-primary my-bike-edit-btn" %>
+    <% end %>
+  </div>
+<% end %>
+

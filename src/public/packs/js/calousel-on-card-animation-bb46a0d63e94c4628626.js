@@ -123,6 +123,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var calousel_on_card_animation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! calousel-on-card-animation */ "./app/javascript/calousel-on-card-animation.js");
 /* harmony import */ var calousel_on_card_animation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(calousel_on_card_animation__WEBPACK_IMPORTED_MODULE_0__);
+// ログイン後にcalousel上に表示する"記事一覧""質問をする""記事を書く"を下からゆっくり出現させるアニメーション
 // home/indexで３つの class="effect-fade" の後に読ませる必要があるため個別ファイルを用意
 
 
@@ -11207,4 +11208,4 @@ __webpack_require__(/*! ./traversing */ "./node_modules/jquery/src/traversing.js
 /***/ })
 
 /******/ });
-//# sourceMappingURL=calousel-on-card-animation-cf6c7f6f916fb1d2a4e2.js.map
+//# sourceMappingURL=calousel-on-card-animation-bb46a0d63e94c4628626.js.map

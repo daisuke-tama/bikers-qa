@@ -1,0 +1,16 @@
+<div class="page-detail-header-wrapper">
+  <%= image_pack_tag 'main-logo.png', class:"filter-img page-detail-header-bg" %>
+  <div class="ps-absolute page-detail-header-contents-wrapper">
+    <h2 class="page-detail-header">マイバイクの登録</h2>
+    <div class="page-detail-header-contents">
+      <p>所持しているバイクの紹介をしましょう！</p>
+      <p>自分で撮った写真以外は使用しないでください</p>
+      <p>また、トラブルの元となる可能性があるため個人情報などは控えるようお願い致します</p>
+    </div>
+  </div>
+</div>
+<div class="form-new-post content-width card mx-auto mt-5 mb-80">
+  <div class="card-body">
+    <%= render 'form', my_bike: @my_bike %>
+  </div>
+</div>

@@ -45,5 +45,7 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
+  # マイバイク機能
+  resources :my_bikes
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
