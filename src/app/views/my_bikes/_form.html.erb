@@ -8,12 +8,12 @@
   <!-- 画像アップロード -->
   <%= f.label :picture, class: "image_label form-user-profile" do %>
     <div class="prev-contents">
-      <% if current_user.my_bike.picture.blank? %>
-        <%= image_pack_tag 'my_bike_picture_defalt.png', class: "photo-icon my-bike-picture" %>
-      <% else %>
+      <% if current_user.my_bike.present? && current_user.my_bike.picture.present? %>
         <div class="prev-content">
           <%= image_tag current_user.my_bike.picture.url, alt: "preview", class: "prev-image my-bike-picture" %>
         </div>
+      <% else %>
+        <%= image_pack_tag 'my_bike_picture_defalt.png', class: "photo-icon my-bike-picture" %>
       <% end %>
       <p style="text-align: center;">画像を変更したい場合はこちらをクリックしてください</p>
     </div>
