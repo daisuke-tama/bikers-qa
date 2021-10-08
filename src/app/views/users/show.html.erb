@@ -1,4 +1,4 @@
-<div class="user-show flex-contents-wrapper content-width">
+<div class="user-show flex-contents-wrapper">
   <!-- 画面左側のメニュー欄 -->
   <div class="flex-contents-left-section">
     <div class="card-body">
@@ -32,76 +32,64 @@
         <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
       </div>
     </div>
-    <!-- マイバイクの紹介欄 -->
-    <div class="my_bike">
-      <div class="card-body">
-        <% if @user.my_bike.present? %>
-          <% if @user.my_bike.picture.blank? %>
-            <%= image_pack_tag 'my_bike_picture_defalt.png', class: "my_bike_picture" %>
-          <% else %>
-            <%= image_tag @user.my_bike.picture.url, class: "my_bike_picture" %>
-          <% end %>
-          <%= @user.my_bike.name %>
-          <%= link_to "マイバイクを編集する", edit_my_bike_path(@user.my_bike.id) %>
-        <% else %>
-          <%= link_to "マイバイク登録", new_my_bike_path %>
-        <% end %>
-      </div>
-    </div>
   </div>
   <!-- 投稿・お気に入りした記事＋参加したダイレクトメッセージルーム一覧 -->
   <div class="flex-contents-center-section mb-50">
-    <div class="content-width">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">作成した記事</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="favorites-tub" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">お気に入り</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="questions-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="answers-tub" data-toggle="tab" href="#answers" role="tab" aria-controls="answers" aria-selected="false">回答した質問</a>
+      </li>
+      <% if @user == current_user %>
         <li class="nav-item">
-          <a class="nav-link active" id="create-articles-tub" data-toggle="tab" href="#create-articles" role="tab" aria-controls="create-articles" aria-selected="true">作成した記事</a>
+          <a class="nav-link" id="dm_entries-tub" data-toggle="tab" href="#dm_entries" role="tab" aria-controls="dm_entries" aria-selected="false">DM</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" id="favorites-tub" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">お気に入り</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="questions-tub" data-toggle="tab" href="#questions" role="tab" aria-controls="questions" aria-selected="false">作成した質問</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="answers-tub" data-toggle="tab" href="#answers" role="tab" aria-controls="answers" aria-selected="false">回答した質問</a>
-        </li>
-        <% if @user == current_user %>
-          <li class="nav-item">
-            <a class="nav-link" id="dm_entries-tub" data-toggle="tab" href="#dm_entries" role="tab" aria-controls="dm_entries" aria-selected="false">ダイレクトメッセージ</a>
-          </li>
-        <% end %>
-      </ul>
-      <!-- 作成した記事一覧 -->
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
-          <%= render partial: "shared/article_index", collection: @articles, as: "article" %>
-          <%= paginate @articles %>
-        </div>
-        <!-- お気に入りした記事一覧 -->
-        <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tub">
-          <%= render partial: "shared/article_index", collection: @favorite_articles, as: "article" %>
-          <%= paginate @favorite_articles %>
-        </div>
-        <!-- 作成した質問 -->
-        <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tub">
-          <%= render partial: "shared/question_index", collection: @questions, as: "question" %>
-          <%= paginate @questions %>
-        </div>
-        <!-- 回答した質問 -->
-        <div class="tab-pane fade" id="answers" role="tabpanel" aria-labelledby="answers-tub">
-          <%= render partial: "shared/question_index", collection: @answers, as: "question" %>
-          <%= paginate @answers %>
-        </div>
-        <!-- ダイレクトメッセージ -->
-        <div class="tab-pane fade" id="dm_entries" role="tabpanel" aria-labelledby="dm_entries-tub">
-          <%= render partial: "shared/dm_message_index", collection: @dm_entries, as: "dm_entry" %>
-          <%= paginate @dm_entries %>
-        </div>
+      <% end %>
+    </ul>
+    <!-- 作成した記事一覧 -->
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="create-articles" role="tabpanel" aria-labelledby="create-articles-tub">
+        <%= render partial: "shared/article_index", collection: @articles, as: "article" %>
+        <%= paginate @articles %>
+      </div>
+      <!-- お気に入りした記事一覧 -->
+      <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tub">
+        <%= render partial: "shared/article_index", collection: @favorite_articles, as: "article" %>
+        <%= paginate @favorite_articles %>
+      </div>
+      <!-- 作成した質問 -->
+      <div class="tab-pane fade" id="questions" role="tabpanel" aria-labelledby="questions-tub">
+        <%= render partial: "shared/question_index", collection: @questions, as: "question" %>
+        <%= paginate @questions %>
+      </div>
+      <!-- 回答した質問 -->
+      <div class="tab-pane fade" id="answers" role="tabpanel" aria-labelledby="answers-tub">
+        <%= render partial: "shared/question_index", collection: @answers, as: "question" %>
+        <%= paginate @answers %>
+      </div>
+      <!-- ダイレクトメッセージ -->
+      <div class="tab-pane fade" id="dm_entries" role="tabpanel" aria-labelledby="dm_entries-tub">
+        <%= render partial: "shared/dm_message_index", collection: @dm_entries, as: "dm_entry" %>
+        <%= paginate @dm_entries %>
       </div>
     </div>
   </div>
-  <!-- 画面右側のDMルーム作成 or 転移欄 -->
-  <div class="move-to-dm-room-pc">
-    <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
+  <div class="flex-contents-right-section">
+    <!-- マイバイクの紹介欄 -->
+    <div class="my-bike">
+      <%= render 'my_bikes/show', user: @user, my_bike: @user.my_bike %>
+    </div>
+    <!-- DMルーム作成 or 転移欄 -->
+    <div class="move-to-dm-room-pc">
+      <%= render 'move_to_dm_room', user: @user, working_room: @working_room, room_number: @room_number %>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
-<div class="user-show flex-contents-right-section">
+<div class="user-show-move-to-dm-room">
   <% if user.id != current_user.id && working_room.blank? %>
-    <div class="card-body" style="width: 200px;">
-      <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
+    <div class="card-body">
+      <%= image_pack_tag 'conversation.jpg', class: "conversation-img-size" %>
       <p class="invite-dmroom-text">
         <%= user.name %>さんと
         ダイレクトメッセージ機能を使って
@@ -18,8 +18,8 @@
       <% end %>
     </div>
   <% elsif user.id != current_user.id && working_room == true %>
-    <div class="card-body" style="width: 200px;">
-      <%= image_pack_tag 'conversation.jpg', class: "w-100" %>
+    <div class="card-body">
+      <%= image_pack_tag 'conversation.jpg', class: "conversation-img-size" %>
       <p class="invite-dmroom-text">
         <%= user.name %>さんと
         ダイレクトメッセージ機能を使って

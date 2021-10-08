@@ -80,6 +80,24 @@
 .user-profile-action-btns .relation-btn {
   margin-bottom: 20px;
 }
+.conversation-img-size {
+  width: 170px;
+}
+.move-to-dm-room-pc {
+  background-color: white;
+  margin-top: 20px;
+}
+.user-show .flex-contents-wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.user-show .flex-contents-center-section {
+  margin: 0 15px
+}
+.user-show-move-to-dm-room .card-body {
+  margin: 0 auto;
+  text-align: center;
+}
 //========== users/edit =============
 .edit-profile {
   width: 100%;
@@ -147,10 +165,8 @@
 
 @media screen and (max-width: 829px) {
   .user-show.flex-contents-wrapper {
-    margin-top: 40px;
-  }
-  .user-show.flex-contents-wrapper {
     display: block;
+    margin-top: 40px;
   }
   .user-show .flex-contents-left-section {
     position: initial;
@@ -165,7 +181,7 @@
   }
 }
 @media screen and (min-width: 829px) {
-  .user-show .flex-contents-left-section .card-body {
+  .user-show .flex-contents-left-section {
     width: 265px;
   }
 }
@@ -186,7 +202,7 @@
   .new-user-relation-btns > a + a {
     margin-top: 15px;
   }
-  .move-to-dm-room-pc {
+  .user-show .flex-contents-right-section {
     display: none;
   }
   .move-to-dm-room-sp {

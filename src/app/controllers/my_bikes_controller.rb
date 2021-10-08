@@ -30,7 +30,7 @@ class MyBikesController < ApplicationController
       redirect_to user_path(current_user.id)
     else
       flash[:alret] = "マイバイクの編集に失敗しました"
-      redirect_to = user_path(current_user.id)
+      redirect_to user_path(current_user.id)
     end
   end
 
