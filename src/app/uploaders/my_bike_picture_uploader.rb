@@ -49,7 +49,7 @@ class MyBikePictureUploader < CarrierWave::Uploader::Base
   end
 
   # MiniMagickの機能でリサイズ
-  process resize_to_fit: [200, 200]
+  process resize_to_fill: [200, 200, "center"]
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

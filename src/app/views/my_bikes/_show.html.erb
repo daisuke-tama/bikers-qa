@@ -7,6 +7,7 @@
     <% end %>
     <p class="my-bike-name"><%= my_bike.name %></p>
     <p class="mt-10"><%= my_bike.description %></p>
+    <p class="mt-10">購入日:<%= my_bike.purchase_date.year %>年<%= my_bike.purchase_date.month %>月<%= my_bike.purchase_date.day %>日</p>
     <% if user == current_user %>
       <%= link_to "マイバイクを編集する", edit_my_bike_path(my_bike.id), class: "btn btn-outline-primary my-bike-edit-btn" %>
     <% end %>

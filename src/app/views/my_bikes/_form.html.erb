@@ -12,7 +12,7 @@
         <%= image_pack_tag 'my_bike_picture_defalt.png', class: "photo-icon my-bike-picture" %>
       <% else %>
         <div class="prev-content">
-          <%= image_tag current_user.my_bike.picture.url, alt: "preview", class: "my-bike-picture" %>
+          <%= image_tag current_user.my_bike.picture.url, alt: "preview", class: "prev-image my-bike-picture" %>
         </div>
       <% end %>
       <p style="text-align: center;">画像を変更したい場合はこちらをクリックしてください</p>
@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <%= f.label :purchase_date, "購入日" %><br/>
-    <%= f.date_select :purchase_date, autocomplete: "purchase_date" %>
+    <%= raw sprintf(f.date_select(:purchase_date, use_month_numbers: true, start_year:1900, end_year: Time.now.year, autocomplete: "purchase_date", date_separator: '%s'),'年', '月') + '日' %>
   </div>
 
   <div class="form-group">
